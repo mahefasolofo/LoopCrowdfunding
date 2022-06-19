@@ -201,42 +201,48 @@
 
         </Grid>
 
-        <Grid x:Name="GridCreation" Height="641" Width="1366"  Visibility="hidden" Margin="0,-650,0,0">
+        <Grid x:Name="GridCreation" Height="705" Width="1366"  Visibility="Hidden" Margin="0,-650,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="345*"/>
+                <ColumnDefinition Width="338*"/>
+            </Grid.ColumnDefinitions>
             <Button
                 Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
                 ToolTip="Resource name: MaterialDesignRaisedSecondaryButton"
                 Content="Valider"
                 Click="Button_Click_valider"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="855,590,375,19" materialDesign:ButtonAssist.CornerRadius="25" Background="#FF00787A" BorderBrush="#FF00787A"  />
-            <Label Content="Quel est l'intitulé de votre projet" HorizontalAlignment="Left" Margin="81,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="33" Width="264" FontSize="16"/>
-            <Label Content="Combien avez vous besoin pour réaliser votre projet?" HorizontalAlignment="Left" Margin="77,175,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="34" Width="393" FontSize="16"/>
-            <Label Content="Votre cagnotte sera ouverte jusqu'à quand?" HorizontalAlignment="Left" Margin="714,174,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="25" Width="315" FontSize="16"/>
-            <Label Content="Quand est-ce que les investisseurs recevront leurs dividendes?" HorizontalAlignment="Left" Margin="78,243,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="24" Width="443" FontSize="16"/>
-            <TextBox x:Name="titreprojet" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="382,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Height="20" FontSize="16"/>
-            <ComboBox x:Name="comboboxCateg" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="1053,111,0,0" Width="215" VerticalAlignment="Top" Height="32" FontSize="16">
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="165,600,375,30" materialDesign:ButtonAssist.CornerRadius="25" Background="#FF00787A" BorderBrush="#FF00787A" Grid.Column="1"  />
+            <Label Content="Quel est l'intitulé de votre projet" HorizontalAlignment="Left" Margin="81,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="33" Width="264" FontSize="16"/>
+            <Label Content="Combien avez vous besoin pour réaliser votre projet?" HorizontalAlignment="Left" Margin="77,109,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="34" Width="393" FontSize="16"/>
+            <Label Content="Votre cagnotte sera ouverte jusqu'à quand?" HorizontalAlignment="Left" Margin="40,174,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="25" Width="315" FontSize="16" Grid.Column="1"/>
+            <Label Content="Quand est-ce que les investisseurs recevront &#xD;&#xA;leurs dividendes?" HorizontalAlignment="Left" Margin="78,145,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="53" Width="372" FontSize="16"/>
+            <TextBox x:Name="titreprojet" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="345,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="923" Height="50" FontSize="16" Grid.ColumnSpan="2"/>
+            <ComboBox x:Name="comboboxCateg" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="363,111,0,0" Width="215" VerticalAlignment="Top" Height="32" FontSize="16" Grid.Column="1">
                 <ComboBox.ItemContainerStyleSelector>
                     <StyleSelector/>
                 </ComboBox.ItemContainerStyleSelector>
             </ComboBox>
-            <TextBox x:Name="objectifCagnotte" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="481,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" TextAlignment="Right" Height="20" FontSize="16"/>
-            <DatePicker x:Name="date_fermeture_cagnotte" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="1073,162,0,0" DisplayDate="09/06/2022 07:33:55" Height="34" Width="157" VerticalAlignment="Top"/>
-            <DatePicker x:Name="date_debut_dividende" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="554,230,0,0" VerticalAlignment="Top" DisplayDate="2022-09-06" Width="164" Height="33"/>
-            <Label Content="CREATION D'UNE CAGNOTTE" HorizontalAlignment="Left" Margin="497,23,0,0" VerticalAlignment="Top" Foreground="#FF232B2B" HorizontalContentAlignment="Center" FontSize="30" FontWeight="Bold" Height="56" Width="406"/>
-            <Label Content="€" HorizontalAlignment="Left" Margin="608,156,0,0" VerticalAlignment="Top" FontSize="24" Height="32" Width="22"/>
-            <Label Content="Veuillez entrer votre Business Plan" HorizontalAlignment="Left" Margin="77,370,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="37" Width="281" FontSize="16"/>
-            <Label Content="Veuillez entrer un scan de votre pièce d'identité" HorizontalAlignment="Left" Margin="77,436,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="34" Width="345" FontSize="16"/>
-            <TextBox x:Name="uploadBP_nom" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="483,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="519" Height="22"/>
-            <TextBox x:Name="uploadCIN_nom" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="481,436,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="522" Height="22"/>
+            <TextBox x:Name="objectifCagnotte" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="481,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" TextAlignment="Right" Height="40" FontSize="16"/>
+            <DatePicker x:Name="date_fermeture_cagnotte" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="365,162,0,0" DisplayDate="09/06/2022 07:33:55" Height="34" Width="157" VerticalAlignment="Top" Grid.Column="1"/>
+            <DatePicker x:Name="date_debut_dividende" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="480,159,0,0" VerticalAlignment="Top" DisplayDate="2022-09-06" Width="164" Height="40" Grid.ColumnSpan="2"/>
+            <Label Content="CREATION D'UNE CAGNOTTE" HorizontalAlignment="Left" Margin="497,1,0,0" VerticalAlignment="Top" Foreground="#FF232B2B" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Height="56" Width="406" Grid.ColumnSpan="2"/>
+            <Label Content="€" HorizontalAlignment="Left" Margin="608,103,0,0" VerticalAlignment="Top" FontSize="24" Height="32" Width="22"/>
+            <Label Content="Veuillez entrer &#xD;&#xA;votre Business Plan" HorizontalAlignment="Left" Margin="77,203,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="48" Width="281" FontSize="16"/>
+            <Label Content="Veuillez entrer un scan &#xD;&#xA;de votre pièce d'identité" HorizontalAlignment="Left" Margin="459,214,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="45" Width="181" FontSize="16"/>
+            <TextBox x:Name="uploadBP_nom" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="240,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="45"/>
+            <TextBox x:Name="uploadCIN_nom" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="639,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="45" Grid.ColumnSpan="2"/>
 
-            <Button Style="{StaticResource MaterialDesignRaisedSecondaryButton}" ToolTip="Resource name: MaterialDesignRaisedSecondaryButton" Content="Annuler" Click="Button_Click_annuler"  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="465,590,763,19" materialDesign:ButtonAssist.CornerRadius="25" Background="#FF00787A" BorderBrush="#FF00787A" />
-            <Label Content="Veuillez sélectionner une photo pour la couverture" HorizontalAlignment="Left" Margin="77,491,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="36" Width="373" FontSize="16"/>
-            <TextBox x:Name="uploadImage_nom" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="481,491,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="522" Height="28"/>
-            <Label Content="Choisissez la catégorie correspondante&#xA;" HorizontalAlignment="Left" Margin="707,111,0,0" VerticalAlignment="Top" Height="32" Width="296" FontSize="16"/>
-            <Label Content="Décrire brièvement votre projet" HorizontalAlignment="Left" Margin="79,295,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="27" Width="264" FontSize="16"/>
-            <TextBox x:Name="descriptionProjet" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7"  Margin="481,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="519" Height="59" FontSize="14"/>
+            <Button Style="{StaticResource MaterialDesignRaisedSecondaryButton}" ToolTip="Resource name: MaterialDesignRaisedSecondaryButton" Content="Annuler" Click="Button_Click_annuler"  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="465,600,87,30" materialDesign:ButtonAssist.CornerRadius="25" Background="#FF00787A" BorderBrush="#FF00787A" />
+            <Label Content="Veuillez sélectionner une photo &#xD;&#xA;pour la couverture" HorizontalAlignment="Left" Margin="154,214,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="45" Width="260" FontSize="16" Grid.Column="1"/>
+            <TextBox x:Name="uploadImage_nom" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="403,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="45" Grid.Column="1"/>
+            <Label Content="Choisissez la catégorie correspondante&#xA;" HorizontalAlignment="Left" Margin="41,111,0,0" VerticalAlignment="Top" Height="32" Width="296" FontSize="16" Grid.Column="1"/>
+            <Label Content="Décrire brièvement votre projet" HorizontalAlignment="Left" Margin="79,308,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="44" Width="264" FontSize="16"/>
+            <TextBox x:Name="descriptionProjet" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7"  Margin="318,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="950" Height="312" FontSize="14" Grid.ColumnSpan="2"/>
+            <Button x:Name="bouton_bp" Content="bp" HorizontalAlignment="Left" Height="37" Margin="400,214,0,0" VerticalAlignment="Top" Width="36" Click="inserer_bp"/>
+            <Button x:Name="bouton_id" Grid.Column="1" Content="id" HorizontalAlignment="Left" Height="32" Margin="107,227,0,0" VerticalAlignment="Top" Width="35" Click="inserer_cin"/>
+            <Button x:Name="photoC" Grid.Column="1" Content="photo" HorizontalAlignment="Left" Height="45" Margin="558,214,0,0" VerticalAlignment="Top" Width="20" Click="photoC_Click"/>
 
         </Grid>
-
 
     </StackPanel>
 

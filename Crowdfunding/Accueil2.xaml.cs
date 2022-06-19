@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +14,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
+using System.IO;
+using Microsoft.Win32;
+using Path = System.IO.Path;
 
 namespace Crowdfunding
 {
@@ -24,8 +29,9 @@ namespace Crowdfunding
     {
         MySqlConnection conn  = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
 
-        ObservableCollection<Projet> liste = new ObservableCollection<Projet>();
-        
+        ObservableCollection<Projet> listeaccueil = new ObservableCollection<Projet>();
+        ObservableCollection<Projet> liste_mes_cagnottes = new ObservableCollection<Projet>();
+
         private int ID_paiement_invest = 0;
         
         
@@ -40,11 +46,22 @@ namespace Crowdfunding
         public string ouvertureSelected { get; set; }
         public string fermetureSelected { get; set; }
 
+        //variable venant du travail de Mahefa : création cagnotte
+        public string path1 = "";
+        public string nomFichier1 = "";
+        public string path2 = "";
+        public string nomFichier2 = "";
+        public string path3 = "";
+        public string nomFichier3 = "";
+        public int id_categ = 0;
+       
+
         public Window2()
         {
             InitializeComponent();
             affichageListeProjet();
             chargementCheckbox();
+            affichageListeProjetUser();
         }
         //Affichage de tous les listes de projets
         private void affichageListeProjet()
@@ -76,7 +93,7 @@ namespace Crowdfunding
                         String photo = im[2];
 
                         //ajout de donnée à afficher dans la liste
-                        liste.Add(new Projet()
+                        listeaccueil.Add(new Projet()
                         {
                             IdProjet = reader.GetInt32(0),
                             titre = reader.GetString(3),
@@ -89,7 +106,7 @@ namespace Crowdfunding
                             fermeture = reader.GetDateTime(11)
                         });
 
-                        listeProjet.ItemsSource = liste;
+                        listeProjet.ItemsSource = listeaccueil;
 
 
                     }
@@ -128,7 +145,7 @@ namespace Crowdfunding
                         String photo = im[2];
 
                         //ajout de donnée à afficher dans la liste
-                        liste.Add(new Projet()
+                        liste_mes_cagnottes.Add(new Projet()
                         {
                             IdProjet = reader.GetInt32(0),
                             titre = reader.GetString(3),
@@ -141,7 +158,7 @@ namespace Crowdfunding
                             fermeture = reader.GetDateTime(11)
                         });
 
-                        listeProjet2.ItemsSource = liste;
+                        listeProjet2.ItemsSource = liste_mes_cagnottes;
 
 
                     }
@@ -152,34 +169,31 @@ namespace Crowdfunding
         }
 
         //à effacer
-        private void listeProjet_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //selectionner l'Item clické dans accueil2
-            flottanteProjet flottanteProjet = new flottanteProjet();
-            flottanteProjet.Activate();
+        //private void listeProjet_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    //selectionner l'Item clické dans accueil2
+        //    flottanteProjet flottanteProjet = new flottanteProjet();
+        //    flottanteProjet.Activate();
 
-            index = listeProjet.SelectedIndex;
-            //Affecter les valeurs de l'Item clické dans des variables à l'aide de Getter
-            ID_projet = liste[index].getIdProjet();
-            titreSelected = liste[index].getTitre();
-            descriptionSelected = liste[index].getDescription();
-            sommeCagnotteSelected = liste[index].getSommeCagnotte().ToString();
-            objectifCagnotteSelected = liste[index].getObjectifCagnotte().ToString();
-            statutSelected = liste[index].getStatut();
-            imageSelected = liste[index].getImage();
-            ouvertureSelected = liste[index].getOuverture().ToString();
-            fermetureSelected = liste[index].getFermeture().ToString();
+        //    index = listeProjet.SelectedIndex;
+        //    //Affecter les valeurs de l'Item clické dans des variables à l'aide de Getter
+        //    ID_projet = liste[index].getIdProjet();
+        //    titreSelected = liste[index].getTitre();
+        //    descriptionSelected = liste[index].getDescription();
+        //    sommeCagnotteSelected = liste[index].getSommeCagnotte().ToString();
+        //    objectifCagnotteSelected = liste[index].getObjectifCagnotte().ToString();
+        //    statutSelected = liste[index].getStatut();
+        //    imageSelected = liste[index].getImage();
+        //    ouvertureSelected = liste[index].getOuverture().ToString();
+        //    fermetureSelected = liste[index].getFermeture().ToString();
             
-
-
-            
-
-        }
+        //}
 
 
         private void Button_Click_Accueil(object sender, RoutedEventArgs e)
         {
-            
+            listeProjet.Items.Refresh();
+            listeProjet2.IsEnabled = false;
             Accueil1.Visibility = Visibility.Visible;
             Cagnottes.Visibility = Visibility.Hidden;
             GridCreation.Visibility = Visibility.Hidden;
@@ -187,7 +201,9 @@ namespace Crowdfunding
 
         private void Button_Click_cagnotte(object sender, RoutedEventArgs e)
         {
-            affichageListeProjetUser(); affichageListeProjetUser();
+            listeProjet2.IsEnabled = true;
+            
+            //listeProjet2.Items.Refresh();
             Accueil1.Visibility = Visibility.Hidden;
             Cagnottes.Visibility = Visibility.Visible;
             GridCreation.Visibility = Visibility.Hidden;
@@ -209,6 +225,7 @@ namespace Crowdfunding
 
         private void ButtonClick_creation_cagnotte(object sender, RoutedEventArgs e)
         {
+            listeProjet2.Items.Refresh();
             Cagnottes.Visibility = Visibility.Hidden;
             GridCreation.Visibility = Visibility.Visible;
         }
@@ -220,6 +237,7 @@ namespace Crowdfunding
         {
             //flotanteProjet.Visibility = Visibility.Hidden;
             Recherche.Visibility = Visibility.Visible;
+            listeProjet2.Items.Refresh();
             listeProjet.IsEnabled = true;
         }
 
@@ -287,9 +305,6 @@ namespace Crowdfunding
                     comboboxCateg.Items.Add(myReader.GetString(1));
                 }
             }
-
-
-
             myReader.Close();
 
             conn.Close();
@@ -299,12 +314,111 @@ namespace Crowdfunding
 
         private void Button_Click_valider(object sender, RoutedEventArgs e)
         {
+            //prendre les valeurs entrées par l'utilisateur
+            string title = titreprojet.Text;
+            string titre = title.Replace("'", "\''");
+            string desk = descriptionProjet.Text;
+            string description = desk.Replace("'", "\''");
+            float objectif = float.Parse(objectifCagnotte.Text);
+            DateTime date_fin = (DateTime)date_fermeture_cagnotte.SelectedDate;
+            string result_fin = date_fin.ToString("yyyy-MM-dd");
+            DateTime date_debut = (DateTime)date_debut_dividende.SelectedDate;
+            string result_debut = date_debut.ToString("yyyy-MM-dd");
 
+            string src1 = @path1;
+            string dest1 = @"dossiers\BP\" + nomFichier1 + "";
+            string src2 = @path2;
+            string dest2 = @"dossiers\CIN\" + nomFichier2 + "";
+            string src3 = @path3;
+            string dest3 = @"dossiers\IMG\" + nomFichier3 + "";
+            string dest1Req = dest1.Replace("\\", "\\\\");
+            string dest2Req = dest2.Replace("\\", "\\\\");
+            string dest3Req = dest3.Replace("\\", "\\\\");
+
+
+            try
+            {
+                File.Copy(src1, dest1);
+
+            }
+            catch (IOException iox)
+            {
+                Console.WriteLine(iox.Message);
+            }
+            try
+            {
+                File.Copy(src2, dest2);
+            }
+            catch (IOException iox)
+            {
+                Console.WriteLine(iox.Message);
+            }
+            try
+            {
+                File.Copy(src3, dest3);
+            }
+            catch (IOException iox)
+            {
+                Console.WriteLine(iox.Message);
+            }
+
+            conn.Open();
+            //récupérer ID_categ à partir de la catégorie sélectionnée
+            string requette1 = "SELECT * FROM `categorie` WHERE nom_categ = '" + comboboxCateg.Text + "' ";
+            MySqlCommand cmd1 = new MySqlCommand(requette1, conn);
+            MySqlDataReader myReader1;
+            myReader1 = cmd1.ExecuteReader();
+            while (myReader1.Read())
+            {
+                id_categ = myReader1.GetInt32(0);
+            }
+
+            conn.Close();
+
+            //injection requette
+            conn.Open();
+
+            string requette = "INSERT INTO `projet` (`ID_projet`, `fk_id_user_projet`, `fk_id_categ_projet`, `titreprojet`, `descriptionProjet`, `sommeCagnotte`, `objectifCagnotte`, `fichierBP`, `pieceidentite`, `statut`, `date_ouverture_cagnotte`, `date_fermeture_cagnotte`, `date_debut_paiement`, `image_projet`) VALUES(NULL, '1', '" + id_categ + "', '" + titre + "', '" + description + "', 0, '" + objectif + "', '" + dest1Req + "', '" + dest2Req + "', 'Ouvert', current_timestamp(), '" + result_fin + "', '" + result_debut + "','" + dest3Req + "')";
+
+            MySqlCommand cmd = new MySqlCommand(requette, conn);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            conn.Close();
+
+            //remise à zero et message de confirmation
+            RAZ();
+
+            //cacher la fenêtre création cagnotte et retour sur mes cagnottes
+            MessageBox.Show("Le projet " + title + " a été enregistré.");
+            GridMainCagnotte.Visibility = Visibility.Visible;
+            GridCreation.Visibility = Visibility.Hidden;
+            listeProjet2.Items.Refresh();
+            Cagnottes.Visibility = Visibility.Visible;
         }
 
         private void Button_Click_annuler(object sender, RoutedEventArgs e)
         {
+            // effacer les champs
             RAZ();
+
+            //cacher la grid création cagnotte
+            GridCreation.Visibility = Visibility.Hidden;
+
+            //rendre la listeview enable
+            listeProjet2.IsEnabled = true;
+
+            //refresh la liste
+            listeProjet2.Items.Refresh();
+
+            //faire apparaitre la grid mes cagnottes
+            Cagnottes.Visibility = Visibility.Visible;
         }
         public void RAZ()
         {
@@ -321,6 +435,7 @@ namespace Crowdfunding
 
 
         }
+
         //afficher la fenêtre flottante projet à partir accueil projet
         private void listeProjet_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
@@ -330,15 +445,15 @@ namespace Crowdfunding
 
 
             //Affecter les valeurs de l'Item clické dans des variables à l'aide de Getter
-            ID_projet = liste[index].getIdProjet();
-            titreSelected = liste[index].getTitre();
-            descriptionSelected = liste[index].getDescription();
-            sommeCagnotteSelected = liste[index].getSommeCagnotte().ToString();
-            objectifCagnotteSelected = liste[index].getObjectifCagnotte().ToString();
-            statutSelected = liste[index].getStatut();
-            imageSelected = liste[index].getImage();
-            ouvertureSelected = liste[index].getOuverture().ToString();
-            fermetureSelected = liste[index].getFermeture().ToString();
+            ID_projet = listeaccueil[index].getIdProjet();
+            titreSelected = listeaccueil[index].getTitre();
+            descriptionSelected = listeaccueil[index].getDescription();
+            sommeCagnotteSelected = listeaccueil[index].getSommeCagnotte().ToString();
+            objectifCagnotteSelected = listeaccueil[index].getObjectifCagnotte().ToString();
+            statutSelected = listeaccueil[index].getStatut();
+            imageSelected = listeaccueil[index].getImage();
+            ouvertureSelected = listeaccueil[index].getOuverture().ToString();
+            fermetureSelected = listeaccueil[index].getFermeture().ToString();
 
         }
 
@@ -346,22 +461,73 @@ namespace Crowdfunding
         private void selectionner_projet(object sender, SelectionChangedEventArgs e)
         {
             //string curentItem = listeProjet.SelectedItem.ToString();
-            index = listeProjet.SelectedIndex;
+            index = listeProjet2.SelectedIndex;
             flottanteProjet flottanteProjet = new flottanteProjet();
             flottanteProjet.Activate();
+            
 
 
             //Affecter les valeurs de l'Item clické dans des variables à l'aide de Getter
-            ID_projet = liste[index].getIdProjet();
-            titreSelected = liste[index].getTitre();
-            descriptionSelected = liste[index].getDescription();
-            sommeCagnotteSelected = liste[index].getSommeCagnotte().ToString();
-            objectifCagnotteSelected = liste[index].getObjectifCagnotte().ToString();
-            statutSelected = liste[index].getStatut();
-            imageSelected = liste[index].getImage();
-            ouvertureSelected = liste[index].getOuverture().ToString();
-            fermetureSelected = liste[index].getFermeture().ToString();
+            ID_projet = liste_mes_cagnottes[index].getIdProjet();
+            titreSelected = liste_mes_cagnottes[index].getTitre();
+            descriptionSelected = liste_mes_cagnottes[index].getDescription();
+            sommeCagnotteSelected = liste_mes_cagnottes[index].getSommeCagnotte().ToString();
+            objectifCagnotteSelected = liste_mes_cagnottes[index].getObjectifCagnotte().ToString();
+            statutSelected = liste_mes_cagnottes[index].getStatut();
+            imageSelected = liste_mes_cagnottes[index].getImage();
+            ouvertureSelected = liste_mes_cagnottes[index].getOuverture().ToString();
+            fermetureSelected = liste_mes_cagnottes[index].getFermeture().ToString();
 
+            //desactiver la listview
+            listeProjet2.IsEnabled = false;
+
+        }
+
+        private void inserer_bp(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "word files (*.docx)|*.docx|pdf files (*.pdf)|*.pdf|text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+            bool? result = fileDialog.ShowDialog();
+            if (result == true)
+            {
+                path1 = fileDialog.FileName;
+                nomFichier1 = Path.GetFileName(path1);
+                uploadBP_nom.Text = nomFichier1;
+
+            }
+        }
+
+        private void inserer_cin(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog2 = new OpenFileDialog();
+            fileDialog2.Filter = "images files (*.jpg)|*.jpg|word files (*.docx)|*.docx|pdf files (*.pdf)|*.pdf|text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+            bool? result = fileDialog2.ShowDialog();
+            if (result == true)
+            {
+                path2 = fileDialog2.FileName;
+                nomFichier2 = Path.GetFileName(path2);
+                uploadCIN_nom.Text = nomFichier2;
+
+
+            }
+        }
+
+        private void photoC_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog3 = new OpenFileDialog();
+            fileDialog3.Filter = "images files (*.jpg)|*.jpg|images files (*.png)|*.png|All files (*.*)|*.*";
+
+            bool? result = fileDialog3.ShowDialog();
+            if (result == true)
+            {
+                path3 = fileDialog3.FileName;
+                nomFichier3 = Path.GetFileName(path3);
+                uploadImage_nom.Text = nomFichier3;
+
+
+            }
         }
     }
 }
