@@ -209,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BD\" />
+    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="bell.ico" />
@@ -275,6 +276,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MasterCard-Logo-2016.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logoVisa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MasterCard-Logo-2016.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />

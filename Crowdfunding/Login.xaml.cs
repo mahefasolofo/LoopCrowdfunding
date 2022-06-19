@@ -26,6 +26,13 @@ namespace Crowdfunding
         private Connection conn = new Connection();
         private MySqlCommand command;
         Code cd = new Code();
+
+        private void annuler_click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+
+        }
+
         public Login()
         {
             InitializeComponent();

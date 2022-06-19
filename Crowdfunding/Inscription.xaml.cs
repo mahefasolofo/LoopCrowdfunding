@@ -75,5 +75,10 @@ namespace Crowdfunding
                 }
             }
         }
+
+        private void annuler_inscription_click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+        }
     }
 }

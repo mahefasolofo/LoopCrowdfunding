@@ -33,8 +33,9 @@ namespace Crowdfunding
         ObservableCollection<Projet> liste_mes_cagnottes = new ObservableCollection<Projet>();
 
         private int ID_paiement_invest = 0;
-        
-        
+        private string sommeInvest = "";
+
+
         public int index { get; set; }
         public int ID_projet { get; set; }
         public string titreSelected { get; set; }
@@ -46,7 +47,7 @@ namespace Crowdfunding
         public string ouvertureSelected { get; set; }
         public string fermetureSelected { get; set; }
 
-        //variable venant du travail de Mahefa : création cagnotte
+        //variable : création cagnotte
         public string path1 = "";
         public string nomFichier1 = "";
         public string path2 = "";
@@ -235,10 +236,14 @@ namespace Crowdfunding
 
         private void fermer_click(object sender, MouseButtonEventArgs e)
         {
+
             //flotanteProjet.Visibility = Visibility.Hidden;
             Recherche.Visibility = Visibility.Visible;
             listeProjet2.Items.Refresh();
             listeProjet.IsEnabled = true;
+            flotanteProjet.Visibility = Visibility.Hidden;
+            Accueil2.IsEnabled = true;
+
         }
 
         //private void Investir_click(object sender, RoutedEventArgs e)
@@ -284,11 +289,7 @@ namespace Crowdfunding
 
         //Vérification RadioButton moyen de payement 
         //A mettre dans la fenêtre investir
-        private void HandleCheck(object sender, RoutedEventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            ID_paiement_invest = int.Parse((string)rb.Content);
-        }
+        
         private void chargementCheckbox()
         {
             conn.Open();
@@ -440,11 +441,15 @@ namespace Crowdfunding
         private void listeProjet_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             //selectionner l'Item clické dans accueil2
-            flottanteProjet flottanteProjet = new flottanteProjet();
-            flottanteProjet.Show();
+            flotanteProjet.Visibility = Visibility.Visible;
+            Accueil2.IsEnabled = false;
 
 
+            //selectionner l'Item clické
+            string curentItem = listeProjet.SelectedItem.ToString();
+            int index = listeProjet.SelectedIndex;
             //Affecter les valeurs de l'Item clické dans des variables à l'aide de Getter
+
             ID_projet = listeaccueil[index].getIdProjet();
             titreSelected = listeaccueil[index].getTitre();
             descriptionSelected = listeaccueil[index].getDescription();
@@ -455,16 +460,49 @@ namespace Crowdfunding
             ouvertureSelected = listeaccueil[index].getOuverture().ToString();
             fermetureSelected = listeaccueil[index].getFermeture().ToString();
 
-        }
+//             string titreSelected = liste[index].getTitre();
+//             string descriptionSelected = liste[index].getDescription();
+//             string sommeCagnotteSelected = liste[index].getSommeCagnotte().ToString();
+//             string objectifCagnotteSelected = liste[index].getObjectifCagnotte().ToString();
+//             string statutSelected = liste[index].getStatut();
+//             string imageSelected = liste[index].getImage();
+//             string ouvertureSelected = liste[index].getOuverture().ToString();
+//             string fermetureSelected = liste[index].getFermeture().ToString();
+//             ID_projet = liste[index].getIdProjet();
 
-        //afficher la fenêtre flottante projet à partir porteur de projet : à changer /!\
-        private void selectionner_projet(object sender, SelectionChangedEventArgs e)
+            //Faire apparaitre la fenêtre flottante et Désactiver la listeView pour qu'on ne peut pas la toucher
+            flotanteProjet.Visibility = Visibility.Visible;
+            Recherche.Visibility = Visibility.Hidden;
+            listeProjet.IsEnabled = false;
+            
+            //Afficher les valeurs
+            labelTitre.Content = titreSelected;
+            labelDescription.Content = descriptionSelected;
+            labelObjectifCagnotte.Content = objectifCagnotteSelected;
+            labelStatut.Content = statutSelected;
+            labelOuverture.Content = ouvertureSelected;
+            labelFermeture.Content = fermetureSelected;
+            
+            
+        }
+        
+
+        //INVESTIR
+
+        private void Investir_click(object sender, RoutedEventArgs e)
         {
+
             //string curentItem = listeProjet.SelectedItem.ToString();
             index = listeProjet2.SelectedIndex;
             flottanteProjet flottanteProjet = new flottanteProjet();
             flottanteProjet.Activate();
             
+
+            flotanteProjet.Visibility = Visibility.Hidden;
+            flotanteInvestir.Visibility = Visibility.Visible;
+
+
+        }
 
 
             //Affecter les valeurs de l'Item clické dans des variables à l'aide de Getter
@@ -528,6 +566,55 @@ namespace Crowdfunding
 
 
             }
+
+        private void back_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            flotanteProjet.Visibility = Visibility.Visible;
+            flotanteInvestir.Visibility = Visibility.Hidden;
         }
+
+        private void fermer_click2(object sender, MouseButtonEventArgs e)
+        {
+            flotanteProjet.Visibility = Visibility.Hidden;
+            flotanteInvestir.Visibility = Visibility.Hidden;
+            Accueil2.IsEnabled = true;
+        }
+
+        //Vérification RadioButton moyen de payement 
+        private void HandleCheck(object sender, RoutedEventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            ID_paiement_invest = int.Parse((string)rb.Content);
+
+        }
+
+
+        private void Payer_Click(object sender, RoutedEventArgs e)
+        {
+
+            sommeInvest = sommeInvesti.Text;
+
+            //Connexion vers BDD
+            conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+            conn.Open();
+            String sql = "INSERT INTO `investisssement` (`ID_investissement`, `fk_id_user_invest`, `montant_investissement`, `date_investissement`, `fk_ID_paiement_invest`, `reference_projet`) VALUES (NULL, '1', '" + sommeInvest + "', current_timestamp(), '" + ID_paiement_invest.ToString() + "', '" + ID_projet.ToString() + "')";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+
+            flotanteInvestir.Visibility = Visibility.Hidden;
+            Recherche.Visibility = Visibility.Visible;
+            listeProjet.IsEnabled = true;
+            conn.Close();
+
+            MessageBox.Show("Investissement fait");
+
+        }
+
+        //MES CAGNOTTES
+        private void selectionner_projet(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
     }
 }
