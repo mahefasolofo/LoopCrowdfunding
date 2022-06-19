@@ -103,7 +103,7 @@
                                 </StackPanel>
                                 <!-- Bouton investir-->
                                 <StackPanel Grid.Row="4" Margin="0,100,20,0">
-                                    <Button Content="Investir" />
+                                    <Button Content="Investir" Click="Investir_click"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>

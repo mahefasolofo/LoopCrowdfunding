@@ -505,21 +505,7 @@ namespace Crowdfunding
         }
 
 
-            //Affecter les valeurs de l'Item clické dans des variables à l'aide de Getter
-            ID_projet = liste_mes_cagnottes[index].getIdProjet();
-            titreSelected = liste_mes_cagnottes[index].getTitre();
-            descriptionSelected = liste_mes_cagnottes[index].getDescription();
-            sommeCagnotteSelected = liste_mes_cagnottes[index].getSommeCagnotte().ToString();
-            objectifCagnotteSelected = liste_mes_cagnottes[index].getObjectifCagnotte().ToString();
-            statutSelected = liste_mes_cagnottes[index].getStatut();
-            imageSelected = liste_mes_cagnottes[index].getImage();
-            ouvertureSelected = liste_mes_cagnottes[index].getOuverture().ToString();
-            fermetureSelected = liste_mes_cagnottes[index].getFermeture().ToString();
-
-            //desactiver la listview
-            listeProjet2.IsEnabled = false;
-
-        }
+           
 
         private void inserer_bp(object sender, RoutedEventArgs e)
         {
@@ -566,6 +552,7 @@ namespace Crowdfunding
 
 
             }
+        }
 
         private void back_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -613,7 +600,21 @@ namespace Crowdfunding
         //MES CAGNOTTES
         private void selectionner_projet(object sender, SelectionChangedEventArgs e)
         {
+                //Affecter les valeurs de l'Item clické dans des variables à l'aide de Getter
+                ID_projet = liste_mes_cagnottes[index].getIdProjet();
+                titreSelected = liste_mes_cagnottes[index].getTitre();
+                descriptionSelected = liste_mes_cagnottes[index].getDescription();
+                sommeCagnotteSelected = liste_mes_cagnottes[index].getSommeCagnotte().ToString();
+                objectifCagnotteSelected = liste_mes_cagnottes[index].getObjectifCagnotte().ToString();
+                statutSelected = liste_mes_cagnottes[index].getStatut();
+                imageSelected = liste_mes_cagnottes[index].getImage();
+                ouvertureSelected = liste_mes_cagnottes[index].getOuverture().ToString();
+                fermetureSelected = liste_mes_cagnottes[index].getFermeture().ToString();
 
+                //desactiver la listview
+                listeProjet2.IsEnabled = false;
+
+            
         }
 
     }
