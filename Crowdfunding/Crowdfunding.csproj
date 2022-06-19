@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DF707DE4-363C-4D94-8F35-63240EA72AE5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Crowdfunding</RootNamespace>
+    <AssemblyName>Crowdfunding</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MaterialDesignColors, Version=2.0.6.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.2.0.6\lib\net452\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=4.5.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.4.5.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.6.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Documents\Visual Studio 2022\mysql-connector.net\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.6.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Documents\Visual Studio 2022\mysql-connector.net\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.6.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Documents\Visual Studio 2022\mysql-connector.net\MySql.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Code.xaml.cs">
+      <DependentUpon>Code.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Connection.cs" />
+    <Compile Include="flottanteProjet.xaml.cs">
+      <DependentUpon>flottanteProjet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inscription.xaml.cs">
+      <DependentUpon>Inscription.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InscriptionProjet.xaml.cs">
+      <DependentUpon>InscriptionProjet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accueil2.xaml.cs">
+      <DependentUpon>Accueil2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accueil_cagnotte.xaml.cs">
+      <DependentUpon>Accueil_cagnotte.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Code.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="flottanteProjet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inscription.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="InscriptionProjet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accueil2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accueil_cagnotte.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Projet.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="loop %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BD\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bell.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="alert-circled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="android-reminder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="android-alarm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="android-reminder - Copie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="loop-removebg-preview %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MicrosoftTeams-image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="loop__2_-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Download_free_vector_of_Isolated_green_planet_earth_illustration_by_Peera_about_globe__earth_day__earth__planet__and_bio_462215-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sans_titre__1_-removebg-preview %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Download_free_psd___image_of_Continents_on_planet_earth_psd_by_Noon_about_earth__world__planet_earth__globe__and_earth_illustration_2456443-removebg-preview %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Startup_company_-_colorful_isometric_vector_illustration_EPS-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Add user Customizable Semi Flat Illustrations _ Pana Style.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="styleInscription.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Stylelogin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="male_man_person_people_avatar_white_tone_icon_159365.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo-American-Expresso.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cochon cassé.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logoVisa.jpg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MasterCard-Logo-2016.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
+</Project>

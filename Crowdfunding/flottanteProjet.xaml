@@ -1,0 +1,30 @@
+﻿<Window x:Class="Crowdfunding.flottanteProjet"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Crowdfunding"
+        mc:Ignorable="d" Title="Loop Crowdfunding"  WindowStartupLocation="CenterScreen"  Height="600" Width="500"  ResizeMode="NoResize">
+    <Grid>
+        <!--Vue flottante du projet clické par défaut caché-->
+        <Grid x:Name="flotanteProjet" Height="600" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#F8F1FF" Visibility="visible">
+            <Button x:Name="BouttonInvestir" Content="Investir" Height="32" Margin="157,500,108,68" Click="Investir_click"/>
+            <Image HorizontalAlignment="Left" Height="147" VerticalAlignment="Top" Width="495"/>
+            <Label x:Name="labelTitre" Content="" Margin="0,148,0,412" HorizontalContentAlignment="Center"/>
+            <Label x:Name="labelDescription" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="132" Width="500" Margin="0,192,0,0"/>
+            <Label x:Name="labelObjectifCagnotte" Content="" HorizontalAlignment="Center" Margin="0,324,0,0" HorizontalContentAlignment="Center" VerticalAlignment="Top" Height="50" Width="240"/>
+            <Label x:Name="labelStatut" HorizontalAlignment="Center" Margin="0,379,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="32" Width="144"/>
+            <Label x:Name="labelOuverture" Content="" Margin="166,420,154,155" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="32" Width="144"/>
+            <Label x:Name="labelFermeture" Content="" Margin="168,452,152,121" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="32" Width="144"/>
+            <materialDesign:PackIcon x:Name="fermer" Kind="CloseCircle" Height="38" Width="38" Margin="462,0,0,0" MouseDown="fermer_click" />
+        </Grid>
+    </Grid>
+</Window>

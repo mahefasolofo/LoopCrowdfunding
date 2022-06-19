@@ -1,0 +1,48 @@
+﻿<Window x:Class="Crowdfunding.Inscription"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Crowdfunding"
+        mc:Ignorable="d"
+        Title="Inscription" Height="600" Width="1100" WindowStartupLocation="CenterScreen">
+    <Grid Margin="3,0,-10,-6" Visibility="Visible" Height="590" VerticalAlignment="Bottom"  >
+
+        <Image HorizontalAlignment="Left" Height="1009" Margin="80,13,0,0" VerticalAlignment="Top" Width="1017" Source="/styleInscription.png"/>
+        <Image Margin="643,187,59,-1" RenderTransformOrigin="0.5,0.5" Source="/Add user Customizable Semi Flat Illustrations _ Pana Style.png">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-8.092"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Label Content="INSCRIVEZ-VOUS" HorizontalAlignment="Left" Margin="178,22,0,0" VerticalAlignment="Top" FontSize="72" FontWeight="Bold" FontFamily="Poppins"/>
+        <TextBox x:Name="TextBoxNom" materialDesign:HintAssist.Hint="Nom"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Top" Margin="40,136,839,0" Height="47" />
+        <TextBox x:Name="TextBoxPrenom" materialDesign:HintAssist.Hint="Prénom" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top" Margin="304,136,575,0" Height="48" />
+        <DatePicker x:Name="DatePickerNaissance" materialDesign:HintAssist.Hint="date de naissance" HorizontalAlignment="Left" Margin="588,152,0,0" VerticalAlignment="Top" IsTodayHighlighted="False" Width="204" Language="" Height="31"/>
+        <TextBox x:Name="TextBoxMail" materialDesign:HintAssist.Hint="email"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top" Margin="40,210,839,0" Height="46" />
+        <TextBox x:Name="TextBoxAdresse" materialDesign:HintAssist.Hint="Adresse"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top" Margin="304,210,575,0" Height="47" />
+        <TextBox x:Name="TextBoxVille" materialDesign:HintAssist.Hint="Ville"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center" Margin="40,0,839,0" Height="46" />
+        <TextBox x:Name="TextBoxPays" materialDesign:HintAssist.Hint="Pays"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top" Margin="302,276,576,0" Height="46" />
+        <PasswordBox x:Name="PasswordBoxMdp"  materialDesign:HintAssist.Hint="mot de passe"  materialDesign:HintAssist.Foreground="#FF673AB7"  materialDesign:TextFieldAssist.UnderlineBrush="#FF673AB7"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Top" Margin="40,354,839,0" Height="48" />
+        <PasswordBox x:Name="PasswordBoxConfirmer" materialDesign:HintAssist.Hint="confirmer votre mot de passe"  materialDesign:HintAssist.Foreground="#FF673AB7"  materialDesign:TextFieldAssist.UnderlineBrush="#FF673AB7"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Top" Margin="300,355,576,0" Height="47" />
+
+        <Button x:Name="buttonInscription"          
+         materialDesign:ButtonAssist.CornerRadius="10"
+         ToolTip="MaterialDesignRaisedButton with Round Corners"
+         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" VerticalAlignment="Top" Margin="268,519,691,0" Click="buttonInscription_Click_1" Height="32">
+            <TextBlock ><Run Language="fr-fr" Text="S'inscrire"/></TextBlock>
+        </Button>
+        <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="184,417,0,0" VerticalAlignment="Top" Width="316" FontSize="12" Foreground="#DDF40909" Height="87"/>
+
+
+
+
+    </Grid>
+</Window>
+
+    
