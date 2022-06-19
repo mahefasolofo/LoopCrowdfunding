@@ -42,14 +42,18 @@
                 <materialDesign:PackIcon Kind="Magnify" Height="50" Width="78" Margin="786,36,0,0" Foreground="#FF232B2B"/>
                 
                 <Button x:Name="creation_cagnotte" Content="Creation cagnotte" HorizontalAlignment="Left" Margin="834,162,0,0" VerticalAlignment="Top" Height="47" Width="174" Click="ButtonClick_creation_cagnotte" materialDesign:ButtonAssist.CornerRadius="25" Background="#FF00787A"/>
-                --><!--<Grid Height="5000"/>-->
-                
+                -->
+            <!--<Grid Height="5000"/>-->
 
-                <!--</DataGrid>--><!--
+
+            <!--</DataGrid>-->
+            <!--
                 <Border BorderBrush="#FF00787A" BorderThickness="1,1,1,1" Margin="1188,0,-1,0" Visibility="Visible" Background="#FFF1F8FF"/>
                 <Label Content="Voici vos projets" HorizontalAlignment="Left" Margin="377,144,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
                 <Image Margin="105,0,1055,712" Height="171" VerticalAlignment="Bottom" Source="/cochon cassé.png"/>
-                --><!--Début template liste--><!--
+                -->
+            <!--Début template liste-->
+            <!--
                 <ListView x:Name="listeProjet" Margin="35,366,289,31" SelectionChanged="selectionner_projet" >
                     <ListView.ItemTemplate>
                         <DataTemplate x:Name="affichageprojet" DataType="local:liste">
@@ -60,14 +64,18 @@
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
 
-                                --><!--colonne image --><!--
+                                -->
+            <!--colonne image -->
+            <!--
                                 <StackPanel
                                 Margin="8 0 0 0"
                                 Grid.Column="1">
                                     <Image Source="{Binding image}" Width="100" Height="100" HorizontalAlignment="Left"/>
                                 </StackPanel>
 
-                                --><!--colonne titre et description --><!--
+                                -->
+            <!--colonne titre et description -->
+            <!--
                                 <StackPanel
                                 Margin="8 0 0 0"
                                     Grid.Column="2">
@@ -78,7 +86,9 @@
                                     Text="{Binding description}" TextWrapping="Wrap"/>
                                 </StackPanel>
 
-                                --><!--colonne stat --><!--
+                                -->
+            <!--colonne stat -->
+            <!--
                                 <StackPanel
                                 Margin="650 0 0 0"
                                     Grid.Column="3" >
@@ -118,10 +128,10 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </Grid>-->
-            
+
 
         </Grid>
-        <Grid x:Name="GridCreation" Visibility="Hidden" Height="961" Width="1366" d:IsLocked="True">
+        <Grid x:Name="GridCreation" Visibility="Visible" Height="961" Width="1366" Margin="0,-994,0,-21">
             <Button
                 Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
                 ToolTip="Resource name: MaterialDesignRaisedSecondaryButton"
@@ -132,15 +142,15 @@
             <Label Content="Combien avez vous besoin pour réaliser votre projet?" HorizontalAlignment="Left" Margin="77,175,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="34" Width="393" FontSize="16"/>
             <Label Content="Votre cagnotte sera ouverte jusqu'à quand?" HorizontalAlignment="Left" Margin="714,174,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="25" Width="315" FontSize="16"/>
             <Label Content="Quand est-ce que les investisseurs recevront leurs dividendes?" HorizontalAlignment="Left" Margin="78,243,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="24" Width="443" FontSize="16"/>
-            <TextBox x:Name="titreprojet" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="382,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Height="20" FontSize="16"/>
-            <ComboBox x:Name="comboboxCateg" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="1053,111,0,0" Width="215" VerticalAlignment="Top" Height="21" FontSize="16">
+            <TextBox x:Name="titreprojet" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="382,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Height="49" FontSize="16"/>
+            <ComboBox x:Name="comboboxCateg" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="1053,84,0,0" Width="215" VerticalAlignment="Top" Height="48" FontSize="16">
                 <ComboBox.ItemContainerStyleSelector>
                     <StyleSelector/>
                 </ComboBox.ItemContainerStyleSelector>
             </ComboBox>
-            <TextBox x:Name="objectifCagnotte" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="481,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" TextAlignment="Right" Height="20" FontSize="16"/>
-            <DatePicker x:Name="date_fermeture_cagnotte" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="1073,162,0,0" DisplayDate="09/06/2022 07:33:55" Height="34" Width="157" VerticalAlignment="Top"/>
-            <DatePicker x:Name="date_debut_dividende" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="554,230,0,0" VerticalAlignment="Top" DisplayDate="2022-09-06" Width="164" Height="33"/>
+            <TextBox x:Name="objectifCagnotte" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="481,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" TextAlignment="Right" Height="38" FontSize="16"/>
+            <DatePicker x:Name="date_fermeture_cagnotte" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="1073,137,0,0" DisplayDate="09/06/2022 07:33:55" Height="59" Width="157" VerticalAlignment="Top"/>
+            <DatePicker x:Name="date_debut_dividende" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="554,204,0,0" VerticalAlignment="Top" DisplayDate="2022-09-06" Width="164" Height="59"/>
             <Label Content="CREATION D'UNE CAGNOTTE" HorizontalAlignment="Left" Margin="497,23,0,0" VerticalAlignment="Top" Foreground="#FF232B2B" HorizontalContentAlignment="Center" FontSize="30" FontWeight="Bold" Height="56" Width="406"/>
             <Label Content="€" HorizontalAlignment="Left" Margin="608,156,0,0" VerticalAlignment="Top" FontSize="24" Height="32" Width="22"/>
             <Label Content="Veuillez entrer votre Business Plan" HorizontalAlignment="Left" Margin="77,370,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="37" Width="281" FontSize="16"/>
@@ -154,6 +164,9 @@
             <Label Content="Choisissez la catégorie correspondante&#xA;" HorizontalAlignment="Left" Margin="707,111,0,0" VerticalAlignment="Top" Height="32" Width="296" FontSize="16"/>
             <Label Content="Décrire brièvement votre projet" HorizontalAlignment="Left" Margin="79,295,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="27" Width="264" FontSize="16"/>
             <TextBox x:Name="descriptionProjet" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7"  Margin="481,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="519" Height="59" FontSize="14"/>
+            <Button x:Name="bouton_BP" Content="BP" HorizontalAlignment="Left" Height="42" Margin="1026,353,0,0" VerticalAlignment="Top" Width="63" IsCancel="True"/>
+            <Button x:Name="bouton_ID" Content="ID" HorizontalAlignment="Left" Height="39" Margin="1026,419,0,0" VerticalAlignment="Top" Width="63"/>
+            <Button x:Name="bouton_image" Content="image" HorizontalAlignment="Left" Height="39" Margin="1026,480,0,0" VerticalAlignment="Top" Width="84"/>
 
         </Grid>
         <!-- Vue flottante projet à modifier -->
@@ -242,7 +255,8 @@
                 <Button Content="Retour" Click="retour_cagnotte" />
             </StackPanel>
         </Grid>
-        
+        <Button Content="Button"/>
+
 
         <!--<Grid x:Name="flotanteInvestir" Height="600" Width="500" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#F8F1FF" Visibility="hidden" Margin="0,23,0,0">
                 <Label Content="Investir" Margin="0,5,0,452" HorizontalContentAlignment="Center" FontSize="32" VerticalContentAlignment="Center"/>
