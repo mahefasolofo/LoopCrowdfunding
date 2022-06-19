@@ -25,11 +25,16 @@ namespace Crowdfunding
     {
        private MySqlConnection conn;
        ObservableCollection<Projet> liste_acceuil = new ObservableCollection<Projet>();
-
+        Login login = new Login();
+        private int ID_paiement_invest = 0;
+        private int ID_projet = 0;
+        private string sommeInvest = "";
         public MainWindow()
         {
             InitializeComponent();
             acceuilPrincipal();
+            login.Show();
+            login.Visibility = Visibility.Hidden;
         }
         private void acceuilPrincipal()
         {
@@ -77,40 +82,7 @@ namespace Crowdfunding
 
            
         }
-        private void listeProjet_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //vers fenêtre projet flottante vue investisseur
-
-            //selectionner l'Item clické
-            string curentItem = acceuil_projet.SelectedItem.ToString();
-            int index = acceuil_projet.SelectedIndex;
-            //Affecter les valeurs de l'Item clické dans des variables à l'aide de Getter
-            string titreSelected = liste_acceuil[index].getTitre();
-            string descriptionSelected = liste_acceuil[index].getDescription();
-            string sommeCagnotteSelected = liste_acceuil[index].getSommeCagnotte().ToString();
-            string objectifCagnotteSelected = liste_acceuil[index].getObjectifCagnotte().ToString();
-            string statutSelected = liste_acceuil[index].getStatut();
-            string imageSelected = liste_acceuil[index].getImage();
-            string ouvertureSelected = liste_acceuil[index].getOuverture().ToString();
-            string fermetureSelected = liste_acceuil[index].getFermeture().ToString();
-            int ID_projet = liste_acceuil[index].getIdProjet();
-
-            ////Faire apparaitre la fenêtre flottante et Désactiver la listeView pour qu'on ne peut pas la toucher
-            //flotanteProjet.Visibility = Visibility.Visible;
-            //Recherche.Visibility = Visibility.Hidden;
-            //acceuil_projet.IsEnabled = false;
-            //Afficher les valeurs
-            //labelTitre.Content = titreSelected;
-            //labelDescription.Content = descriptionSelected;
-            //labelObjectifCagnotte.Content = objectifCagnotteSelected;
-            //labelStatut.Content = statutSelected;
-            //labelOuverture.Content = ouvertureSelected;
-            //labelFermeture.Content = fermetureSelected;
-            //labelTitre2.Content = titreSelected;
-
-
-        }
-
+        
 
         private void investir(object sender, RoutedEventArgs e)
         {
@@ -151,8 +123,9 @@ namespace Crowdfunding
         {
              Inscription.Foreground = new SolidColorBrush(Colors.OrangeRed);
             ////afficher la deuxième accueil : accueil connecté
-            Login login = new Login();
-            login.Show();
+           
+            
+            login.Visibility = Visibility.Visible;
 
 
         }
@@ -380,5 +353,52 @@ namespace Crowdfunding
             Autrebutton.Background = new SolidColorBrush(Colors.Transparent);
             Autrebutton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
         }
+
+        private void acceuil_projet_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //changement vues
+            flotanteProjet.Visibility = Visibility.Visible;
+            accueil.IsEnabled = false;
+
+            //intègre les données du projet sélectionné
+            //selectionner l'Item clické
+            string curentItem = acceuil_projet.SelectedItem.ToString();
+            int index = acceuil_projet.SelectedIndex;
+            //Affecter les valeurs de l'Item clické dans des variables à l'aide de Getter
+            string titreSelected = liste_acceuil[index].getTitre();
+            string descriptionSelected = liste_acceuil[index].getDescription();
+            string sommeCagnotteSelected = liste_acceuil[index].getSommeCagnotte().ToString();
+            string objectifCagnotteSelected = liste_acceuil[index].getObjectifCagnotte().ToString();
+            string statutSelected = liste_acceuil[index].getStatut();
+            string imageSelected = liste_acceuil[index].getImage();
+            string ouvertureSelected = liste_acceuil[index].getOuverture().ToString();
+            string fermetureSelected = liste_acceuil[index].getFermeture().ToString();
+            ID_projet = liste_acceuil[index].getIdProjet();
+
+            
+            //Afficher les valeurs
+            labelTitre.Content = titreSelected;
+            labelDescription.Content = descriptionSelected;
+            labelObjectifCagnotte.Content = objectifCagnotteSelected;
+            labelStatut.Content = statutSelected;
+            labelOuverture.Content = ouvertureSelected;
+            labelFermeture.Content = fermetureSelected;
+            
+
+        }
+
+        private void Investir_click(object sender, RoutedEventArgs e)
+        {
+            
+            login.Show();
+        }
+
+        private void fermer_click(object sender, MouseButtonEventArgs e)
+        {
+            flotanteProjet.Visibility = Visibility.Hidden;
+            accueil.IsEnabled = true;
+        }
+
+
     }
 }

@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Crowdfunding"
         mc:Ignorable="d"
-        Title="Inscription" Height="600" Width="1100" WindowStartupLocation="CenterScreen">
+        Title="Inscription" Height="600" Width="1100" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid Margin="3,0,-10,-6" Visibility="Visible" Height="590" VerticalAlignment="Bottom"  >
 
         <Image HorizontalAlignment="Left" Height="1009" Margin="80,13,0,0" VerticalAlignment="Top" Width="1017" Source="/styleInscription.png"/>
@@ -38,6 +38,7 @@
             <TextBlock ><Run Language="fr-fr" Text="S'inscrire"/></TextBlock>
         </Button>
         <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="184,417,0,0" VerticalAlignment="Top" Width="316" FontSize="12" Foreground="#DDF40909" Height="87"/>
+        <Button Content="Annuler" HorizontalAlignment="Left" Margin="98,519,0,0" VerticalAlignment="Top" Background="White" Foreground="#FF090101" Click="annuler_inscription_click"/>
 
 
 
