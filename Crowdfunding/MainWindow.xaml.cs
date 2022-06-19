@@ -42,7 +42,7 @@ namespace Crowdfunding
             conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
             conn.Open();
             //il faut encore changer l'ID en paramètre - Standardiser
-            String sql = "SELECT * FROM projet, users, projet_suivi WHERE projet.ID_projet = projet_suivi.id_projet_suivi AND projet_suivi.id_user_suiveur = users.ID_user AND users.ID_user = 5;";
+            String sql = "SELECT * FROM projet;";
             //creat command
             MySqlCommand cmd = new MySqlCommand();
 
@@ -156,6 +156,9 @@ namespace Crowdfunding
 
             tousbutton.Background = new SolidColorBrush(Colors.Transparent);
             tousbutton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
+
+            //recherche
+            rechercheCategorie(5);
         }
 
         private void agributton_Click(object sender, RoutedEventArgs e)
@@ -184,6 +187,9 @@ namespace Crowdfunding
 
             tousbutton.Background = new SolidColorBrush(Colors.Transparent);
             tousbutton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
+
+            //recherche
+            rechercheCategorie(2);
         }
 
         private void Techbutton_Click(object sender, RoutedEventArgs e)
@@ -212,6 +218,9 @@ namespace Crowdfunding
 
             tousbutton.Background = new SolidColorBrush(Colors.Transparent);
             tousbutton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
+
+            //recherche
+            rechercheCategorie(3);
         }
 
         private void Immobutton_Click(object sender, RoutedEventArgs e)
@@ -240,6 +249,9 @@ namespace Crowdfunding
 
             tousbutton.Background = new SolidColorBrush(Colors.Transparent);
             tousbutton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
+
+            //recherche
+            rechercheCategorie(1);
         }
 
         private void SanteButton_Click(object sender, RoutedEventArgs e)
@@ -268,6 +280,9 @@ namespace Crowdfunding
 
             tousbutton.Background = new SolidColorBrush(Colors.Transparent);
             tousbutton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
+
+            //recherche
+            rechercheCategorie(6);
         }
 
         private void SolidaireButton_Click(object sender, RoutedEventArgs e)
@@ -296,6 +311,9 @@ namespace Crowdfunding
 
             tousbutton.Background = new SolidColorBrush(Colors.Transparent);
             tousbutton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
+
+            //recherche
+            rechercheCategorie(4);
         }
 
         private void Autrebutton_Click(object sender, RoutedEventArgs e)
@@ -324,6 +342,9 @@ namespace Crowdfunding
 
             tousbutton.Background = new SolidColorBrush(Colors.Transparent);
             tousbutton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
+
+            //recherche
+            rechercheCategorie(11);
         }
 
         private void tousbutton_Click(object sender, RoutedEventArgs e)
@@ -352,6 +373,9 @@ namespace Crowdfunding
 
             Autrebutton.Background = new SolidColorBrush(Colors.Transparent);
             Autrebutton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
+
+            liste_acceuil.Clear();
+            acceuilPrincipal();
         }
 
         private void acceuil_projet_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -399,6 +423,55 @@ namespace Crowdfunding
             accueil.IsEnabled = true;
         }
 
+        //fonction qui recherche par catégorie
+        private void rechercheCategorie(int idcateg)
+        {
+            //réinitialiser la liste
+            liste_acceuil.Clear();
 
+            //connexion à la base de donnée
+            conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+            conn.Open();
+
+            //il faut encore changer l'ID en paramètre - Standardiser
+            String sql = "SELECT * FROM projet WHERE projet.fk_id_categ_projet = " + idcateg;
+
+            //creat command
+            MySqlCommand cmd = new MySqlCommand();
+
+            //Etablir la connexion de la commande
+            cmd.Connection = conn;
+            cmd.CommandText = sql;
+
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {   //lecture de l'image et conversion du nom            
+                        String imgpath = reader.GetString(13);
+
+                        String img = imgpath.Replace("\\", "#");
+                        String[] im = img.Split('#');
+                        String photo = im[2]; //MessageBox.Show(photo);
+
+                        //ajout de donnée à afficher dans la liste
+                        liste_acceuil.Add(new Projet()
+                        {
+                            IdProjet = reader.GetInt32(0),
+                            titre = reader.GetString(3),
+                            description = reader.GetString(4),
+                            objectifCagnotte = reader.GetFloat(6),
+                            statut = reader.GetString(9),
+                            image = photo,
+                            paiement = reader.GetDateTime(12),
+                            fermeture = reader.GetDateTime(11)
+                        });
+                    }
+                    reader.Close();
+                }
+                acceuil_projet.ItemsSource = liste_acceuil;
+            }
+        }
     }
 }
