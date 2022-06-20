@@ -193,6 +193,11 @@ namespace Crowdfunding
 
         private void Button_Click_Accueil(object sender, RoutedEventArgs e)
         {
+            Accueil.Foreground = new SolidColorBrush(Colors.OrangeRed);
+            Cagnotte.Foreground = new SolidColorBrush(Colors.White);
+            Investissement.Foreground = new SolidColorBrush(Colors.White);
+            utilisateur.Foreground = new SolidColorBrush(Colors.White);
+
             listeProjet.Items.Refresh();
             listeProjet2.IsEnabled = false;
             Accueil1.Visibility = Visibility.Visible;
@@ -202,6 +207,11 @@ namespace Crowdfunding
 
         private void Button_Click_cagnotte(object sender, RoutedEventArgs e)
         {
+            Accueil.Foreground = new SolidColorBrush(Colors.White);
+            Cagnotte.Foreground = new SolidColorBrush(Colors.OrangeRed);
+            Investissement.Foreground = new SolidColorBrush(Colors.White);
+            utilisateur.Foreground = new SolidColorBrush(Colors.White);
+
             listeProjet2.IsEnabled = true;
             
             //listeProjet2.Items.Refresh();
@@ -211,16 +221,27 @@ namespace Crowdfunding
         }
         private void Button_Click_investissement(object sender, RoutedEventArgs e)
         {
-            //GridCursor.Margin = new Thickness(405, 20, 0, 0);
+            Accueil.Foreground = new SolidColorBrush(Colors.White);
+            Cagnotte.Foreground = new SolidColorBrush(Colors.White);
+            Investissement.Foreground = new SolidColorBrush(Colors.OrangeRed);
+            utilisateur.Foreground = new SolidColorBrush(Colors.White);
+           
         }
 
         private void Button_Click_notification(object sender, RoutedEventArgs e)
         {
-
+            Accueil.Foreground = new SolidColorBrush(Colors.White);
+            Cagnotte.Foreground = new SolidColorBrush(Colors.White);
+            Investissement.Foreground = new SolidColorBrush(Colors.White);
+            utilisateur.Foreground = new SolidColorBrush(Colors.White);
         }
 
         private void Button_Click_User(object sender, RoutedEventArgs e)
         {
+            Accueil.Foreground = new SolidColorBrush(Colors.White);
+            Cagnotte.Foreground = new SolidColorBrush(Colors.White);
+            Investissement.Foreground = new SolidColorBrush(Colors.White);
+            utilisateur.Foreground = new SolidColorBrush(Colors.OrangeRed);
             //GridCursor.Margin = new Thickness(1135, 20, 0, 0);
         }
 
@@ -314,7 +335,7 @@ namespace Crowdfunding
 
         private void Button_Click_valider(object sender, RoutedEventArgs e)
         {
-            //prendre les valeurs entrées par l'utilisateur
+            //prendre les valeurs entrées par l'utilisateur qui créé une cagnotte
             string title = titreprojet.Text;
             string titre = title.Replace("'", "\''");
             string desk = descriptionProjet.Text;
@@ -615,9 +636,48 @@ namespace Crowdfunding
 
                 //desactiver la listview
                 listeProjet2.IsEnabled = false;
+                //Faire apparaitre la fenêtre flottante et Désactiver la listeView pour qu'on ne peut pas la toucher
+                grid_vue_projet.Visibility = Visibility.Visible;
+                listeProjet2.IsEnabled = false;
 
-            
+                //Afficher les valeurs
+                title.Text = titreSelected;
+                descrip.Text = descriptionSelected;
+                objectif.Text = objectifCagnotteSelected;
+                etat.Text = statutSelected;
+                ouvert.Text = ouvertureSelected;
+                ferme.Text = fermetureSelected;
+                //labelTitre2.Content = titreSelected;
+                somme.Text = sommeCagnotteSelected;
+                int statprojet = 100 * int.Parse(sommeCagnotteSelected) / int.Parse(objectifCagnotteSelected);
+                progress.Value = statprojet;
+                LabelProgression.Content = statprojet + " %  de votre cagnotte ont été atteint";
+
         }
 
+        private void modification_description(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void modification_titre(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void progress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void retour_cagnotte(object sender, RoutedEventArgs e)
+        {
+            //réactualiser la listeview
+            listeProjet.Items.Refresh();
+
+            //Faire apparaitre la fenêtre listeView et Désactiver la flottante
+            grid_vue_projet.Visibility = Visibility.Hidden;
+            listeProjet2.IsEnabled = true;
+        }
     }
 }
