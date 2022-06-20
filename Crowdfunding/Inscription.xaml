@@ -30,17 +30,17 @@
         <TextBox x:Name="TextBoxPays" materialDesign:HintAssist.Hint="Pays"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top" Margin="302,276,576,0" Height="46" />
         <PasswordBox x:Name="PasswordBoxMdp"  materialDesign:HintAssist.Hint="mot de passe"  materialDesign:HintAssist.Foreground="#FF673AB7"  materialDesign:TextFieldAssist.UnderlineBrush="#FF673AB7"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Top" Margin="40,354,839,0" Height="48" />
         <PasswordBox x:Name="PasswordBoxConfirmer" materialDesign:HintAssist.Hint="confirmer votre mot de passe"  materialDesign:HintAssist.Foreground="#FF673AB7"  materialDesign:TextFieldAssist.UnderlineBrush="#FF673AB7"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Top" Margin="300,355,576,0" Height="47" />
+        <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="184,409,0,0" VerticalAlignment="Top" Width="316" FontSize="12" Foreground="#DDF40909" Height="87"/>
+        <Button x:Name="___Buttonannuler" Content="Annuler" Cursor="Hand" materialDesign:ButtonAssist.CornerRadius="10" Height="47" 
+         ToolTip="MaterialDesignRaisedButton with Round Corners"
+         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" VerticalAlignment="Top" Margin="46,503,897,0" Click="annuler_inscription_click"/>
 
         <Button x:Name="buttonInscription"          
-         materialDesign:ButtonAssist.CornerRadius="10"
-         ToolTip="MaterialDesignRaisedButton with Round Corners"
-         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" VerticalAlignment="Top" Margin="268,519,691,0" Click="buttonInscription_Click_1" Height="32">
+         materialDesign:ButtonAssist.CornerRadius="10" Height="47" 
+         ToolTip="MaterialDesignRaisedButton with Round Corners" Cursor="Hand"
+         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" VerticalAlignment="Top" Margin="337,499,606,0" Click="buttonInscription_Click_1" >
             <TextBlock ><Run Language="fr-fr" Text="S'inscrire"/></TextBlock>
         </Button>
-        <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="184,417,0,0" VerticalAlignment="Top" Width="316" FontSize="12" Foreground="#DDF40909" Height="87"/>
-        <Button Content="Annuler" HorizontalAlignment="Left" Margin="98,519,0,0" VerticalAlignment="Top" Background="White" Foreground="#FF090101" Click="annuler_inscription_click"/>
-
-
 
 
     </Grid>
