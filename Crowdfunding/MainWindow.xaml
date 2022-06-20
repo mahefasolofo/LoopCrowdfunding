@@ -39,8 +39,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid x:Name="accueil" Margin="10,10,-10,10">
-                <ListView x:Name="acceuil_projet" Height="420" Width="1365" Margin="60,300,84,0" SelectionChanged="acceuil_projet_SelectionChanged">
+            <Grid x:Name="accueil" HorizontalAlignment="Center" Width="1510" Height="740" VerticalAlignment="Top">
+                <ListView x:Name="acceuil_projet" Height="420" Margin="46,310,281,10" SelectionChanged="acceuil_projet_SelectionChanged">
 
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -121,7 +121,7 @@
 
                 </Grid>
 
-                <StackPanel x:Name="Categories" Orientation="Horizontal" Margin="35,156,27,381" RenderTransformOrigin="0.5,0.5" >
+                <StackPanel x:Name="Categories" Orientation="Horizontal" Margin="35,156,248,381" RenderTransformOrigin="0.5,0.5" >
                     <StackPanel.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -180,6 +180,17 @@
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen" Foreground="DarkSlateGray" Click="Autrebutton_Click" Opacity="0.75"  Width="100"/>
 
                 </StackPanel>
+
+                <!--Grid qui contient les stats de la page d'accueil-->
+                <Grid HorizontalAlignment="Left" Height="740" Margin="1248,0,0,0" VerticalAlignment="Center" Width="262" >
+                    <Label Content="Nombre d'investissement" HorizontalAlignment="Center" Height="36" Margin="0,142,0,0" VerticalAlignment="Top" Width="242" FontSize="20"/>
+                    <TextBlock Name="nombre_invest" FontSize="18" Margin="8,178,0,521" />
+                    <Label Content="Nombre de projet" Margin="10,224,0,475" FontSize="20" />
+                    <TextBlock Name="nombre_projet"  Margin="0,265,0,426"/>
+                    <Label Content="Total des investissements" FontSize="20" Margin="0,319,0,384"/>
+                    <TextBlock Name="total_invest" Margin="0,356,0,344" />
+                </Grid>
+
             </Grid>
             <Grid x:Name="flotanteProjet" Background="#F8F1FF" Visibility="hidden" Margin="382,35,382,35">
                 <Button x:Name="BouttonInvestir" Content="Investir" Margin="0,563,0,75" Click="Investir_click" HorizontalAlignment="Center" Width="482"/>
