@@ -283,7 +283,6 @@ namespace Crowdfunding
         //    listeProjet.IsEnabled = true;
         //    conn.Close();
 
-        //    MessageBox.Show("Investissement fait");
 
         //}
 
@@ -500,6 +499,9 @@ namespace Crowdfunding
 
             flotanteProjet.Visibility = Visibility.Hidden;
             flotanteInvestir.Visibility = Visibility.Visible;
+
+
+
 
 
         }

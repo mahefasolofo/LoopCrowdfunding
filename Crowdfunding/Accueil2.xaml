@@ -153,7 +153,7 @@
 
 
         </Grid>
-        <Grid x:Name="Cagnottes" Height="650" Background="White" Margin="0,-650,0,0" Visibility="hidden">
+        <Grid x:Name="Cagnottes" Height="650" Background="White" Margin="0,-650,0,0" Visibility="Visible">
             <Grid x:Name="GridMainCagnotte" Height="650" Background="#ffffff" Visibility="Visible" HorizontalAlignment="Center" Margin="0,10,0,-10">
                 <Rectangle HorizontalAlignment="Left" Height="145" Margin="117,122,0,0" Stroke="#FFE2ADAD" VerticalAlignment="Top" Width="635" Fill="#FFEB6262" Opacity="0.12" RadiusX="50" RadiusY="50"/>
                 <TextBox x:Name="Recherche2" materialDesign:HintAssist.Hint="Recherche" materialDesign:HintAssist.Foreground="#673ab7" materialDesign:TextFieldAssist.UnderlineBrush="#673ab7" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Top" FontSize="16" Width="446" Margin="324,44,596,0"/>
@@ -233,7 +233,192 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </Grid>
+            
 
+
+
+        </Grid>
+        <Grid  x:Name="grid_vue_projet" Background="White" Height="753" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Width="846" Margin="-10,-741,9,9">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="137*" />
+                <RowDefinition Height="240*"/>
+                <RowDefinition Height="242*" />
+                <RowDefinition Height="134*" />
+            </Grid.RowDefinitions>
+
+            <!-- linear progress bars (the default style -->
+
+
+            <!--Emplacement image-->
+            <StackPanel Grid.Row="3" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" Height="128">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <Image Height="130" Width="506"  />
+            </StackPanel>
+
+            <!--Emplacement titre et description-->
+            <StackPanel  Margin="0,5,0,1" RenderTransformOrigin="0.5,0.5" Grid.Row="2">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <TextBox x:Name="title" TextChanged="modification_titre" Width="274" Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" d:IsHidden="True">
+                    <TextBox.BorderBrush>
+                        <SolidColorBrush Color="LightGray" Opacity="0.30"/>
+                    </TextBox.BorderBrush>
+                    <TextBox.Background>
+                        <SolidColorBrush Color="LightGray" Opacity="0.30"/>
+                    </TextBox.Background>
+                </TextBox>
+                <Label Content=" votre projet en quelques mots " Width="663" FontFamily="Source Sans Pro" FontWeight="DemiBold"/>
+                <TextBox x:Name="descrip" TextWrapping="Wrap" TextChanged="modification_description" Height="128" Width="662" Style="{StaticResource MaterialDesignOutlinedTextBox}" BorderBrush="LightGray" Opacity="12" >
+                    <TextBox.Background>
+                        <SolidColorBrush Color="LightGray" Opacity="0.30"/>
+                    </TextBox.Background>
+                </TextBox>
+            </StackPanel>
+
+            <!--Emplacement Stat-->
+            <StackPanel  Orientation="Horizontal" Margin="0,101,0,240" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" Grid.Row="1">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <!-- fin partie argent collecté -->
+                <!-- fin-->
+                <!-- fin-->
+                <!-- partie argent collecté -->
+                <StackPanel x:Name="somme1" Width="168" Orientation="Vertical" Margin="20,0,75,0">
+                    <!-- info dans border  -->
+
+                    <!-- fin conteneur des infos-->
+
+                    <!-- fin border-->
+                    <!-- argent collecté -->
+                    <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" Width="139" FontFamily="Tahoma" Height="21"><Run Text="Vous avez Dejà collecté :"/></TextBlock>
+                    <!-- contient les info-->
+                    <Grid Margin="-5,0,0,-18"  >
+
+                        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="90" Width="90" CornerRadius="10 10 10 10" Background="#FF00787A" BorderThickness="5" OpacityMask="#FF0F2C2D" BorderBrush="#FFD1E2E2"/>
+
+                        <!-- fin info-->
+
+                        <!-- info 1-->
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <TextBlock  VerticalAlignment="Top" Margin="0,0,0,0" HorizontalAlignment="Center" ><InlineUIContainer>
+                                    <TextBlock
+                                        x:Name="somme" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"  />
+                                </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                    <TextBlock
+                                        Text="€" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" />
+                                </InlineUIContainer></TextBlock>
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+                <!-- partie objectif  -->
+                <StackPanel x:Name="objectif1" Width="134" Orientation="Vertical" Margin="0,0,75,0">
+                    <TextBlock Margin="0,0,0,0" FontFamily="Tahoma" Height="21"><Run Text="Votre objectif est de :"/></TextBlock>
+                    <!-- info dans border  -->
+
+                    <Border Background="#FF00787A" CornerRadius="20" Height="90" Width="90" BorderThickness="5" OpacityMask="#FF0F2C2D" BorderBrush="#FFD1E2E2" >
+                        <!-- contient les info-->
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+
+                            <TextBlock  HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="0,5,0,0" ><InlineUIContainer>
+                                    <TextBlock
+                                        x:Name="objectif" HorizontalAlignment="Stretch" FontSize="25"/>
+                                </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                    <TextBlock
+                                        Text="€" HorizontalAlignment="Center" FontSize="25"/>
+                                </InlineUIContainer></TextBlock>
+                            <!-- info 2-->
+                            <TextBlock
+                         x:Name="etat" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <!-- debut cagnotte-->
+
+                <StackPanel x:Name="___debut_" Width="134" Orientation="Vertical" Margin="0,0,75,0">
+                    <TextBlock Margin="0,0,0,0" FontFamily="Tahoma" Height="21"><Run Text="Debut de la cagnotte :"/></TextBlock>
+                    <Border Background="#FF00787A"  CornerRadius="20" Height="90" Width="90" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="5" OpacityMask="#FF0F2C2D" BorderBrush="#FFD1E2E2" >
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock
+                         x:Name="ouvert"  HorizontalAlignment="Center" FontSize="9" FontWeight="DemiBold"  />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <!-- fermeture cagnotte-->
+                <StackPanel x:Name="___fincagnotte_1" Orientation="Vertical" HorizontalAlignment="Center" >
+                    <TextBlock x:Name="___fincagnotte_" Margin="0,0,0,0" Height="21" Width="106"><Run Text="Fin de la cagotte :  " FontFamily="Tahoma"/></TextBlock>
+                    <Border Background="#FF00787A"  CornerRadius="20" Height="90" Width="90" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="5" OpacityMask="#FF0F2C2D" BorderBrush="#FFD1E2E2" >
+                        <TextBlock
+                            x:Name="ferme" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="9" FontWeight="DemiBold" />
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="0,100,0,180" Orientation="Horizontal" Grid.RowSpan="2" >
+                <Grid>
+                    <ProgressBar
+              Orientation="Vertical" 
+              x:Name="progress" Height="3" RenderTransformOrigin="0.625,0.452" ValueChanged="progress_ValueChanged" Width="566" Margin="286,-373,386,-182" >
+                        <ProgressBar.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="90                                              "/>
+                                <TranslateTransform X="-64.74" Y="23.432"/>
+                            </TransformGroup>
+                        </ProgressBar.RenderTransform>
+                    </ProgressBar>
+                    <Label x:Name="LabelProgression" Content="" HorizontalAlignment="Left" Margin="14,15,0,0" VerticalAlignment="Top" Height="64" Width="512" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                </Grid>
+                <Button Content="valider" Click="retour_cagnotte" Width="148" Height="40" materialDesign:ButtonAssist.CornerRadius="10"
+                    ToolTip="MaterialDesignRaisedButton with Round Corners" RenderTransformOrigin="0.5,0.5" Margin="0,35,0,0"
+         >
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </StackPanel>
 
 
         </Grid>
