@@ -260,7 +260,6 @@ namespace Crowdfunding
         //    listeProjet.IsEnabled = true;
         //    conn.Close();
 
-        //    MessageBox.Show("Investissement fait");
 
         //}
 
@@ -361,6 +360,9 @@ namespace Crowdfunding
             imageSelected = liste[index].getImage();
             ouvertureSelected = liste[index].getOuverture().ToString();
             fermetureSelected = liste[index].getFermeture().ToString();
+
+
+
 
         }
     }
