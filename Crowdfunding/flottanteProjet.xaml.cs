@@ -21,7 +21,7 @@ namespace Crowdfunding
     public partial class flottanteProjet : Window
     {
         //ObservableCollection<Projet> liste = new ObservableCollection<Projet>();
-        Window2 accueil2 = new Window2();
+        //Window2 accueil2 = new Window2();
 
         
         public flottanteProjet()
@@ -34,13 +34,13 @@ namespace Crowdfunding
         public void affichageFlottante()
         {
             
-            //Afficher les valeurs
-            labelTitre.Content = accueil2.titreSelected;
-            labelDescription.Content = accueil2.descriptionSelected;
-            labelObjectifCagnotte.Content = accueil2.objectifCagnotteSelected;
-            labelStatut.Content = accueil2.statutSelected;
-            labelOuverture.Content = accueil2.ouvertureSelected;
-            labelFermeture.Content = accueil2.fermetureSelected;
+            ////Afficher les valeurs
+            //labelTitre.Content = accueil2.titreSelected;
+            //labelDescription.Content = accueil2.descriptionSelected;
+            //labelObjectifCagnotte.Content = accueil2.objectifCagnotteSelected;
+            //labelStatut.Content = accueil2.statutSelected;
+            //labelOuverture.Content = accueil2.ouvertureSelected;
+            //labelFermeture.Content = accueil2.fermetureSelected;
 
 
         }

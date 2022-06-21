@@ -152,7 +152,9 @@ namespace Crowdfunding
             ////afficher la deuxième accueil : accueil connecté
 
             login.Visibility = Visibility.Visible;
-
+            
+            this.Close();
+            
 
         }
 

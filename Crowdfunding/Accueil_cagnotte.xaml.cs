@@ -101,9 +101,9 @@ namespace Crowdfunding
 
         private void Button_Click_Accueil(object sender, RoutedEventArgs e)
         {
-            Window2 accueil2 = new Window2();
-            accueil2.Show();
-            this.Hide();
+            //Window2 accueil2 = new Window2();
+            //accueil2.Show();
+            //this.Hide();
         }
 
         private void Button_Click_cagnotte(object sender, RoutedEventArgs e)

@@ -26,7 +26,10 @@ namespace Crowdfunding
     /// </summary>
     public partial class Window2 : Window
     {
-        MySqlConnection conn  = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+        MySqlConnection conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+
+
+        ObservableCollection<Projet> liste = new ObservableCollection<Projet>();
 
         ObservableCollection<Projet> listeaccueil = new ObservableCollection<Projet>();
         ObservableCollection<Projet> liste_mes_cagnottes = new ObservableCollection<Projet>(); //liste pour la listeview "mes cagnottes"
@@ -35,6 +38,9 @@ namespace Crowdfunding
 
         private int ID_paiement_invest = 0;
         private string sommeInvest = "";
+
+        public int ID_user_connected;
+
 
         public int index { get; set; }
         public int ID_projet { get; set; }
@@ -56,8 +62,9 @@ namespace Crowdfunding
         public string nomFichier3 = "";
         public int id_categ = 0;
 
-        public Window2()
+        public Window2(int id)
         {
+            this.ID_user_connected = id;
             InitializeComponent();
             affichageListeProjet();
             chargementCheckbox();
@@ -132,8 +139,12 @@ namespace Crowdfunding
             //connexion à la base de donnée
             //conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
             conn.Open();
+            //ID_user_connected = int.Parse(ID_user_connected);
 
-            String sql = "SELECT * FROM `projet` WHERE fk_id_user_projet = 1";
+
+
+            String sql = "SELECT * FROM `projet` WHERE fk_id_user_projet = " + ID_user_connected + "";
+
 
             //creat command
             MySqlCommand cmd = new MySqlCommand();
@@ -175,6 +186,7 @@ namespace Crowdfunding
             }
             conn.Close();
         }
+
 
         //Affichage de la liste des projets investis dans fenêtre "mes investissements"
         private void affichage_mes_investissement() 
@@ -289,15 +301,21 @@ namespace Crowdfunding
             }
             conn.Close();
         }
+
         private void Button_Click_Accueil(object sender, RoutedEventArgs e)
         {
             Accueil.Foreground = new SolidColorBrush(Colors.OrangeRed);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.White);
-            utilisateur.Foreground = new SolidColorBrush(Colors.White);
+
+           // utilisateur.Foreground = new SolidColorBrush(Colors.White);
 
             //gestion des fenêtres
+
+            boutton_User.Foreground = new SolidColorBrush(Colors.White);
+
             listeProjet.Items.Refresh();
+            
             listeProjet2.IsEnabled = false;
             Accueil1.Visibility = Visibility.Visible;
             Cagnottes.Visibility = Visibility.Hidden;
@@ -311,7 +329,7 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.OrangeRed);
             Investissement.Foreground = new SolidColorBrush(Colors.White);
-            utilisateur.Foreground = new SolidColorBrush(Colors.White);
+            boutton_User.Foreground = new SolidColorBrush(Colors.White);
 
             listeProjet2.IsEnabled = true;
             
@@ -325,11 +343,16 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.OrangeRed);
-            utilisateur.Foreground = new SolidColorBrush(Colors.White);
+
+            //utilisateur.Foreground = new SolidColorBrush(Colors.White);
 
             Cagnotte.Visibility = Visibility.Hidden;
             Accueil1.Visibility = Visibility.Hidden;
             grid_mes_investissements.Visibility = Visibility.Visible;
+
+            boutton_User.Foreground = new SolidColorBrush(Colors.White);
+           
+
         }
 
         private void Button_Click_notification(object sender, RoutedEventArgs e)
@@ -337,16 +360,22 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.White);
-            utilisateur.Foreground = new SolidColorBrush(Colors.White);
+            boutton_User.Foreground = new SolidColorBrush(Colors.White);
         }
 
         private void Button_Click_User(object sender, RoutedEventArgs e)
         {
+
+            if (deroulante_Projet.Visibility == Visibility.Hidden)
+                deroulante_Projet.Visibility = Visibility.Visible;
+            else
+                deroulante_Projet.Visibility = Visibility.Hidden;
+             
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.White);
-            utilisateur.Foreground = new SolidColorBrush(Colors.OrangeRed);
-            //GridCursor.Margin = new Thickness(1135, 20, 0, 0);
+            boutton_User.Foreground = new SolidColorBrush(Colors.OrangeRed);
+            
         }
 
         private void ButtonClick_creation_cagnotte(object sender, RoutedEventArgs e)
@@ -364,52 +393,13 @@ namespace Crowdfunding
             listeProjet2.Items.Refresh();
             listeProjet.IsEnabled = true;
             flotanteProjet.Visibility = Visibility.Hidden;
+            GridMainCagnotte.IsEnabled = true;
             Accueil2.IsEnabled = true;
 
         }
 
-        //private void Investir_click(object sender, RoutedEventArgs e)
-        ////{
-        ////    flotanteProjet.Visibility = Visibility.Hidden;
-        ////    flotanteInvestir.Visibility = Visibility.Visible;
-        //}
 
 
-        //private void fermer_click2(object sender, MouseButtonEventArgs e)
-        //{
-        //    flotanteInvestir.Visibility = Visibility.Hidden;
-        //    listeProjet.IsEnabled = true;
-        //    Recherche.Visibility = Visibility.Visible;
-        //}
-
-        //private void back_MouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    flotanteProjet.Visibility = Visibility.Visible;
-        //    flotanteInvestir.Visibility = Visibility.Hidden;
-        //}
-
-        //private void Payer_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //    sommeInvest = sommeInvesti.Text;
-
-        //    //Connexion vers BDD
-        //    conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
-        //    conn.Open();
-        //    String sql = "INSERT INTO `investisssement` (`ID_investissement`, `fk_id_user_invest`, `montant_investissement`, `date_investissement`, `fk_ID_paiement_invest`, `reference_projet`) VALUES (NULL, '1', '" + sommeInvest + "', current_timestamp(), '" + ID_paiement_invest.ToString() + "', '" + ID_projet.ToString() + "')";
-        //    MySqlCommand cmd = new MySqlCommand(sql, conn);
-        //    cmd.ExecuteNonQuery();
-
-        //    flotanteInvestir.Visibility = Visibility.Hidden;
-        //    Recherche.Visibility = Visibility.Visible;
-        //    listeProjet.IsEnabled = true;
-        //    conn.Close();
-
-
-        //}
-
-        //Vérification RadioButton moyen de payement 
-        //A mettre dans la fenêtre investir
         
         private void chargementCheckbox()
         {
@@ -493,8 +483,10 @@ namespace Crowdfunding
 
             conn.Close();
 
+
             //injection requette
             conn.Open();
+
 
             string requette = "INSERT INTO `projet_a_valider` (`ID_projet`, `fk_id_user_projet`, `fk_id_categ_projet`, `titreprojet`, `descriptionProjet`, `sommeCagnotte`, `objectifCagnotte`, `fichierBP`, `pieceidentite`, `statut`, `date_ouverture_cagnotte`, `date_fermeture_cagnotte`, `date_debut_paiement`, `image_projet`) VALUES(NULL, '1', '" + id_categ + "', '" + titre + "', '" + description + "', 0, '" + objectif + "', '" + dest1Req + "', '" + dest2Req + "', 'Ouvert', current_timestamp(), '" + result_fin + "', '" + result_debut + "','" + dest3Req + "')";
 
@@ -559,6 +551,7 @@ namespace Crowdfunding
             Accueil2.IsEnabled = false;
 
 
+
             //selectionner l'Item clické
             string curentItem = listeProjet.SelectedItem.ToString();
             int index = listeProjet.SelectedIndex;
@@ -577,8 +570,9 @@ namespace Crowdfunding
             //Faire apparaitre la fenêtre flottante et Désactiver la listeView pour qu'on ne peut pas la toucher
             flotanteProjet.Visibility = Visibility.Visible;
             Recherche.Visibility = Visibility.Hidden;
-            listeProjet.IsEnabled = false;
-            
+
+            Accueil2.IsEnabled = false;
+
             //Afficher les valeurs
             labelTitre.Content = titreSelected;
             labelDescription.Content = descriptionSelected;
@@ -586,8 +580,9 @@ namespace Crowdfunding
             labelStatut.Content = statutSelected;
             labelOuverture.Content = ouvertureSelected;
             labelFermeture.Content = fermetureSelected;
+
         }
-        
+
 
         //INVESTIR
         private void Investir_click(object sender, RoutedEventArgs e)
@@ -655,6 +650,7 @@ namespace Crowdfunding
         {
             flotanteProjet.Visibility = Visibility.Hidden;
             flotanteInvestir.Visibility = Visibility.Hidden;
+            GridMainCagnotte.IsEnabled = true;
             Accueil2.IsEnabled = true;
         }
 
@@ -668,13 +664,13 @@ namespace Crowdfunding
 
         private void Payer_Click(object sender, RoutedEventArgs e)
         {
-
+            
             sommeInvest = sommeInvesti.Text;
 
             //Connexion vers BDD
             conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
             conn.Open();
-            String sql = "INSERT INTO `investisssement` (`ID_investissement`, `fk_id_user_invest`, `montant_investissement`, `date_investissement`, `fk_ID_paiement_invest`, `reference_projet`) VALUES (NULL, '1', '" + sommeInvest + "', current_timestamp(), '" + ID_paiement_invest.ToString() + "', '" + ID_projet.ToString() + "')";
+            String sql = "INSERT INTO `investisssement` (`ID_investissement`, `fk_id_user_invest`, `montant_investissement`, `date_investissement`, `fk_ID_paiement_invest`, `reference_projet`) VALUES (NULL, '" + ID_user_connected + "', '" + sommeInvest + "', current_timestamp(), '" + ID_paiement_invest + "', '" + ID_projet + "')";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
 
@@ -811,34 +807,157 @@ namespace Crowdfunding
                 }
             }
             conn.Close();
+
+
+            //SALETE DE TRUCN'I LOVA TSY MISY LOHANY
+
+            //                 listeProjet2.IsEnabled = false;
+            //                 //Faire apparaitre la fenêtre flottante et Désactiver la listeView pour qu'on ne peut pas la toucher
+            //                 grid_vue_projet.Visibility = Visibility.Visible;
+            //                 listeProjet2.IsEnabled = false;
+
+            //                 //Afficher les valeurs
+            //                 title.Text = titreSelected;
+            //                 descrip.Text = descriptionSelected;
+            //                 objectif.Text = objectifCagnotteSelected;
+            //                 etat.Text = statutSelected;
+            //                 ouvert.Text = ouvertureSelected;
+            //                 ferme.Text = fermetureSelected;
+            //                 //labelTitre2.Content = titreSelected;
+            //                 somme.Text = sommeCagnotteSelected;
+            //                 int statprojet = 100 * int.Parse(sommeCagnotteSelected) / int.Parse(objectifCagnotteSelected);
+            //                 progress.Value = statprojet;
+            //                 LabelProgression.Content = statprojet + " %  de votre cagnotte ont été atteint";
         }
 
         private void modification_description(object sender, TextChangedEventArgs e)
         {
-            liste_mes_cagnottes[index].description = descrip.Text;
-
-            string requete = " UPDATE `projet` SET `descriptionProjet` = '" + liste_mes_cagnottes[index].description + "' WHERE `projet`.`ID_projet` = " + liste_mes_cagnottes[index].IdProjet;
 
 
-            //connexion à la base de donnée
-            conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+        }
+
+
+        //MON PROFIL
+
+        private void MonProfil_click(object sender, MouseButtonEventArgs e)
+        {
+// <<<<<<< antsa
+//             liste_mes_cagnottes[index].description = descrip.Text;
+
+//             string requete = " UPDATE `projet` SET `descriptionProjet` = '" + liste_mes_cagnottes[index].description + "' WHERE `projet`.`ID_projet` = " + liste_mes_cagnottes[index].IdProjet;
+
+
+//             //connexion à la base de donnée
+//             conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+//             conn.Open();
+
+//             //creat command
+// =======
+            MainStack.IsEnabled = false;
+            if (Profil.Visibility == Visibility.Hidden)
+                Profil.Visibility = Visibility.Visible;
+            else
+                Profil.Visibility = Visibility.Hidden;
+
+            User utilisateur = new User();
+            //ID_user_connected = int.Parse(ID_connected.Text);
             conn.Open();
+            string sql = "SELECT `nom`, `prenom`, `email`, `motdepasse`, `adresse`, `datenaissance`, `ville`, `pays` FROM `users` WHERE `ID_user`=" + ID_user_connected + "";
 
-            //creat command
+
             MySqlCommand cmd = new MySqlCommand();
 
             //Etablir la connexion de la commande
             cmd.Connection = conn;
-            cmd.CommandText = requete;
+// <<<<<<< antsa
+//             cmd.CommandText = requete;
 
-            try
+//             try
+//             {
+//                 cmd.ExecuteNonQuery();
+//             }
+//             catch (Exception excep)
+//             {
+//                 MessageBox.Show(excep.ToString());
+//             }
+
+            cmd.CommandText = sql;
+
+            using (DbDataReader reader = cmd.ExecuteReader())
             {
-                cmd.ExecuteNonQuery();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        utilisateur.nom = reader.GetString(0);
+                        utilisateur.prenom = reader.GetString(1);
+                        utilisateur.email = reader.GetString(2);
+                        utilisateur.motdepasse = reader.GetString(3);
+                        utilisateur.adresse = reader.GetString(4);
+                        
+                        //string date = reader.GetString(5);
+                        utilisateur.ville = reader.GetString(6);
+                        utilisateur.pays = reader.GetString(7);
+
+
+                        nom.Text = utilisateur.nom;
+                        prenom.Text = utilisateur.prenom;
+                        email.Text = utilisateur.email;
+                        //motdepasse.Text = utilisateur.motdepasse;
+                        adresse.Text = utilisateur.adresse;
+                        //datenaissance.Text = date;
+                        ville.Text = utilisateur.ville;
+                        pays.Text = utilisateur.pays;
+
+                    }
+                }
+
+                conn.Close();
             }
-            catch (Exception excep)
-            {
-                MessageBox.Show(excep.ToString());
-            }
+        }
+
+        private void Modifier_Click(object sender, RoutedEventArgs e)
+        {
+            
+            conn.Open();
+            string sql = "UPDATE `users` SET `nom`='"+ nom.Text +"',`prenom`='"+ prenom.Text +"',`email`='"+ email.Text +"',`adresse`='"+ adresse.Text +"', `ville`='"+ ville.Text +"',`pays`='"+ pays.Text +"' WHERE ID_user = "+ ID_user_connected + "";
+            //`datenaissance`='"+ datenaissance.Text +"',
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            Profil.Visibility = Visibility.Hidden;
+            MainStack.IsEnabled = true;
+
+        }
+        private void annuler_mofificationprofil_click(object sender, RoutedEventArgs e)
+        {
+                MainStack.IsEnabled = true;
+                Profil.Visibility = Visibility.Hidden;
+        }
+
+        private void deconnexion_click(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            this.Close();
+            main.Show();
+        }
+
+        private void suivre_click(object sender, RoutedEventArgs e)
+        {
+            
+
+            conn.Open();
+            string sql = "INSERT INTO `projet_suivi` (`id_user_suiveur`, `id_projet_suivi`, `Date_suivi`) VALUES ('"+ ID_user_connected + "', '"+ ID_projet +"', current_timestamp())";
+            //`datenaissance`='"+ datenaissance.Text +"',
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            cmd.ExecuteNonQuery();
+
+
             conn.Close();
         }
 
@@ -877,7 +996,7 @@ namespace Crowdfunding
         }
 
         private void retour_cagnotte(object sender, RoutedEventArgs e)
-        {
+        {   
             //réactualiser la listeview
             listeProjet2.Items.Refresh();
 
@@ -885,6 +1004,8 @@ namespace Crowdfunding
             grid_vue_projet.Visibility = Visibility.Hidden;
             listeProjet2.IsEnabled = true;
 
+
         }
     }
-}
+
+}   
