@@ -14,7 +14,7 @@
         xmlns:local="clr-namespace:Crowdfunding"
         mc:Ignorable="d" Title="Loop Crowdfunding" WindowStartupLocation="CenterScreen" WindowState="Maximized" Height="825" Width="1510">
     <StackPanel Background="white" VerticalAlignment="Top" Height="805" HorizontalAlignment="Stretch" >
-        <StackPanel x:Name="Topbar"    Orientation="Horizontal" Height="80" Width="2313" >
+        <StackPanel x:Name="Topbar"    Orientation="Horizontal" Height="80" Margin="0,0,0,0"  >
             <StackPanel.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF00787A"/>
@@ -23,15 +23,15 @@
 
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <Button x:Name="Accueil" Width="74" Height="74" BorderBrush="Transparent" Foreground="White" Click="Button_Click_Accueil" Cursor="Hand"  materialDesign:RippleAssist.IsDisabled="True" VerticalContentAlignment="Top">
+            <Button x:Name="Accueil" Width="121" Height="109" BorderBrush="Transparent" Foreground="White" Click="Button_Click_Accueil" Cursor="Hand"  materialDesign:RippleAssist.IsDisabled="True" VerticalContentAlignment="Top" Margin="0,-25,0,0">
                 <Button.Background>
                     <ImageBrush ImageSource="/loop__2_-removebg-preview.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="Acceuilecrit" Uid="1" Width="90" Height="32" Content="ACCEUIL" Margin="150,30,1,3" Background="{x:Null}" BorderBrush="{x:Null}"  Cursor="Hand" Click="Button_Click_guide" Foreground="White" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
+            <Button x:Name="Acceuilecrit" Uid="1" Width="90" Height="32" Content="ACCEUIL" Margin="10,30,1,3" Background="{x:Null}" BorderBrush="{x:Null}"  Cursor="Hand" Click="Button_Click_Accueil" Foreground="White" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
             <Button x:Name="Guide" Uid="1" Width="172" Height="32" Content="GUIDE D'UTILISATION" Margin="10,30,1,3" Background="{x:Null}" BorderBrush="{x:Null}"  Cursor="Hand" Click="Button_Click_guide" Foreground="White" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
             <Button x:Name="Apropos" Uid="2" Width="168" Height="32" Content="A PROPOS DE NOUS" Margin="10,30,1,3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_Apropos"  materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
-            <Button x:Name="Inscription" Uid="4" Width="124" Height="32" Content="INSCRIPTION" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click_inscription" Cursor="Hand" Margin="550,30,0,3"  materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+            <Button x:Name="Inscription" Uid="4" Width="124" Height="32" Content="INSCRIPTION" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click_inscription" Cursor="Hand" Margin="700,30,0,3"  materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
             <Button x:Name="Connexion" Uid="5" Width="133" Height="32" Content="CONNEXION" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_connexion" Margin="5,30,0,3" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left" />
         </StackPanel>
 
@@ -39,6 +39,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+          
+          
+<!--modification ANTSA à vérifier /!\-->
             <Grid x:Name="accueil" HorizontalAlignment="Center" Width="1510" Height="740" VerticalAlignment="Top">
                 <ListView x:Name="acceuil_projet" Height="420" Margin="46,310,281,10" SelectionChanged="acceuil_projet_SelectionChanged">
 
@@ -111,17 +114,24 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+              
+            <Grid x:Name="accueil" Margin="10,10,-10,10">
+
                 <Grid x:Name="image" HorizontalAlignment="Left" Height="217" Margin="125,13,0,0" VerticalAlignment="Top" Width="880">
 
                     <Rectangle HorizontalAlignment="Left" Height="181" Margin="53,7,0,0" Stroke="#FFE2ADAD" VerticalAlignment="Top" Width="681" Fill="#FFEB6262" Opacity="0.12" RadiusX="50" RadiusY="50"/>
                     <Image HorizontalAlignment="Left" Height="217" VerticalAlignment="Center" Width="273" Source="/Startup_company_-_colorful_isometric_vector_illustration_EPS-removebg-preview.png"/>
-                    <Label Content="Investir dans des start-up innovantes&#xA; &#xA;" HorizontalAlignment="Left" Margin="245,1,0,0" VerticalAlignment="Top" Width="461" Height="181" FontFamily="Roboto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="24" Grid.IsSharedSizeScope="True" FontWeight="Bold"/>
-                    <Label Content="au service du développement" HorizontalAlignment="Left" Margin="285,74,0,0" VerticalAlignment="Top" Height="60" Width="524" FontFamily="Roboto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="24" Grid.IsSharedSizeScope="True" FontWeight="Bold"/>
-                    <Label Content="de Madagascar" HorizontalAlignment="Left" Margin="356,119,0,0" VerticalAlignment="Top" Height="60" Width="524" FontFamily="Roboto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="24" Grid.IsSharedSizeScope="True" FontWeight="Bold"/>
+                    <Label Content="Investir dans des start-up innovantes&#xA; &#xA;" HorizontalAlignment="Left" Margin="245,-11,0,0" VerticalAlignment="Top" Width="461" Height="181" FontFamily="Roboto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="24" Grid.IsSharedSizeScope="True" FontWeight="Bold"/>
+                    <Label Content="au service du développement" HorizontalAlignment="Left" Margin="285,62,0,0" VerticalAlignment="Top" Height="60" Width="524" FontFamily="Roboto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="24" Grid.IsSharedSizeScope="True" FontWeight="Bold"/>
+                    <Label Content="Investir dans des start-up innovantes&#xA; &#xA;" HorizontalAlignment="Left" Margin="245,-11,0,0" VerticalAlignment="Top" Width="461" Height="181" FontFamily="Roboto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="24" Grid.IsSharedSizeScope="True" FontWeight="Bold"/>
+                    <Label Content="au service du développement" HorizontalAlignment="Left" Margin="285,62,0,0" VerticalAlignment="Top" Height="60" Width="524" FontFamily="Roboto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="24" Grid.IsSharedSizeScope="True" FontWeight="Bold"/>
+                    <Label Content="de Madagascar" HorizontalAlignment="Left" Margin="356,105,0,0" VerticalAlignment="Top" Height="60" Width="524" FontFamily="Roboto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="24" Grid.IsSharedSizeScope="True" FontWeight="Bold"/>
 
                 </Grid>
 
+  <!-- catégorie boutton-->
                 <StackPanel x:Name="Categories" Orientation="Horizontal" Margin="35,156,248,381" RenderTransformOrigin="0.5,0.5" >
+
                     <StackPanel.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -130,55 +140,61 @@
                             <TranslateTransform X="-3.173"/>
                         </TransformGroup>
                     </StackPanel.RenderTransform>
+                    
                     <Button x:Name="tousbutton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
              materialDesign:ButtonAssist.CornerRadius="15"
-             ToolTip="MaterialDesignOutlinedButton"
              Content="Tous"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen"  Foreground="DarkSlateGray"  Opacity="0.75"  Width="100" Click="tousbutton_Click"/>
+                 
                     <Button x:Name="ecobutton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
              materialDesign:ButtonAssist.CornerRadius="15"
-             ToolTip="MaterialDesignOutlinedButton"
              Content="ecologie"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen" Click="ecobutton_Click" Foreground="DarkSlateGray" Background="Transparent" Opacity="0.75" Width="100"/>
+                  
                     <Button x:Name="agributton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
              materialDesign:ButtonAssist.CornerRadius="15"
-             ToolTip="MaterialDesignOutlinedButton"
              Content="Agriculture"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33"  Foreground="DarkSlateGray" Click="agributton_Click" Opacity="0.75" BorderBrush="MediumSeaGreen" Background="Transparent" Width="114"/>
+                    
                     <Button x:Name="Techbutton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
              materialDesign:ButtonAssist.CornerRadius="15"
-             ToolTip="MaterialDesignOutlinedButton"
              Content="Tech"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen"  Foreground="DarkSlateGray" Click="Techbutton_Click" Opacity="0.75"  Width="100"/>
+                   
                     <Button x:Name="Immobutton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
              materialDesign:ButtonAssist.CornerRadius="15"
-             ToolTip="MaterialDesignOutlinedButton"
              Content="Immobilier"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen"  Foreground="DarkSlateGray" Click="Immobutton_Click" Opacity="0.75"  Width="100"/>
+                
                     <Button x:Name="SanteButton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
              materialDesign:ButtonAssist.CornerRadius="15"
-             ToolTip="MaterialDesignOutlinedButton"
              Content="Santé"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen"  Foreground="DarkSlateGray"  Click="SanteButton_Click" Opacity="0.75" Width="100"/>
+                  
                     <Button x:Name="SolidaireButton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
              materialDesign:ButtonAssist.CornerRadius="15"
-             ToolTip="MaterialDesignOutlinedButton"
              Content="Solidaire"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen" Foreground="DarkSlateGray" Click="SolidaireButton_Click" Opacity="0.75"   Width="100"/>
+                  
+                    <Button x:Name="Artbutton"
+             Style="{StaticResource MaterialDesignOutlinedLightButton}"               
+             materialDesign:ButtonAssist.CornerRadius="15"
+             Content="Art"
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" BorderBrush="MediumSeaGreen" Foreground="DarkSlateGray" Click="Autrebutton_Click" Opacity="0.75"  Width="100" Margin="1,55,55,33" />
+
                     <Button x:Name="Autrebutton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
              materialDesign:ButtonAssist.CornerRadius="15"
-             ToolTip="MaterialDesignOutlinedButton"
              Content="Autre"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen" Foreground="DarkSlateGray" Click="Autrebutton_Click" Opacity="0.75"  Width="100"/>
-
+                    
                 </StackPanel>
 
                 <!--Grid qui contient les stats de la page d'accueil-->
@@ -203,6 +219,77 @@
                 <Label x:Name="labelFermeture" Content="" Margin="168,452,152,121" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="32" Width="144"/>
                 <materialDesign:PackIcon x:Name="fermer" Kind="CloseCircle" Height="38" Width="38" Margin="697,0,0,0" MouseDown="fermer_click" />
             </Grid>
+            <ListView x:Name="acceuil_projet" Height="420" Width="1365" Margin="60,300,84,20" SelectionChanged="acceuil_projet_SelectionChanged">
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Focusable="True" ScrollViewer.CanContentScroll="True" Margin="0,0,0,0" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate x:Name="affichageprojetsuivi" DataType="local:listeSuivi">
+                        <Grid>
+                            <!-- Définition des colonnes de la liste -->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <!--ligne image -->
+                            <StackPanel
+                              Margin="8 0 0 0"
+                              Grid.Row="1">
+                                <Image Source="/ramon-kagie-4EZKcKxOlRE-unsplash.jpg" Width="100" Height="100" HorizontalAlignment="Left"/>
+                            </StackPanel>
+
+                            <!--ligne titre et description -->
+                            <StackPanel
+                              Grid.Row="2">
+                                <TextBlock
+                                Text="{Binding titre}"
+                                FontWeight="Bold" FontSize="18" TextWrapping="Wrap"/>
+                                <TextBlock
+                                Text="{Binding description}" TextWrapping="Wrap" Height="100" Width="200" TextAlignment="Left" HorizontalAlignment="Left"/>
+                            </StackPanel>
+
+                            <!--ligne stat -->
+                            <StackPanel                                            
+                                Grid.Row="3" Margin="0,20,20,0" Width="250">
+                                <TextBlock TextWrapping="Wrap"><Run Text="Objectif cagnotte : "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="{Binding objectifCagnotte}" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="€" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer></TextBlock>
+
+                                <TextBlock TextWrapping="Wrap"><Run Text="Statut : "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="{Binding statut}" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer></TextBlock>
+
+                                <TextBlock TextWrapping="Wrap"><Run Text="Date fermeture : "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="{Binding fermeture}" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer></TextBlock>
+                                <TextBlock TextWrapping="Wrap"><Run Text="Date début remboursement : "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="{Binding paiement}" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer></TextBlock>
+                            </StackPanel>
+
+                            <!-- Bouton investir-->
+                            <StackPanel Grid.Row="4" Margin="0,100,20,0">
+                                <Button Content="Investir" Click="Investir_click" />
+                            </StackPanel>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
             <!--ListeView projets-->
 

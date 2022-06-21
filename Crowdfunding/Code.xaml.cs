@@ -34,10 +34,12 @@ namespace Crowdfunding
             if (Convert.ToBoolean(txbCode.Text == Code))
 
             {
+                this.Hide();
                 Window2 accUser = new Window2();
                 accUser.Show();
+              
                 //MainWindow.Visibility = Visibility.Hidden;
-                this.Hide();
+                
                
 
             }
