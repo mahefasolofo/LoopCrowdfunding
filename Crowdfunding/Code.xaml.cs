@@ -28,6 +28,7 @@ namespace Crowdfunding
             
             InitializeComponent();
             
+            
         }
 
         private void btVerifier_Click(object sender, RoutedEventArgs e)
@@ -41,14 +42,10 @@ namespace Crowdfunding
 
             {
 
-                
-
-                Window2 accUser = new Window2();
+                Window2 accUser = new Window2(int.Parse(ID_connected.Text));
                 accUser.Show();
-                accUser.textbox_ID.Text = ID_connected.Text;
-               
                 
-
+                                
                 //Récupération du prénom de l'utilisateur pour le mettre dans la page d'accueil2
                 conn.Open();
                 string sql = "SELECT `nom`,`prenom` FROM `users` WHERE `ID_user` = " + int.Parse(ID_connected.Text) + " ";
@@ -66,8 +63,7 @@ namespace Crowdfunding
 
                 conn.Close();
 
-                
-                this.Close();
+            this.Hide();
                 
 
                 

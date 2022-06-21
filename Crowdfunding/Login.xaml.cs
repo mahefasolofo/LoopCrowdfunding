@@ -103,7 +103,7 @@ namespace Crowdfunding
                             ID_user = int.Parse(a.ToString());
                             Code cd = new Code();
                             cd.ID_connected.Text = ID_user.ToString();
-                            //MessageBox.Show(ID_connected.ToString());
+                            
                             cd.Show();
                             this.Close();
                            

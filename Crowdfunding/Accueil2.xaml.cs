@@ -34,7 +34,6 @@ namespace Crowdfunding
         ObservableCollection<Projet> listeaccueil = new ObservableCollection<Projet>();
         ObservableCollection<Projet> liste_mes_cagnottes = new ObservableCollection<Projet>();
 
-
         private int ID_paiement_invest = 0;
         private string sommeInvest = "";
         public int ID_user_connected;
@@ -59,12 +58,12 @@ namespace Crowdfunding
         public string nomFichier3 = "";
         public int id_categ = 0;
 
-        public Window2()
+        public Window2(int id)
         {
+            this.ID_user_connected = id;
             InitializeComponent();
             affichageListeProjet();
             chargementCheckbox();
-
             affichageListeProjetUser();
 
             //les statistiques sur l'acceuil
@@ -73,7 +72,6 @@ namespace Crowdfunding
 
             //les statistiques dans "mes cagnottes"
             stat_pp();
-
         }
 
         //Affichage de tous les listes de projets
@@ -131,7 +129,7 @@ namespace Crowdfunding
             //connexion à la base de donnée
             //conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
             conn.Open();
-            ID_user_connected = int.Parse(textbox_ID.Text);
+            //ID_user_connected = int.Parse(ID_user_connected);
 
 
 
@@ -185,7 +183,7 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.OrangeRed);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.White);
-            utilisateur.Foreground = new SolidColorBrush(Colors.White);
+            User.Foreground = new SolidColorBrush(Colors.White);
             listeProjet.Items.Refresh();
             
             listeProjet2.IsEnabled = false;
@@ -199,7 +197,7 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.OrangeRed);
             Investissement.Foreground = new SolidColorBrush(Colors.White);
-            utilisateur.Foreground = new SolidColorBrush(Colors.White);
+            User.Foreground = new SolidColorBrush(Colors.White);
 
             listeProjet2.IsEnabled = true;
             
@@ -213,7 +211,7 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.OrangeRed);
-            utilisateur.Foreground = new SolidColorBrush(Colors.White);
+            User.Foreground = new SolidColorBrush(Colors.White);
            
         }
 
@@ -222,7 +220,7 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.White);
-            utilisateur.Foreground = new SolidColorBrush(Colors.White);
+            User.Foreground = new SolidColorBrush(Colors.White);
         }
 
         private void Button_Click_User(object sender, RoutedEventArgs e)
@@ -236,8 +234,8 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.White);
-            utilisateur.Foreground = new SolidColorBrush(Colors.OrangeRed);
-            //GridCursor.Margin = new Thickness(1135, 20, 0, 0);
+            User.Foreground = new SolidColorBrush(Colors.OrangeRed);
+            
         }
 
         private void ButtonClick_creation_cagnotte(object sender, RoutedEventArgs e)
@@ -529,7 +527,7 @@ namespace Crowdfunding
 
         private void Payer_Click(object sender, RoutedEventArgs e)
         {
-            ID_user_connected = int.Parse(textbox_ID.Text);
+            
             sommeInvest = sommeInvesti.Text;
 
             //Connexion vers BDD
@@ -652,26 +650,27 @@ namespace Crowdfunding
                     somme_collecte.Text = reader.GetFloat(1).ToString();
                 }
             }
+            conn.Close();
 
-//SALETE DE TRUCN'I LOVA TSY MISY LOHANY
+            //SALETE DE TRUCN'I LOVA TSY MISY LOHANY
 
-//                 listeProjet2.IsEnabled = false;
-//                 //Faire apparaitre la fenêtre flottante et Désactiver la listeView pour qu'on ne peut pas la toucher
-//                 grid_vue_projet.Visibility = Visibility.Visible;
-//                 listeProjet2.IsEnabled = false;
+            //                 listeProjet2.IsEnabled = false;
+            //                 //Faire apparaitre la fenêtre flottante et Désactiver la listeView pour qu'on ne peut pas la toucher
+            //                 grid_vue_projet.Visibility = Visibility.Visible;
+            //                 listeProjet2.IsEnabled = false;
 
-//                 //Afficher les valeurs
-//                 title.Text = titreSelected;
-//                 descrip.Text = descriptionSelected;
-//                 objectif.Text = objectifCagnotteSelected;
-//                 etat.Text = statutSelected;
-//                 ouvert.Text = ouvertureSelected;
-//                 ferme.Text = fermetureSelected;
-//                 //labelTitre2.Content = titreSelected;
-//                 somme.Text = sommeCagnotteSelected;
-//                 int statprojet = 100 * int.Parse(sommeCagnotteSelected) / int.Parse(objectifCagnotteSelected);
-//                 progress.Value = statprojet;
-//                 LabelProgression.Content = statprojet + " %  de votre cagnotte ont été atteint";
+            //                 //Afficher les valeurs
+            //                 title.Text = titreSelected;
+            //                 descrip.Text = descriptionSelected;
+            //                 objectif.Text = objectifCagnotteSelected;
+            //                 etat.Text = statutSelected;
+            //                 ouvert.Text = ouvertureSelected;
+            //                 ferme.Text = fermetureSelected;
+            //                 //labelTitre2.Content = titreSelected;
+            //                 somme.Text = sommeCagnotteSelected;
+            //                 int statprojet = 100 * int.Parse(sommeCagnotteSelected) / int.Parse(objectifCagnotteSelected);
+            //                 progress.Value = statprojet;
+            //                 LabelProgression.Content = statprojet + " %  de votre cagnotte ont été atteint";
         }
 
         private void modification_description(object sender, TextChangedEventArgs e)
@@ -691,7 +690,7 @@ namespace Crowdfunding
                 Profil.Visibility = Visibility.Hidden;
 
             User utilisateur = new User();
-            ID_user_connected = int.Parse(textbox_ID.Text);
+            //ID_user_connected = int.Parse(ID_connected.Text);
             conn.Open();
             string sql = "SELECT `nom`, `prenom`, `email`, `motdepasse`, `adresse`, `datenaissance`, `ville`, `pays` FROM `users` WHERE `ID_user`=" + ID_user_connected + "";
 
@@ -712,6 +711,7 @@ namespace Crowdfunding
                         utilisateur.email = reader.GetString(2);
                         utilisateur.motdepasse = reader.GetString(3);
                         utilisateur.adresse = reader.GetString(4);
+                        
                         //string date = reader.GetString(5);
                         utilisateur.ville = reader.GetString(6);
                         utilisateur.pays = reader.GetString(7);
@@ -720,7 +720,7 @@ namespace Crowdfunding
                         nom.Text = utilisateur.nom;
                         prenom.Text = utilisateur.prenom;
                         email.Text = utilisateur.email;
-                        motdepasse.Text = utilisateur.motdepasse;
+                        //motdepasse.Text = utilisateur.motdepasse;
                         adresse.Text = utilisateur.adresse;
                         //datenaissance.Text = date;
                         ville.Text = utilisateur.ville;
@@ -735,9 +735,9 @@ namespace Crowdfunding
 
         private void Modifier_Click(object sender, RoutedEventArgs e)
         {
-            ID_user_connected = int.Parse(textbox_ID.Text);
+            
             conn.Open();
-            string sql = "UPDATE `users` SET `nom`='"+ nom.Text +"',`prenom`='"+ prenom.Text +"',`email`='"+ email.Text +"',`motdepasse`='"+ motdepasse.Text +"',`adresse`='"+ adresse.Text +"', `ville`='"+ ville.Text +"',`pays`='"+ pays.Text +"' WHERE ID_user = "+ ID_user_connected + "";
+            string sql = "UPDATE `users` SET `nom`='"+ nom.Text +"',`prenom`='"+ prenom.Text +"',`email`='"+ email.Text +"',`adresse`='"+ adresse.Text +"', `ville`='"+ ville.Text +"',`pays`='"+ pays.Text +"' WHERE ID_user = "+ ID_user_connected + "";
             //`datenaissance`='"+ datenaissance.Text +"',
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -746,6 +746,8 @@ namespace Crowdfunding
 
             conn.Close();
             Profil.Visibility = Visibility.Hidden;
+            MainStack.IsEnabled = true;
+
         }
         private void annuler_mofificationprofil_click(object sender, RoutedEventArgs e)
         {
@@ -762,7 +764,7 @@ namespace Crowdfunding
 
         private void suivre_click(object sender, RoutedEventArgs e)
         {
-            ID_user_connected = int.Parse(textbox_ID.Text);
+            
 
             conn.Open();
             string sql = "INSERT INTO `projet_suivi` (`id_user_suiveur`, `id_projet_suivi`, `Date_suivi`) VALUES ('"+ ID_user_connected + "', '"+ ID_projet +"', current_timestamp())";
@@ -774,7 +776,21 @@ namespace Crowdfunding
 
             conn.Close();
         }
-        
+
+        private void modification_titre(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void progress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void retour_cagnotte(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }   
