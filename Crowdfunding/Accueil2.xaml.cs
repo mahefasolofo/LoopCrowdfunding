@@ -194,7 +194,7 @@ namespace Crowdfunding
             conn.Open();
 
             //il faut encore changer l'ID en paramètre - Standardiser
-            String sql = "SELECT titreprojet,descriptionProjet, objectifCagnotte, statut, date_fermeture_cagnotte, date_debut_paiement,image_projet, SUM(investisssement.montant_investissement) FROM `projet` inner JOIN investisssement on projet.ID_projet=investisssement.reference_projet inner JOIN users on investisssement.fk_id_user_invest=users.ID_user and users.ID_user=9 GROUP by titreprojet;";
+            String sql = "SELECT titreprojet,descriptionProjet, objectifCagnotte, statut, date_fermeture_cagnotte, date_debut_paiement,image_projet, SUM(investisssement.montant_investissement) FROM `projet` inner JOIN investisssement on projet.ID_projet=investisssement.reference_projet inner JOIN users on investisssement.fk_id_user_invest=users.ID_user and users.ID_user="+ ID_user_connected + " GROUP by titreprojet;";
 
             //creat command
             MySqlCommand cmd = new MySqlCommand();
@@ -251,7 +251,7 @@ namespace Crowdfunding
             conn.Open();
 
             //il faut encore changer l'ID en paramètre - Standardiser
-            String sql = "SELECT * FROM projet, users, projet_suivi WHERE projet.ID_projet = projet_suivi.id_projet_suivi AND projet_suivi.id_user_suiveur = users.ID_user AND users.ID_user = 9;";
+            String sql = "SELECT * FROM projet, users, projet_suivi WHERE projet.ID_projet = projet_suivi.id_projet_suivi AND projet_suivi.id_user_suiveur = users.ID_user AND users.ID_user = "+ ID_user_connected+"";
 
             //creat command
             MySqlCommand cmd = new MySqlCommand();
@@ -343,14 +343,14 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.OrangeRed);
+            boutton_User.Foreground = new SolidColorBrush(Colors.White);
+            
 
-            //utilisateur.Foreground = new SolidColorBrush(Colors.White);
-
-            Cagnotte.Visibility = Visibility.Hidden;
+            Cagnottes.Visibility = Visibility.Hidden;
             Accueil1.Visibility = Visibility.Hidden;
             grid_mes_investissements.Visibility = Visibility.Visible;
 
-            boutton_User.Foreground = new SolidColorBrush(Colors.White);
+            
            
 
         }
@@ -947,8 +947,6 @@ namespace Crowdfunding
 
         private void suivre_click(object sender, RoutedEventArgs e)
         {
-            
-
             conn.Open();
             string sql = "INSERT INTO `projet_suivi` (`id_user_suiveur`, `id_projet_suivi`, `Date_suivi`) VALUES ('"+ ID_user_connected + "', '"+ ID_projet +"', current_timestamp())";
             //`datenaissance`='"+ datenaissance.Text +"',
@@ -956,7 +954,6 @@ namespace Crowdfunding
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
             cmd.ExecuteNonQuery();
-
 
             conn.Close();
         }
@@ -966,7 +963,6 @@ namespace Crowdfunding
             liste_mes_cagnottes[index].titre = title.Text;
 
             string requete = " UPDATE `projet` SET `titreprojet` = '" + liste_mes_cagnottes[index].titre + "' WHERE `projet`.`ID_projet` = " + liste_mes_cagnottes[index].IdProjet;
-
 
             //connexion à la base de donnée
             conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");

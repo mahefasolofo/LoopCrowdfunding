@@ -598,7 +598,7 @@
 
 
         <!-- Emplacement fenêtre "Mes investissements" -->
-        <Grid x:Name="grid_mes_investissements" Height="725" Background="White" Visibility="Hidden" Margin="0,-895,0,0">
+        <Grid x:Name="grid_mes_investissements" Height="729" Background="White" Visibility="Hidden" Margin="0,-780,0,0">
             <Canvas Name="Mes_investissement">
                 <Grid Height="725">
                     <Grid.ColumnDefinitions>
