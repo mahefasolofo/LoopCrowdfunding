@@ -230,9 +230,6 @@ namespace Crowdfunding
             GridCreation.Visibility = Visibility.Visible;
         }
 
-
-
-
         private void fermer_click(object sender, MouseButtonEventArgs e)
         {
 
@@ -426,9 +423,6 @@ namespace Crowdfunding
             uploadCIN_nom.Text = "";
             uploadImage_nom.Text = "";
             comboboxCateg.Text = "";
-
-
-
         }
 
         //afficher la fenêtre flottante projet à partir accueil projet
@@ -585,8 +579,8 @@ namespace Crowdfunding
                 fermetureSelected = liste_mes_cagnottes[index].getFermeture().ToString();
 
                 //desactiver la listview
-
-                listeProjet2.IsEnabled = false;            
+                listeProjet2.IsEnabled = false;
+                grid_vue_projet.Visibility = Visibility.Visible;
         }
 
         //fonction qui calcul le nombre d'investissement fait et la somme tatole des investissements
