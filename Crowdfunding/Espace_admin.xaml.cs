@@ -34,7 +34,6 @@ namespace Crowdfunding
         private int ID_paiement_invest = 0;
         private string sommeInvest = "";
 
-
         public int index { get; set; }
         public int ID_projet { get; set; }
         public string titreSelected { get; set; }
@@ -83,6 +82,7 @@ namespace Crowdfunding
                         //ajout de donnée à afficher dans la liste
                         liste_a_valider.Add(new Projet()
                         {
+
                             IdProjet = reader.GetInt32(0),
                             titre = reader.GetString(3),
                             description = reader.GetString(4),

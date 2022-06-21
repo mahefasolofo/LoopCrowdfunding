@@ -151,7 +151,6 @@ namespace Crowdfunding
             Connexion.Foreground = new SolidColorBrush(Colors.OrangeRed);
             ////afficher la deuxième accueil : accueil connecté
 
-
             login.Visibility = Visibility.Visible;
             
             this.Close();
@@ -436,8 +435,6 @@ namespace Crowdfunding
             labelStatut.Content = statutSelected;
             labelOuverture.Content = ouvertureSelected;
             labelFermeture.Content = fermetureSelected;
-            
-
         }
 
         private void Investir_click(object sender, RoutedEventArgs e)
