@@ -145,6 +145,7 @@
     <Compile Include="Accueil_cagnotte.xaml.cs">
       <DependentUpon>Accueil_cagnotte.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <Page Include="Code.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

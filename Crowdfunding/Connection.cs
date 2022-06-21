@@ -18,7 +18,9 @@ namespace Crowdfunding
         }
         private void Initialize()
         {
-            conn = new MySqlConnection("SERVER = 127.0.0.1; DATABASE = 'crowdfunding'; UID = root; PASSWORD =");
+           
+                conn = new MySqlConnection("SERVER = 127.0.0.1; DATABASE =crowdfunding; UID = root; PASSWORD =");
+         
         }
         public bool OpenConnection()
         {
