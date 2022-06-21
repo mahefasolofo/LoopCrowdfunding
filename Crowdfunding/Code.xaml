@@ -16,7 +16,7 @@
         <Label Content="Entrer votre  code" HorizontalAlignment="Left" Margin="346,255,0,0" VerticalAlignment="Top" FontSize="22"/>
         <TextBox x:Name="texboxcode" HorizontalAlignment="Left" Margin="637,366,0,0" TextWrapping="Wrap" Visibility="Hidden" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="587,433,0,0" VerticalAlignment="Top" Width="316" FontSize="12" Foreground="#DDF40909" Height="118"/>
-        <TextBox x:Name="ID_connected" HorizontalAlignment="Left" Margin="915,190,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Cursor="Arrow" Visibility="Hidden"/>
+        <TextBox x:Name="ID_connected" HorizontalAlignment="Left" Margin="915,190,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Cursor="Arrow" Visibility="hidden"/>
 
     </Grid>
 </Window>
