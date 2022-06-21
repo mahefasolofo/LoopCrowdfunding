@@ -23,6 +23,7 @@ namespace Crowdfunding
         public DateTime paiement { get; set; }
 
         public object SelectedItem { get; set; }
+        public float sommeInvesti { get; set; }
 
         public override string ToString()
         {

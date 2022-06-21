@@ -261,7 +261,7 @@
 
 
         </Grid>
-    
+
         <Grid  x:Name="grid_vue_projet" Background="White" Height="753" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Width="846" Margin="-10,-741,9,9">
             <Grid.RenderTransform>
                 <TransformGroup>
@@ -490,6 +490,164 @@
 
         </Grid>
 
+
+        <!-- Emplacement fenêtre "Mes investissements" -->
+        <Grid x:Name="grid_mes_investissements" Height="725" Background="White" Visibility="Hidden" Margin="0,-895,0,0">
+            <Canvas Name="Mes_investissement">
+                <Grid Height="725">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Left" Width="1155" Height="724" VerticalAlignment="Center" Margin="10,0,0,0" >
+                        <Label Content="Les projets auxquels vous avez investis" Height="48" Margin="58,49,70,0" FontSize="36" FontWeight="Bold" Width="656"/>
+
+                        <!-- Création de la liste pour afficher les projets investis-->
+                        <ListView x:Name="projetInvesti"  Height="594" Width="1048" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:Name="affichage_projet_investi" DataType="local:liste">
+                                    <Grid>
+                                        <!-- Définition des colonnes de la liste -->
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"  />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!--colonne image -->
+                                        <StackPanel
+                                            Margin="8 0 0 0"
+                                            Grid.Column="1">
+                                            <Image Source="{Binding image}" Width="100" Height="100" HorizontalAlignment="Left"/>
+                                        </StackPanel>
+
+                                        <!--colonne titre et description -->
+                                        <StackPanel
+                                            Margin="8 0 0 0"
+                                            Grid.Column="2">
+                                            <TextBlock
+                                                Text="{Binding titre}"
+                                                FontWeight="Bold" FontSize="22" />
+                                            <TextBlock
+                                                Text="{Binding description}" TextWrapping="Wrap" />
+                                        </StackPanel>
+
+                                        <!--colonne stat -->
+                                        <StackPanel
+                                            Margin="500 0 0 0"
+                                            Grid.Column="3" >
+                                            <TextBlock>
+                                                La somme investis :
+                                                <TextBlock
+                                                    Text="{Binding sommeInvesti}" HorizontalAlignment="Stretch"/>
+                                                 <TextBlock
+                                                Text="€" HorizontalAlignment="Stretch"/>
+                                            </TextBlock>
+                                            <TextBlock>
+                                                Somme collectée :
+                                                <TextBlock
+                                                    Text="{Binding sommeCagnotte}" HorizontalAlignment="Stretch"/>
+                                                <TextBlock
+                                                    Text="€" HorizontalAlignment="Stretch"/>
+                                            </TextBlock>
+                                            <TextBlock>
+                                                Objectif cagnotte :
+                                                <TextBlock
+                                                    Text="{Binding objectifCagnotte}" HorizontalAlignment="Stretch"/>
+                                                 <TextBlock
+                                                Text="€" HorizontalAlignment="Stretch"/>
+                                            </TextBlock>
+
+                                            <TextBlock>
+                                                Statut :
+                                                    <TextBlock
+                                                        Text="{Binding statut}" HorizontalAlignment="Stretch"/>
+                                            </TextBlock>
+
+                                            <TextBlock>
+                                                Date fermeture :
+                                                    <TextBlock
+                                                        Text="{Binding fermeture}" HorizontalAlignment="Stretch"/>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <!-- Création de la liste pour afficher les projets suivi-->
+                    </StackPanel>
+
+                    <!-- Création de la liste pour afficher les projets suivi-->
+                    <StackPanel Grid.Column="1" Margin="1165,-3,0,0" HorizontalAlignment="Left" Width="342" Height="728" VerticalAlignment="Top">
+                        <TextBlock Text="Vos projets suivis" Height="32" Margin="58,63,70,0" FontSize="24" FontWeight="Bold" TextWrapping="Wrap"/>
+
+                        <ListView x:Name="projetSuivi" Height="574" Width="280" Margin="0,32,0,0">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:Name="affichage_projet_suivi" DataType="local:listeSuivi">
+                                    <Grid>
+                                        <!-- Définition des colonnes de la liste -->
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <!--ligne image -->
+                                        <StackPanel
+                                            Margin="8 0 0 0"
+                                            Grid.Row="1">
+                                            <Image Source="/ramon-kagie-4EZKcKxOlRE-unsplash.jpg" Width="100" Height="100" HorizontalAlignment="Left"/>
+                                        </StackPanel>
+
+                                        <!--ligne titre et description -->
+                                        <StackPanel
+                                            
+                                            Grid.Row="2">
+                                            <TextBlock
+                                                Text="{Binding titre}"
+                                                FontWeight="Bold" FontSize="18" TextWrapping="Wrap"/>
+                                            <TextBlock
+                                                Text="{Binding description}" TextWrapping="Wrap" Height="100" Width="200" TextAlignment="Left" HorizontalAlignment="Left"/>
+                                        </StackPanel>
+
+                                        <!--ligne stat -->
+                                        <StackPanel                                            
+                                            Grid.Row="3" Margin="0,80,20,0" Width="250">
+                                            <TextBlock><Run Text="Objectif cagnotte : "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="{Binding objectifCagnotte}" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="€" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer></TextBlock>
+
+                                            <TextBlock><Run Text="Statut : "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="{Binding statut}" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer></TextBlock>
+
+                                            <TextBlock><Run Text="Date fermeture : "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="{Binding fermeture}" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer></TextBlock>
+                                            <TextBlock><Run Text="Date début remboursement : "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="{Binding paiement}" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer></TextBlock>
+                                        </StackPanel>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </StackPanel>
+                </Grid>
+            </Canvas>
+        </Grid>
     </StackPanel>
 
 </Window>
