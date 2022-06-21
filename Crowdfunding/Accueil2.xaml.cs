@@ -183,7 +183,7 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.OrangeRed);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.White);
-            User.Foreground = new SolidColorBrush(Colors.White);
+            boutton_User.Foreground = new SolidColorBrush(Colors.White);
             listeProjet.Items.Refresh();
             
             listeProjet2.IsEnabled = false;
@@ -197,7 +197,7 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.OrangeRed);
             Investissement.Foreground = new SolidColorBrush(Colors.White);
-            User.Foreground = new SolidColorBrush(Colors.White);
+            boutton_User.Foreground = new SolidColorBrush(Colors.White);
 
             listeProjet2.IsEnabled = true;
             
@@ -211,7 +211,7 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.OrangeRed);
-            User.Foreground = new SolidColorBrush(Colors.White);
+            boutton_User.Foreground = new SolidColorBrush(Colors.White);
            
         }
 
@@ -220,7 +220,7 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.White);
-            User.Foreground = new SolidColorBrush(Colors.White);
+            boutton_User.Foreground = new SolidColorBrush(Colors.White);
         }
 
         private void Button_Click_User(object sender, RoutedEventArgs e)
@@ -234,7 +234,7 @@ namespace Crowdfunding
             Accueil.Foreground = new SolidColorBrush(Colors.White);
             Cagnotte.Foreground = new SolidColorBrush(Colors.White);
             Investissement.Foreground = new SolidColorBrush(Colors.White);
-            User.Foreground = new SolidColorBrush(Colors.OrangeRed);
+            boutton_User.Foreground = new SolidColorBrush(Colors.OrangeRed);
             
         }
 

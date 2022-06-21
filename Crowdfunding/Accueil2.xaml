@@ -43,7 +43,7 @@
                             <ImageBrush ImageSource="/android-reminder - Copie.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="User" Uid="5" Width="270" Height="41" Content="UTILISATEUR" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_User" Margin="20,0,0,3"/>
+                    <Button x:Name="boutton_User" Uid="5" Width="270" Height="41" Content="UTILISATEUR" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_User" Margin="20,0,0,3"/>
 
                 </StackPanel>
                 <TextBox x:Name="ID_connected" TextWrapping="Wrap" Text="TextBox" Width="120" Visibility="Hidden"/>
