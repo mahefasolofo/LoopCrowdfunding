@@ -58,7 +58,7 @@ namespace Crowdfunding
                 using (DbDataReader reader = cmd.ExecuteReader())
                 {
                     reader.Read();
-                    accUser.User.Content = ""+ reader.GetString(0) +" "+ reader.GetString(1)+"";
+                    accUser.boutton_User.Content = ""+ reader.GetString(0) +" "+ reader.GetString(1)+"";
                 }
 
                 conn.Close();
