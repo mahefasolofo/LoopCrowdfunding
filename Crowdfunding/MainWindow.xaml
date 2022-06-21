@@ -39,7 +39,84 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+          
+          
+<!--modification ANTSA à vérifier /!\-->
+            <Grid x:Name="accueil" HorizontalAlignment="Center" Width="1510" Height="740" VerticalAlignment="Top">
+                <ListView x:Name="acceuil_projet" Height="420" Margin="46,310,281,10" SelectionChanged="acceuil_projet_SelectionChanged">
+
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Focusable="True" ScrollViewer.CanContentScroll="True" Margin="0,0,0,0" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:Name="affichageprojetsuivi" DataType="local:listeSuivi">
+                            <Grid>
+                                <!-- Définition des colonnes de la liste -->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <!--ligne image -->
+                                <StackPanel
+                              Margin="8 0 0 0"
+                              Grid.Row="1">
+                                    <Image Source="/ramon-kagie-4EZKcKxOlRE-unsplash.jpg" Width="100" Height="100" HorizontalAlignment="Left"/>
+                                </StackPanel>
+
+                                <!--ligne titre et description -->
+                                <StackPanel
+                              Grid.Row="2">
+                                    <TextBlock
+                                Text="{Binding titre}"
+                                FontWeight="Bold" FontSize="18" TextWrapping="Wrap"/>
+                                    <TextBlock
+                                Text="{Binding description}" TextWrapping="Wrap" Height="100" Width="200" TextAlignment="Left" HorizontalAlignment="Left"/>
+                                </StackPanel>
+
+                                <!--ligne stat -->
+                                <StackPanel                                            
+                                Grid.Row="3" Margin="0,20,20,0" Width="250">
+                                    <TextBlock TextWrapping="Wrap"><Run Text="Objectif cagnotte : "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="{Binding objectifCagnotte}" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="€" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer></TextBlock>
+
+                                    <TextBlock TextWrapping="Wrap"><Run Text="Statut : "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="{Binding statut}" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer></TextBlock>
+
+                                    <TextBlock TextWrapping="Wrap"><Run Text="Date fermeture : "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="{Binding fermeture}" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer></TextBlock>
+                                    <TextBlock TextWrapping="Wrap"><Run Text="Date début remboursement : "/><InlineUIContainer>
+                                                <TextBlock
+                                                    Text="{Binding paiement}" HorizontalAlignment="Stretch"/>
+                                            </InlineUIContainer></TextBlock>
+                                </StackPanel>
+
+                                <!-- Bouton investir-->
+                                <StackPanel Grid.Row="4" Margin="0,100,20,0">
+                                    <Button Content="Investir" Click="Investir_click" />
+                                </StackPanel>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+              
             <Grid x:Name="accueil" Margin="10,10,-10,10">
+
                 <Grid x:Name="image" HorizontalAlignment="Left" Height="217" Margin="125,13,0,0" VerticalAlignment="Top" Width="880">
 
                     <Rectangle HorizontalAlignment="Left" Height="181" Margin="53,7,0,0" Stroke="#FFE2ADAD" VerticalAlignment="Top" Width="681" Fill="#FFEB6262" Opacity="0.12" RadiusX="50" RadiusY="50"/>
@@ -51,8 +128,10 @@
                     <Label Content="de Madagascar" HorizontalAlignment="Left" Margin="356,105,0,0" VerticalAlignment="Top" Height="60" Width="524" FontFamily="Roboto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="24" Grid.IsSharedSizeScope="True" FontWeight="Bold"/>
 
                 </Grid>
-                <!-- catégorie boutton-->
-                <StackPanel x:Name="Categories" Orientation="Horizontal" Margin="35,156,27,381" RenderTransformOrigin="0.5,0.5" >
+
+  <!-- catégorie boutton-->
+                <StackPanel x:Name="Categories" Orientation="Horizontal" Margin="35,156,248,381" RenderTransformOrigin="0.5,0.5" >
+
                     <StackPanel.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -117,6 +196,17 @@
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen" Foreground="DarkSlateGray" Click="Autrebutton_Click" Opacity="0.75"  Width="100"/>
                     
                 </StackPanel>
+
+                <!--Grid qui contient les stats de la page d'accueil-->
+                <Grid HorizontalAlignment="Left" Height="740" Margin="1248,0,0,0" VerticalAlignment="Center" Width="262" >
+                    <Label Content="Nombre d'investissement" HorizontalAlignment="Center" Height="36" Margin="0,142,0,0" VerticalAlignment="Top" Width="242" FontSize="20"/>
+                    <TextBlock Name="nombre_invest" FontSize="18" Margin="8,178,0,521" />
+                    <Label Content="Nombre de projet" Margin="10,224,0,475" FontSize="20" />
+                    <TextBlock Name="nombre_projet"  Margin="0,265,0,426"/>
+                    <Label Content="Total des investissements" FontSize="20" Margin="0,319,0,384"/>
+                    <TextBlock Name="total_invest" Margin="0,356,0,344" />
+                </Grid>
+
             </Grid>
             <Grid x:Name="flotanteProjet" Background="#F8F1FF" Visibility="hidden" Margin="382,35,382,35">
                 <Button x:Name="BouttonInvestir" Content="Investir" Margin="0,563,0,75" Click="Investir_click" HorizontalAlignment="Center" Width="482"/>
