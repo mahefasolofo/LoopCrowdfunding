@@ -126,7 +126,9 @@ namespace Crowdfunding
            
             
             login.Visibility = Visibility.Visible;
-
+            
+            this.Close();
+            
 
         }
 

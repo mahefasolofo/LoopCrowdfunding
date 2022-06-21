@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,13 @@ namespace Crowdfunding
     /// </summary>
     public partial class Code : Window
     {
+        MySqlConnection conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+
         public Code()
         {
+            
             InitializeComponent();
+            
         }
 
         private void btVerifier_Click(object sender, RoutedEventArgs e)
@@ -29,15 +35,40 @@ namespace Crowdfunding
             //convertir code to String 
 
             String Code = texboxcode.Text;
-            //MessageBox.Show(Code);
+            
 
             if (Convert.ToBoolean(txbCode.Text == Code))
 
             {
+                
+
                 Window2 accUser = new Window2();
                 accUser.Show();
-                //MainWindow.Visibility = Visibility.Hidden;
-                this.Hide();
+                accUser.textbox_ID.Text = ID_connected.Text;
+               
+                
+
+                //Récupération du prénom de l'utilisateur pour le mettre dans la page d'accueil2
+                conn.Open();
+                string sql = "SELECT `nom`,`prenom` FROM `users` WHERE `ID_user` = " + int.Parse(ID_connected.Text) + " ";
+                MySqlCommand cmd = new MySqlCommand();
+
+                //Etablir la connexion de la commande
+                cmd.Connection = conn;
+                cmd.CommandText = sql;
+
+                using (DbDataReader reader = cmd.ExecuteReader())
+                {
+                    reader.Read();
+                    accUser.User.Content = ""+ reader.GetString(0) +" "+ reader.GetString(1)+"";
+                }
+
+                conn.Close();
+
+                
+                this.Close();
+                
+                
                
 
             }

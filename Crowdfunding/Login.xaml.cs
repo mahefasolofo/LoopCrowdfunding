@@ -26,10 +26,12 @@ namespace Crowdfunding
         private Connection conn = new Connection();
         private MySqlCommand command;
         Code cd = new Code();
-
+        public int ID_user { get; set; }
         private void annuler_click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
+            MainWindow main = new MainWindow();
+            main.Show();
 
         }
 
@@ -98,6 +100,10 @@ namespace Crowdfunding
                         else
                         {
 
+                            ID_user = int.Parse(a.ToString());
+                            Code cd = new Code();
+                            cd.ID_connected.Text = ID_user.ToString();
+                            //MessageBox.Show(ID_connected.ToString());
                             cd.Show();
                             this.Close();
                            
