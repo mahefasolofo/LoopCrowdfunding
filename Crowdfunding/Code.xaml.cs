@@ -40,6 +40,7 @@ namespace Crowdfunding
             if (Convert.ToBoolean(txbCode.Text == Code))
 
             {
+
                 
 
                 Window2 accUser = new Window2();
@@ -68,6 +69,7 @@ namespace Crowdfunding
                 
                 this.Close();
                 
+
                 
                
 

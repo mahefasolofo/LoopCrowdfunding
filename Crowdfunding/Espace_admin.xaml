@@ -1,0 +1,212 @@
+﻿<Window x:Class="Crowdfunding.Espace_admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Crowdfunding"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Espace_admin" WindowState="Maximized" Height="825" Width="1510">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Left Menu-->
+        <Border CornerRadius=" 0 0 0 0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="BurlyWood" Offset="0" />
+                    <GradientStop Color="#FF224697" Offset="0.2" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <StackPanel>
+                <!--Username-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 35 0 0">
+
+
+                    <StackPanel Margin="10 0 0 0" VerticalAlignment="Center"/>
+                </StackPanel>
+                <Image Height="100" Width="100" Source="/loop__2_-removebg-preview.png"/>
+
+                <Separator Height="0.8" Background="#46558a" Margin="20 30 20 30"/>
+
+                <!--Menu Buttons-->
+                <Button >
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Home" />
+                        <TextBlock Text="Dashboard" Foreground="White" />
+                    </StackPanel>
+                </Button>
+
+                <Button  >
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Engine" />
+                        <TextBlock Foreground="White" Text="Settings" />
+                    </StackPanel>
+                </Button>
+
+                <Button Margin="0 350 0 0" Height="45" >
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Logout" />
+                        <TextBlock Foreground="White" Text="Logout" />
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+        </Border>
+
+        <!--Main Section-->
+        <Border Grid.Column="1" CornerRadius="0 0 0 0" >
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="White" Offset="0" />
+                    <GradientStop Color="White" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Top Menu-->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 30 20"/>
+
+
+                <!--Info Cards-->
+                <Grid Grid.Row="1" Margin="50 20 15 40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:Card
+                        Grid.Column="1"
+                        Background="{DynamicResource PrimaryHueDarkBrush}"
+                        Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                        Width="200"
+                        Padding="8"
+                        UniformCornerRadius="6">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="You can adjust the corner radius" />
+                    </materialDesign:Card>
+
+                    <materialDesign:Card
+                        Grid.Column="2"
+                        Background="{DynamicResource PrimaryHueDarkBrush}"
+                        Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                        Width="200"
+                        Padding="8"
+                        UniformCornerRadius="6">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="You can adjust the corner radius" />
+                    </materialDesign:Card>
+
+                    <materialDesign:Card
+                        Background="{DynamicResource PrimaryHueDarkBrush}"
+                        Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                        Padding="8"
+                        UniformCornerRadius="6" Margin="85,0,107,0">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Text="You can adjust the corner radius" />
+                    </materialDesign:Card>
+                </Grid>
+
+                <!--Chart Section-->
+                <Grid Grid.Row="2" Name="gestion_projet">
+                    
+                    <!--Début template liste-->
+                    <ListView x:Name="listeProjet" Margin="0,61,10,58"  >
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:Name="affichageprojet" DataType="local:liste_a_valider">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"  />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--colonne image -->
+                                    <StackPanel
+                                        Margin="8 0 0 0"
+                                        Grid.Column="1">
+                                        <Image Source="{Binding image}" Width="100" Height="100" HorizontalAlignment="Left"/>
+                                    </StackPanel>
+
+                                    <!--colonne titre et description -->
+                                    <StackPanel
+                                Margin="8 0 0 0"
+                                    Grid.Column="2">
+                                        <TextBlock
+                                    Text="{Binding titre}"
+                                    FontWeight="Bold" FontSize="22" />
+                                        <TextBlock
+                                    Text="{Binding description}" TextWrapping="Wrap"/>
+                                    </StackPanel>
+
+                                    <!--colonne stat -->
+                                    <StackPanel
+                                        Margin="500 0 0 0"
+                                        Grid.Column="3" >
+                                        <TextBlock>
+                                            Somme collectée :
+                                            <TextBlock
+                                                Text="{Binding sommeCagnotte}" HorizontalAlignment="Stretch"/>
+                                            <TextBlock
+                                                Text="€" HorizontalAlignment="Stretch"/>
+                                        </TextBlock>
+                                        
+                                        <TextBlock>
+                                            Objectif cagnotte :
+                                            <TextBlock
+                                                Text="{Binding objectifCagnotte}" HorizontalAlignment="Stretch"/>
+                                            <TextBlock
+                                                Text="€" HorizontalAlignment="Stretch"/>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            Statut :
+                                            <TextBlock
+                                                Text="{Binding statut}" HorizontalAlignment="Stretch"/>
+                                        </TextBlock>
+                                        
+                                        <TextBlock>
+                                            Date ouverture :
+                                            <TextBlock
+                                                Text="{Binding ouverture}" HorizontalAlignment="Stretch"/>
+                                        </TextBlock>
+                                        
+                                        <TextBlock>
+                                            Date fermeture :
+                                            <TextBlock
+                                                Text="{Binding fermeture}" HorizontalAlignment="Stretch"/>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel
+                                        Margin="800 0 0 0"
+                                        Grid.Column="4">
+                                        <CheckBox Name="valider_projet" ClickMode="Press" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Grid>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+
+                </Grid>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>
