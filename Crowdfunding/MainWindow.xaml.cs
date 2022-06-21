@@ -23,18 +23,24 @@ namespace Crowdfunding
     /// </summary>
     public partial class MainWindow : Window
     {
-       private MySqlConnection conn;
-       ObservableCollection<Projet> liste_acceuil = new ObservableCollection<Projet>();
+        private MySqlConnection conn;
+        ObservableCollection<Projet> liste_acceuil = new ObservableCollection<Projet>();
         Login login = new Login();
         private int ID_paiement_invest = 0;
         private int ID_projet = 0;
         private string sommeInvest = "";
+        
+
         public MainWindow()
         {
             InitializeComponent();
             acceuilPrincipal();
+            
             login.Show();
             login.Visibility = Visibility.Hidden;
+            Total_investissement();
+            somme_investi();
+
         }
         private void acceuilPrincipal()
         {
@@ -116,7 +122,13 @@ namespace Crowdfunding
             Guide.Foreground = new SolidColorBrush(Colors.White);
             Apropos.Foreground = new SolidColorBrush(Colors.OrangeRed);
             Inscription.Foreground = new SolidColorBrush(Colors.White);
+
+            Espace_admin espaceadmin = new Espace_admin();
+            espaceadmin.Show();
+            this.Hide();
+
             Connexion.Foreground = new SolidColorBrush(Colors.White);
+
         }
 
         private void Button_Click_inscription(object sender, RoutedEventArgs e)
@@ -488,5 +500,67 @@ namespace Crowdfunding
                 acceuil_projet.ItemsSource = liste_acceuil;
             }
         }
+
+        //fonction qui calcul le nombre d'investissement fait et la somme tatole des investissements
+        private void Total_investissement()
+        {
+            //connexion à la base de donnée
+            conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+            conn.Open();
+
+            //il faut encore changer l'ID en paramètre - Standardiser
+            String sql = "SELECT COUNT(id_investissement),SUM(montant_investissement) from investisssement";
+
+            //creat command
+            MySqlCommand cmd = new MySqlCommand();
+
+            //Etablir la connexion de la commande
+            cmd.Connection = conn;
+            cmd.CommandText = sql;
+
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    
+                    int a = reader.GetInt16(0);
+                    nombre_invest.Text = a.ToString();
+                    total_invest.Text = reader.GetFloat(1).ToString();
+                }
+                
+            }
+            conn.Close();
+        }
+
+        //fonction qui affiche le nombre de projet enregistré
+        private void somme_investi()
+        {
+            //connexion à la base de donnée
+            conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+            conn.Open();
+
+            //il faut encore changer l'ID en paramètre - Standardiser
+            String sql = "SELECT COUNT(id_projet) from projet";
+
+            //creat command
+            MySqlCommand cmd = new MySqlCommand();
+
+            //Etablir la connexion de la commande
+            cmd.Connection = conn;
+            cmd.CommandText = sql;
+
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    nombre_projet.Text = reader.GetInt16(0).ToString();
+                }
+            }
+
+        }
+
+        
     }
 }

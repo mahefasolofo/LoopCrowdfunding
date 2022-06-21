@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Common;
@@ -55,7 +54,6 @@ namespace Crowdfunding
         public string path3 = "";
         public string nomFichier3 = "";
         public int id_categ = 0;
-       
 
         public Window2()
         {
@@ -63,14 +61,21 @@ namespace Crowdfunding
             affichageListeProjet();
             chargementCheckbox();
             affichageListeProjetUser();
+
+            //les statistiques sur l'acceuil
+            Total_investissement();
+            somme_investi();
+
+            //les statistiques dans "mes cagnottes"
+            stat_pp();
         }
+
         //Affichage de tous les listes de projets
         private void affichageListeProjet()
         {
             //connexion à la base de donnée
             //conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
             conn.Open();
-
 
             String sql = "SELECT * FROM `projet` ";
 
@@ -108,8 +113,6 @@ namespace Crowdfunding
                         });
 
                         listeProjet.ItemsSource = listeaccueil;
-
-
                     }
                     reader.Close();
                 }
@@ -122,7 +125,6 @@ namespace Crowdfunding
             //connexion à la base de donnée
             //conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
             conn.Open();
-
 
             String sql = "SELECT * FROM `projet` WHERE fk_id_user_projet = 1";
 
@@ -160,36 +162,12 @@ namespace Crowdfunding
                         });
 
                         listeProjet2.ItemsSource = liste_mes_cagnottes;
-
-
                     }
                     reader.Close();
                 }
             }
             conn.Close();
         }
-
-        //à effacer
-        //private void listeProjet_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    //selectionner l'Item clické dans accueil2
-        //    flottanteProjet flottanteProjet = new flottanteProjet();
-        //    flottanteProjet.Activate();
-
-        //    index = listeProjet.SelectedIndex;
-        //    //Affecter les valeurs de l'Item clické dans des variables à l'aide de Getter
-        //    ID_projet = liste[index].getIdProjet();
-        //    titreSelected = liste[index].getTitre();
-        //    descriptionSelected = liste[index].getDescription();
-        //    sommeCagnotteSelected = liste[index].getSommeCagnotte().ToString();
-        //    objectifCagnotteSelected = liste[index].getObjectifCagnotte().ToString();
-        //    statutSelected = liste[index].getStatut();
-        //    imageSelected = liste[index].getImage();
-        //    ouvertureSelected = liste[index].getOuverture().ToString();
-        //    fermetureSelected = liste[index].getFermeture().ToString();
-            
-        //}
-
 
         private void Button_Click_Accueil(object sender, RoutedEventArgs e)
         {
@@ -251,9 +229,6 @@ namespace Crowdfunding
             Cagnottes.Visibility = Visibility.Hidden;
             GridCreation.Visibility = Visibility.Visible;
         }
-
-
-
 
         private void fermer_click(object sender, MouseButtonEventArgs e)
         {
@@ -327,11 +302,8 @@ namespace Crowdfunding
                 }
             }
             myReader.Close();
-
             conn.Close();
         }
-
-        
 
         private void Button_Click_valider(object sender, RoutedEventArgs e)
         {
@@ -355,7 +327,6 @@ namespace Crowdfunding
             string dest1Req = dest1.Replace("\\", "\\\\");
             string dest2Req = dest2.Replace("\\", "\\\\");
             string dest3Req = dest3.Replace("\\", "\\\\");
-
 
             try
             {
@@ -399,7 +370,7 @@ namespace Crowdfunding
             //injection requette
             conn.Open();
 
-            string requette = "INSERT INTO `projet` (`ID_projet`, `fk_id_user_projet`, `fk_id_categ_projet`, `titreprojet`, `descriptionProjet`, `sommeCagnotte`, `objectifCagnotte`, `fichierBP`, `pieceidentite`, `statut`, `date_ouverture_cagnotte`, `date_fermeture_cagnotte`, `date_debut_paiement`, `image_projet`) VALUES(NULL, '1', '" + id_categ + "', '" + titre + "', '" + description + "', 0, '" + objectif + "', '" + dest1Req + "', '" + dest2Req + "', 'Ouvert', current_timestamp(), '" + result_fin + "', '" + result_debut + "','" + dest3Req + "')";
+            string requette = "INSERT INTO `projet_a_valider` (`ID_projet`, `fk_id_user_projet`, `fk_id_categ_projet`, `titreprojet`, `descriptionProjet`, `sommeCagnotte`, `objectifCagnotte`, `fichierBP`, `pieceidentite`, `statut`, `date_ouverture_cagnotte`, `date_fermeture_cagnotte`, `date_debut_paiement`, `image_projet`) VALUES(NULL, '1', '" + id_categ + "', '" + titre + "', '" + description + "', 0, '" + objectif + "', '" + dest1Req + "', '" + dest2Req + "', 'Ouvert', current_timestamp(), '" + result_fin + "', '" + result_debut + "','" + dest3Req + "')";
 
             MySqlCommand cmd = new MySqlCommand(requette, conn);
 
@@ -452,9 +423,6 @@ namespace Crowdfunding
             uploadCIN_nom.Text = "";
             uploadImage_nom.Text = "";
             comboboxCateg.Text = "";
-
-
-
         }
 
         //afficher la fenêtre flottante projet à partir accueil projet
@@ -480,16 +448,6 @@ namespace Crowdfunding
             ouvertureSelected = listeaccueil[index].getOuverture().ToString();
             fermetureSelected = listeaccueil[index].getFermeture().ToString();
 
-//             string titreSelected = liste[index].getTitre();
-//             string descriptionSelected = liste[index].getDescription();
-//             string sommeCagnotteSelected = liste[index].getSommeCagnotte().ToString();
-//             string objectifCagnotteSelected = liste[index].getObjectifCagnotte().ToString();
-//             string statutSelected = liste[index].getStatut();
-//             string imageSelected = liste[index].getImage();
-//             string ouvertureSelected = liste[index].getOuverture().ToString();
-//             string fermetureSelected = liste[index].getFermeture().ToString();
-//             ID_projet = liste[index].getIdProjet();
-
             //Faire apparaitre la fenêtre flottante et Désactiver la listeView pour qu'on ne peut pas la toucher
             flotanteProjet.Visibility = Visibility.Visible;
             Recherche.Visibility = Visibility.Hidden;
@@ -502,27 +460,19 @@ namespace Crowdfunding
             labelStatut.Content = statutSelected;
             labelOuverture.Content = ouvertureSelected;
             labelFermeture.Content = fermetureSelected;
-            
-            
         }
         
 
         //INVESTIR
-
         private void Investir_click(object sender, RoutedEventArgs e)
         {
-
             //string curentItem = listeProjet.SelectedItem.ToString();
             index = listeProjet2.SelectedIndex;
             flottanteProjet flottanteProjet = new flottanteProjet();
             flottanteProjet.Activate();
-            
 
             flotanteProjet.Visibility = Visibility.Hidden;
             flotanteInvestir.Visibility = Visibility.Visible;
-
-
-
 
 
         }
@@ -541,7 +491,6 @@ namespace Crowdfunding
                 path1 = fileDialog.FileName;
                 nomFichier1 = Path.GetFileName(path1);
                 uploadBP_nom.Text = nomFichier1;
-
             }
         }
 
@@ -556,8 +505,6 @@ namespace Crowdfunding
                 path2 = fileDialog2.FileName;
                 nomFichier2 = Path.GetFileName(path2);
                 uploadCIN_nom.Text = nomFichier2;
-
-
             }
         }
 
@@ -572,8 +519,6 @@ namespace Crowdfunding
                 path3 = fileDialog3.FileName;
                 nomFichier3 = Path.GetFileName(path3);
                 uploadImage_nom.Text = nomFichier3;
-
-
             }
         }
 
@@ -595,7 +540,6 @@ namespace Crowdfunding
         {
             RadioButton rb = sender as RadioButton;
             ID_paiement_invest = int.Parse((string)rb.Content);
-
         }
 
 
@@ -636,23 +580,114 @@ namespace Crowdfunding
 
                 //desactiver la listview
                 listeProjet2.IsEnabled = false;
-                //Faire apparaitre la fenêtre flottante et Désactiver la listeView pour qu'on ne peut pas la toucher
                 grid_vue_projet.Visibility = Visibility.Visible;
-                listeProjet2.IsEnabled = false;
+        }
 
-                //Afficher les valeurs
-                title.Text = titreSelected;
-                descrip.Text = descriptionSelected;
-                objectif.Text = objectifCagnotteSelected;
-                etat.Text = statutSelected;
-                ouvert.Text = ouvertureSelected;
-                ferme.Text = fermetureSelected;
-                //labelTitre2.Content = titreSelected;
-                somme.Text = sommeCagnotteSelected;
-                int statprojet = 100 * int.Parse(sommeCagnotteSelected) / int.Parse(objectifCagnotteSelected);
-                progress.Value = statprojet;
-                LabelProgression.Content = statprojet + " %  de votre cagnotte ont été atteint";
+        //fonction qui calcul le nombre d'investissement fait et la somme tatole des investissements
+        private void Total_investissement()
+        {
+            //connexion à la base de donnée
+            conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+            conn.Open();
 
+            //il faut encore changer l'ID en paramètre - Standardiser
+            String sql = "SELECT COUNT(id_investissement),SUM(montant_investissement) from investisssement";
+
+            //creat command
+            MySqlCommand cmd = new MySqlCommand();
+
+            //Etablir la connexion de la commande
+            cmd.Connection = conn;
+            cmd.CommandText = sql;
+
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    reader.Read();
+
+                    int a = reader.GetInt16(0);
+                    nombre_invest.Text = a.ToString();
+                    total_invest.Text = reader.GetFloat(1).ToString();
+                }
+
+            }
+            conn.Close();
+        }
+
+        //fonction qui affiche le nombre de projet enregistré
+        private void somme_investi()
+        {
+            //connexion à la base de donnée
+            conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+            conn.Open();
+
+            //il faut encore changer l'ID en paramètre - Standardiser
+            String sql = "SELECT COUNT(id_projet) from projet";
+
+            //creat command
+            MySqlCommand cmd = new MySqlCommand();
+
+            //Etablir la connexion de la commande
+            cmd.Connection = conn;
+            cmd.CommandText = sql;
+
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    nombre_projet.Text = reader.GetInt16(0).ToString();
+                }
+            }
+        }
+
+        //Section porteur de projet : fonction qui affiche le nombre de projet enregistré et la somme collectée
+        private void stat_pp()
+        {
+            //connexion à la base de donnée
+            conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+            conn.Open();
+
+            //il faut encore changer l'ID en paramètre - Standardiser
+            String sql = "SELECT COUNT(ID_projet), SUM(sommeCagnotte) FROM projet WHERE fk_id_user_projet=1"; //fk_id_user_projet à changer en variable
+
+            //creat command
+            MySqlCommand cmd = new MySqlCommand();
+
+            //Etablir la connexion de la commande
+            cmd.Connection = conn;
+            cmd.CommandText = sql;
+
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    nb_projet_pp.Text = reader.GetInt16(0).ToString();
+                    somme_collecte.Text = reader.GetFloat(1).ToString();
+                }
+            }
+
+//SALETE DE TRUC /!\ AIZA ITY NO MIPETRAKA ?
+
+//                 listeProjet2.IsEnabled = false;
+//                 //Faire apparaitre la fenêtre flottante et Désactiver la listeView pour qu'on ne peut pas la toucher
+//                 grid_vue_projet.Visibility = Visibility.Visible;
+//                 listeProjet2.IsEnabled = false;
+
+//                 //Afficher les valeurs
+//                 title.Text = titreSelected;
+//                 descrip.Text = descriptionSelected;
+//                 objectif.Text = objectifCagnotteSelected;
+//                 etat.Text = statutSelected;
+//                 ouvert.Text = ouvertureSelected;
+//                 ferme.Text = fermetureSelected;
+//                 //labelTitre2.Content = titreSelected;
+//                 somme.Text = sommeCagnotteSelected;
+//                 int statprojet = 100 * int.Parse(sommeCagnotteSelected) / int.Parse(objectifCagnotteSelected);
+//                 progress.Value = statprojet;
+//                 LabelProgression.Content = statprojet + " %  de votre cagnotte ont été atteint";
         }
 
         private void modification_description(object sender, TextChangedEventArgs e)
@@ -678,6 +713,7 @@ namespace Crowdfunding
             //Faire apparaitre la fenêtre listeView et Désactiver la flottante
             grid_vue_projet.Visibility = Visibility.Hidden;
             listeProjet2.IsEnabled = true;
+
         }
     }
 }
