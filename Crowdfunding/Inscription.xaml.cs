@@ -74,11 +74,16 @@ namespace Crowdfunding
                     conn.Close();
                 }
             }
+            this.Close();
+            Login login = new Login();
+            login.Show();
         }
 
         private void annuler_inscription_click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
+            MainWindow main = new MainWindow();
+            main.Show();
         }
     }
 }
