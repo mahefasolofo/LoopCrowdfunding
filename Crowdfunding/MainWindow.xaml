@@ -217,7 +217,7 @@
 
             <!--Vue flottante du projet lors du click-->
             <Grid x:Name="flotanteProjet" Background="#F8F1FF" Visibility="hidden" Margin="382,35,382,35">
-                <Button x:Name="BouttonInvestir" Content="Investir" Margin="0,563,0,75" Click="Investir_click" HorizontalAlignment="Center" Width="482"/>
+                <Button x:Name="BouttonInvestir" Content="Investir" Margin="0,563,0,75" Click="Investir_click" HorizontalAlignment="Center" Width="482" Cursor="Hand"/>
                 <Image HorizontalAlignment="Left" Height="147" VerticalAlignment="Top" Width="745"/>
                 <Label x:Name="labelTitre" Content="" Margin="0,148,0,412" HorizontalContentAlignment="Center"/>
                 <Label x:Name="labelDescription" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="132" Width="500" Margin="0,192,0,0"/>

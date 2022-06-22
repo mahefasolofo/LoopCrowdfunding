@@ -29,6 +29,7 @@ namespace Crowdfunding
         public int ID_user { get; set; }
         private void annuler_click(object sender, RoutedEventArgs e)
         {
+            
             this.Visibility = Visibility.Hidden;
             MainWindow main = new MainWindow();
             main.Show();
