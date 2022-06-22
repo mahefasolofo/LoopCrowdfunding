@@ -52,7 +52,7 @@
             <Grid x:Name="Accueil1" Height="719" Background="White" Visibility="visible">
                 <!--liste des projets ouverts-->
                 <Grid x:Name="Accueil2" Margin="0,10,0,0">
-                    <Grid x:Name="Recherche" Visibility="Visible" Margin="0,135,0,490">
+                    <Grid x:Name="Recherche" Visibility="Visible" Margin="0,108,0,517">
                         <TextBox
                             materialDesign:HintAssist.Hint="Recherche" Margin="144,38,546,10" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Background="{x:Null}" />
                         <materialDesign:PackIcon Kind="Magnify" Height="50" Width="95" Margin="969,38,0,0" Foreground="#FF232B2B"/>
@@ -347,26 +347,33 @@
                 <Label x:Name="monProfil" Content="Mon profil" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="74,28,0,0" MouseDown="MonProfil_click"/>
                 <Label x:Name="deconnexion" Content="Déconnexion" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="58,89,0,0" MouseDown="deconnexion_click"/>
             </Grid>
-            <Grid x:Name="Profil" Margin="0,12,395,0" Visibility="hidden" Background="#FFFFFCFC">
+            <Grid x:Name="Profil" Margin="0,12,395,0" Visibility="Hidden" Background="#FFFFFCFC">
                 <Label Content="Mon profil" FontSize="34" HorizontalAlignment="Center" Margin="0,20,0,638"/>
-                <TextBox x:Name="nom" TextWrapping="Wrap" Margin="215,115,215,558" FontSize="20" Text=""/>
-                <TextBox x:Name="prenom" TextWrapping="Wrap" Text="" Margin="215,185,215,488" FontSize="20"/>
-                <TextBox x:Name="email" TextWrapping="Wrap" Text="" FontSize="20" Margin="215,260,215,403"/>
-                <!--<TextBox x:Name="motdepasse" TextWrapping="Wrap" Text="" Margin="215,330,215,349" FontSize="20"/>-->
-                <TextBox x:Name="adresse" TextWrapping="Wrap" Text="" FontSize="20" Margin="215,438,215,230"/>
-                <!--<DatePicker x:Name="datenaissance" Text="" Margin="215,0,215,0" />-->
 
-                <TextBox x:Name="ville" TextWrapping="Wrap" Text="" FontSize="20" Margin="215,513,215,160"/>
-                <TextBox x:Name="pays" TextWrapping="Wrap" Text="" Margin="215,571,215,97" FontSize="20"/>
+                <TextBox x:Name="nom" materialDesign:HintAssist.Hint="Nom"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top" Margin="211,139,109,0" Height="46" Cursor="Arrow" />
+                <TextBox x:Name="prenom" materialDesign:HintAssist.Hint="Prenom" Text="" Margin="215,201,215,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                <TextBox x:Name="email" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Top" Text=""  Margin="215,260,215,403"/>
+                <!--<TextBox x:Name="motdepasse" TextWrapping="Wrap" Text="" Margin="215,330,215,349" FontSize="20"/>-->
+                <TextBox x:Name="adresse" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Adresse" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Top" Text="" Margin="215,318,215,0"/>
+                <!--<DatePicker x:Name="datenaissance" Text="" Margin="215,0,215,0" />-->
+                <DatePicker
+                    x:Name="datenaissance"  
+                    SelectedDate=""
+                      materialDesign:HintAssist.Hint="Date de naissance"
+                      materialDesign:TextFieldAssist.HasClearButton="True"
+                      Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="217,376,360,0" VerticalAlignment="Top" />
+                <TextBox x:Name="ville" materialDesign:HintAssist.Hint="Ville" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" Text="" Margin="125,421,435,252"/>
+                <TextBox x:Name="pays" materialDesign:HintAssist.Hint="Pays" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" Text="" Margin="341,416,89,252"/>
                 <Button x:Name="Modifier" Content="Modifier" Margin="430,650,80,36" Click="Modifier_Click"/>
                 <Button x:Name="Annuler" Content="Annuler" Background="#FFEDEDED" Foreground="#FF2D0061" Margin="118,650,392,36" Click="annuler_mofificationprofil_click"/>
             </Grid>
+            <TextBox x:Name="dateok" HorizontalAlignment="Left" Visibility="Hidden" Margin="379,399,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
 
         </Grid>
 
 
-        <Grid  x:Name="grid_vue_projet" Background="White" Height="753" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Width="846" Margin="-10,-741,9,9">
+        <Grid  x:Name="grid_vue_projet" Background="White" Height="753" Visibility="hidden" RenderTransformOrigin="0.5,0.5" Width="846" Margin="-10,-741,9,9">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>
@@ -436,8 +443,7 @@
                     </TransformGroup>
                 </StackPanel.RenderTransform>
                 <!-- fin partie argent collecté -->
-                <!-- fin-->
-                <!-- fin-->
+
                 <!-- partie argent collecté -->
                 <StackPanel x:Name="somme1" Width="168" Orientation="Vertical" Margin="20,0,75,0">
                     <!-- info dans border  -->
@@ -534,9 +540,19 @@
                         </Label.RenderTransform>
                     </Label>
                 </Grid>
-                <Button Content="valider" Click="retour_cagnotte" Width="148" Height="40" materialDesign:ButtonAssist.CornerRadius="10"
-                    ToolTip="MaterialDesignRaisedButton with Round Corners" RenderTransformOrigin="0.5,0.5" Margin="0,35,0,0"
-         >
+                <Button Content="valider" Click="valider_changement_cagnotte" Width="148" Height="40" materialDesign:ButtonAssist.CornerRadius="10"
+                    ToolTip="MaterialDesignRaisedButton with Round Corners" RenderTransformOrigin="0.5,0.5" Margin="0,-30,0,0">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+                <Button Content="Annuler" Click="annuler_changement_cagnotte" Width="148" Height="40" materialDesign:ButtonAssist.CornerRadius="10"
+                    ToolTip="MaterialDesignRaisedButton with Round Corners" RenderTransformOrigin="0.5,0.5" Margin="-150,55,0,0" Background="#FFFAF7FF" Foreground="#FF440080">
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="-1"/>
