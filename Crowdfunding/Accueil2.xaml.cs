@@ -840,6 +840,7 @@ namespace Crowdfunding
             else
                 Accueil1.IsEnabled = true;
             
+
             
             if (Profil.Visibility == Visibility.Hidden)
                 Profil.Visibility = Visibility.Visible;
