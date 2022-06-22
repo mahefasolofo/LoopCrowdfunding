@@ -104,6 +104,8 @@ namespace Crowdfunding
             Apropos.BorderBrush = new SolidColorBrush(Colors.White);
             Inscription.BorderBrush = new SolidColorBrush(Colors.Transparent);
             Connexion.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            MainGrid.Visibility = Visibility.Visible;
+            a_propos_de_nous.Visibility = Visibility.Hidden;
         }
 
         private void Button_Click_guide(object sender, RoutedEventArgs e)
@@ -124,11 +126,15 @@ namespace Crowdfunding
             Inscription.BorderBrush = new SolidColorBrush(Colors.Transparent);
             Connexion.BorderBrush = new SolidColorBrush(Colors.Transparent);
 
-            Espace_admin espaceadmin = new Espace_admin();
-            espaceadmin.Show();
-            this.Hide();
+            //Espace_admin espaceadmin = new Espace_admin();
+            //espaceadmin.Show();
+            //this.Hide();
 
-            Connexion.Foreground = new SolidColorBrush(Colors.White);
+            //Connexion.Foreground = new SolidColorBrush(Colors.White);
+
+
+            a_propos_de_nous.Visibility = Visibility.Visible;
+            MainGrid.Visibility = Visibility.Hidden;
 
         }
 
@@ -560,6 +566,16 @@ namespace Crowdfunding
 
         }
 
-        
+        private void contacter_nous(object sender, RoutedEventArgs e)
+        {
+            if (gridContacte.Visibility == Visibility.Hidden)
+            {
+                gridContacte.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                gridContacte.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }

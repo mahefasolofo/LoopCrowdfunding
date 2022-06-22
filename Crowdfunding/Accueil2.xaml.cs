@@ -339,7 +339,7 @@ namespace Crowdfunding
             listeProjet2.IsEnabled = true;
 
             //listeProjet2.Items.Refresh();
-            Accueil1.Visibility = Visibility.Hidden;
+            
             Cagnottes.Visibility = Visibility.Visible;
             GridCreation.Visibility = Visibility.Hidden;
             grid_mes_investissements.Visibility = Visibility.Hidden;
@@ -842,13 +842,13 @@ namespace Crowdfunding
                     
                     if(reader.GetInt16(0) == 0)
                     {
-                        nb_projet_pp.Text = "0";
-                        somme_collecte.Text = "0";
+                        //nb_projet_pp.Text = "0";
+                        //somme_collecte.Text = "0";
                     }
                     else
                     {
-                        nb_projet_pp.Text = reader.GetInt16(0).ToString();
-                        somme_collecte.Text = reader.GetFloat(1).ToString();
+                        //nb_projet_pp.Text = reader.GetInt16(0).ToString();
+                        //somme_collecte.Text = reader.GetFloat(1).ToString();
                     }                    
                 }
             }         
@@ -1016,32 +1016,32 @@ namespace Crowdfunding
             //}
             //conn.Close();
         }
-        private void modification_description(object sender, TextChangedEventArgs e)
-        {
-            //liste_mes_cagnottes[index].description = descrip.Text;
+        //private void modification_description(object sender, TextChangedEventArgs e)
+        //{
+        //    //liste_mes_cagnottes[index].description = descrip.Text;
 
-            //string requete = " UPDATE `projet` SET `descriptionProjet` = '" + liste_mes_cagnottes[index].description + "' WHERE `projet`.`ID_projet` = " + liste_mes_cagnottes[index].IdProjet;
+        //    //string requete = " UPDATE `projet` SET `descriptionProjet` = '" + liste_mes_cagnottes[index].description + "' WHERE `projet`.`ID_projet` = " + liste_mes_cagnottes[index].IdProjet;
 
 
-            ////connexion à la base de donnée
-            //conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
-            //conn.Open();
+        //    ////connexion à la base de donnée
+        //    //conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
+        //    //conn.Open();
 
-            //MySqlCommand cmd = new MySqlCommand();
-            //cmd.Connection = conn;
-            //cmd.CommandText = requete;
+        //    //MySqlCommand cmd = new MySqlCommand();
+        //    //cmd.Connection = conn;
+        //    //cmd.CommandText = requete;
 
-            ////Exécution
-            //try
-            //{
-            //    cmd.ExecuteNonQuery();
-            //}
-            //catch (Exception excep)
-            //{
-            //    MessageBox.Show(excep.ToString());
-            //}
-            //conn.Close();
-        }
+        //    ////Exécution
+        //    //try
+        //    //{
+        //    //    cmd.ExecuteNonQuery();
+        //    //}
+        //    //catch (Exception excep)
+        //    //{
+        //    //    MessageBox.Show(excep.ToString());
+        //    //}
+        //    //conn.Close();
+        //}
 
 
         private void progress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

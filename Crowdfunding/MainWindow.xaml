@@ -42,11 +42,12 @@
 
         <Grid x:Name="MainGrid" Height="740" Background="White" Margin="0,-11,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="267*"/>
             </Grid.ColumnDefinitions>
 
             <!--modification ANTSA à vérifier -->
-            <Grid x:Name="accueil" HorizontalAlignment="Center" Width="1510" Height="740" VerticalAlignment="Top">
+            <Grid x:Name="accueil" HorizontalAlignment="Left" Width="1510" Height="740" VerticalAlignment="Center" Grid.ColumnSpan="2">
                 <ListView x:Name="acceuil_projet" Height="420" Margin="46,310,281,10" SelectionChanged="acceuil_projet_SelectionChanged">
 
                     <ListView.ItemsPanel>
@@ -220,7 +221,7 @@
             </Grid>
 
             <!--Vue flottante du projet lors du click-->
-            <Grid x:Name="flotanteProjet" Background="#F8F1FF" Visibility="hidden" Margin="382,35,382,35">
+            <Grid x:Name="flotanteProjet" Background="#F8F1FF" Visibility="hidden" Margin="207,35,382,35" Grid.Column="1">
                 <Button x:Name="BouttonInvestir" Content="Investir" Margin="0,563,0,75" Click="Investir_click" HorizontalAlignment="Center" Width="482" Cursor="Hand"/>
                 <Image HorizontalAlignment="Left" Height="147" VerticalAlignment="Top" Width="745"/>
                 <Label x:Name="labelTitre" Content="" Margin="0,148,0,412" HorizontalContentAlignment="Center"/>
@@ -232,6 +233,54 @@
                 <materialDesign:PackIcon x:Name="fermer" Kind="CloseCircle" Height="38" Width="38" Margin="697,0,0,0" MouseDown="fermer_click" />
             </Grid>
         </Grid>
-       
+
+        <!-- A propos de nous -->
+        <Grid x:Name="a_propos_de_nous" Visibility="Hidden" Margin="0,-782.8,0,0" Height="830">
+            <StackPanel Background="WhiteSmoke" Margin="0,43,0,0">
+                <!--<Grid Height="100">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="123*"/>
+                        <ColumnDefinition Width="560*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal" Background="#FF00787A" Margin="0,0,4,0" Grid.ColumnSpan="2">
+                        <TextBlock TextWrapping="Wrap" Text="A PROPOS DE NOUS" Margin="550,35,0,3" Foreground="White" FontSize="18"/>
+
+
+
+                    </StackPanel>
+                </Grid>-->
+                <Grid x:Name="GridMain" Height="745" Background="White" Visibility="Visible" Width="1520">
+                    <Button x:Name="contacter" Content="Contacter - Nous" HorizontalAlignment="Left" Margin="1066,0,0,0" VerticalAlignment="Top" FontSize="18" Height="63" Width="191" Cursor="Hand" Click="contacter_nous" />
+                    <Rectangle HorizontalAlignment="Center" Height="434" Margin="0,136,0,0" Stroke="Black" VerticalAlignment="Top" Width="390" Visibility="Hidden"/>
+                    <Rectangle HorizontalAlignment="Left" Height="434" Margin="967,136,0,0" Stroke="Black" VerticalAlignment="Top" Width="399" Visibility="Hidden"/>
+
+
+
+
+
+                    <Grid x:Name="gridContacte" Margin="0,70,36,357" Visibility="Hidden" HorizontalAlignment="Right">
+                        <Label Content="+261-34-97-050-09" HorizontalAlignment="Left" Margin="60,18,0,0" VerticalAlignment="Top" FontSize="16"/>
+                        <Label Content="loop.crowdfunding@gmail.com" HorizontalAlignment="Left" Margin="60,80,0,0" VerticalAlignment="Top" FontSize="16"/>
+
+
+
+
+                    </Grid>
+                    <Image HorizontalAlignment="Left" Height="137" VerticalAlignment="Top" Width="125" Source="/loop__2_-removebg-preview.png"/>
+                    <Label Content="CrowdFunding ou financement participatif est un mécanisme qui a pour objectif de collecter les apports financiers&#xD;&#xA;d'un grand nombre de particuliers au moyen d'une plateforme.. Ici c'est LOOP, une start-up de crowdfunding capitaliste&#xA; crée par 5 jeunes Malgaches visionnaires. Elle répond à une évolution croissante des start-ups dans le monde.&#xA; &#xA;" HorizontalAlignment="Left" Margin="531,221,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.449,0.444" FontSize="16" Height="128"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="15,221,0,0" TextWrapping="Wrap" Text="C'est quoi CrowdFunding?" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,353,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Text="Objectif de cette plateforme"/>
+                    <Label Content="L'objectif quantitatif est d'avoir un pourcentage de 80% de projet financé parmi les inscrits&#xD;&#xA;.&#xA;L'objectif qualitatif est d'avoir une plateforme sécurisée pour les investisseurs et les donateurs." HorizontalAlignment="Left" Margin="534,355,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.449,0.444" FontSize="16" Height="69"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Text="Nos cibles et nos Utilisateurs"/>
+                    <Label Content="Les cibles sont les porteurs de projet, ils peuvent être : Des Personnes individuelles et des Personnes morales.&#xA;Les utilisateurs sont les investisseurs : les personnes qui cèdent de l'argent dans une perspective de bénéfice." HorizontalAlignment="Left" Margin="534,463,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.449,0.444" FontSize="16" Height="177" Width="832"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="152,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Foreground="#FFED0808" Height="93" Width="781"><Run Text="Nous aidons les créateurs et les Entrepreneurs à financer et faire vivre leurs projets "/><LineBreak/><Run Language="fr-fr" Text="Nous appellons aussi les investisseurs à aider nous à ce financement."/></TextBlock>
+
+
+
+
+
+                </Grid>
+            </StackPanel>
+        </Grid>
     </StackPanel>
 </Window>
