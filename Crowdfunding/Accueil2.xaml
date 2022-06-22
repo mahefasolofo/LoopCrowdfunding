@@ -14,17 +14,15 @@
         xmlns:local="clr-namespace:Crowdfunding"
         mc:Ignorable="d" Title="Loop Crowdfunding"  WindowStartupLocation="CenterScreen"  WindowState="Maximized" Height="825" Width="1510" ResizeMode="NoResize">
 
-
     <StackPanel Background="WhiteSmoke" Margin="0,0,0,-3">
         <StackPanel x:Name="MainStack" Background="WhiteSmoke" >
             <Grid Height="100" >
+
                 <StackPanel x:Name="TopBar"    Orientation="Horizontal" Height="80" Margin="0,-15,0,0" >
                     <StackPanel.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF00787A"/>
                             <GradientStop Color="#FF00787A" Offset="0.40"/>
-
-
 
                         </LinearGradientBrush>
                     </StackPanel.Background>
@@ -36,9 +34,11 @@
                     <Button x:Name="Accueil"  Uid="1" Width="90" Height="32" Content="ACCUEIL" Margin="10,30,1,3"  Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonAssist.CornerRadius="10"  Background="{x:Null}"   BorderBrush="White"  materialDesign:ButtonProgressAssist.IsIndeterminate="True"  Cursor="Hand" Click="Button_Click_Accueil" Foreground="White" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
 
 
+
                     <Button materialDesign:ButtonAssist.CornerRadius="10" x:Name="Cagnotte" Uid="1" Width="150" Height="32" Content="MES CAGNOTTES" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_cagnotte"/>
                     <Button materialDesign:ButtonAssist.CornerRadius="10" x:Name="Investissement" Uid="2" Width="195" Height="32" Content="MES INVESTISSEMENTS" Margin="30,0,0,3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_investissement"/>
                     <Button  x:Name="Notification" Uid="4" Width="49" Height="42" Content="" BorderBrush="{x:Null}" Click="Button_Click_notification" Cursor="Hand" Margin="500,0,0,3" IsCancel="True" Foreground="#DDE6D8D8">
+
                         <Button.Background>
                             <ImageBrush ImageSource="/android-reminder - Copie.png"/>
                         </Button.Background>
@@ -46,17 +46,20 @@
                     <Button materialDesign:ButtonAssist.CornerRadius="10" x:Name="boutton_User" Uid="5" Width="270" Height="41" Content="UTILISATEUR" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_User" Margin="20,0,0,3"/>
 
                 </StackPanel>
-                <TextBox x:Name="ID_connected" TextWrapping="Wrap" Text="TextBox" Width="120" Visibility="Hidden"/>
 
+                <TextBox x:Name="ID_connected" TextWrapping="Wrap" Text="TextBox" Width="120" Visibility="Hidden"/>
             </Grid>
+            
             <Grid x:Name="Accueil1" Height="719" Background="White" Visibility="visible">
                 <!--liste des projets ouverts-->
                 <Grid x:Name="Accueil2" Margin="0,10,0,0">
+
                     <Grid x:Name="Recherche" Visibility="Visible" Margin="0,135,0,490">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="273*"/>
                             <ColumnDefinition Width="29*"/>
                         </Grid.ColumnDefinitions>
+
                         <TextBox
                             materialDesign:HintAssist.Hint="Recherche" Margin="144,38,401,10" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Background="{x:Null}" />
                         <materialDesign:PackIcon Kind="Magnify" Height="50" Width="95" Margin="969,38,0,0" Foreground="#FF232B2B"/>
@@ -76,9 +79,7 @@
                         </StackPanel>
                     </Border>
 
-
-
-                    <ListView x:Name="listeProjet" Margin="0,224,10,15" SelectionChanged="listeProjet_SelectionChanged_1" >
+                    <ListView x:Name="listeProjet" Margin="67,224,288,15" SelectionChanged="listeProjet_SelectionChanged_1" >
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Focusable="True" ScrollViewer.CanContentScroll="True" Margin="0,0,0,0" />
@@ -122,13 +123,24 @@
                                             </InlineUIContainer></TextBlock>
                                     </StackPanel>
                                     <!-- Bouton investir-->
+
                                     <StackPanel Grid.Row="4" Margin="0,50,0,0" Width="300">
                                         <Button Content="Investir" />
+
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    <!--Grid qui contient les stats de la page d'accueil-->
+                    <Grid Name="Statistiques_accueil" HorizontalAlignment="Left" Height="740" Margin="1248,0,0,0" VerticalAlignment="Center" Width="262" >
+                        <Label Content="Nombre d'investissement" HorizontalAlignment="Center" Height="36" Margin="0,142,0,0" VerticalAlignment="Top" Width="242" FontSize="20"/>
+                        <TextBlock Name="nombre_invest" FontSize="18" Margin="8,178,0,521" />
+                        <Label Content="Nombre de projet" Margin="10,224,0,475" FontSize="20" />
+                        <TextBlock Name="nombre_projet"  Margin="0,265,0,426"/>
+                        <Label Content="Total des investissements" FontSize="20" Margin="0,319,0,384"/>
+                        <TextBlock Name="total_invest" Margin="0,356,0,344" />
+                    </Grid>
                 </Grid>
                 <Grid x:Name="flotanteInvestir" Height="600" Width="500" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#F8F1FF" Visibility="Hidden" Margin="433,23,0,0">
                     <Label Content="Investir" Margin="0,5,0,452" HorizontalContentAlignment="Center" FontSize="32" VerticalContentAlignment="Center"/>
@@ -203,7 +215,7 @@
 
 
             </Grid>
-            <Grid x:Name="Cagnottes" Height="650" Background="White" Margin="0,-650,0,0" Visibility="hidden">
+            <Grid x:Name="Cagnottes" Height="650" Background="White" Margin="0,-650,0,0" Visibility="Hidden">
                 <Grid x:Name="GridMainCagnotte" Height="650" Background="#ffffff" Visibility="Visible" HorizontalAlignment="Center" Margin="0,10,0,-10">
                     <Rectangle HorizontalAlignment="Left" Height="145" Margin="117,122,0,0" Stroke="#FFE2ADAD" VerticalAlignment="Top" Width="635" Fill="#FFEB6262" Opacity="0.12" RadiusX="50" RadiusY="50"/>
                     <TextBox x:Name="Recherche2" materialDesign:HintAssist.Hint="Recherche" materialDesign:HintAssist.Foreground="#673ab7" materialDesign:TextFieldAssist.UnderlineBrush="#673ab7" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Top" FontSize="16" Width="446" Margin="324,44,596,0"/>
@@ -212,7 +224,7 @@
 
                     <Button x:Name="creation_cagnotte" Content="Creation cagnotte" HorizontalAlignment="Left" Margin="834,162,0,0" VerticalAlignment="Top" Height="47" Width="174" Click="ButtonClick_creation_cagnotte" materialDesign:ButtonAssist.CornerRadius="25" Background="#FF00787A"/>
 
-              
+
                 </Grid>
 
 
@@ -286,32 +298,25 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                
+                <!--Statistiques générales "mes cagnottes"-->
+                <Grid Name="Statistique_mes_cagnottes" Margin="1031,10,0,406">
+                    <Label Content="Nombre de vos projets" HorizontalAlignment="Center" Height="37" Margin="0,10,0,0" VerticalAlignment="Top" Width="242" FontSize="20"/>
+                    <TextBlock Name="nb_projet_pp" FontSize="18" Margin="8,48,0,147" RenderTransformOrigin="0.5,0.5" >
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <Label Content="La somme total collectée jusqu'ici" Margin="10,122,0,78" FontSize="20" />
+                    <TextBlock Name="somme_collecte"  Margin="0,171,0,10"/>
+                </Grid>
             </Grid>
 
-
-
-            <!--</DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
-
-            <!--Statistiques générales "mes cagnottes"-->
-            <Grid Name="Statistique_mes_cagnottes" Margin="1031,-650,0,406" Visibility="Hidden">
-                <Label Content="Nombre de vos projets" HorizontalAlignment="Center" Height="37" Margin="0,10,0,0" VerticalAlignment="Top" Width="242" FontSize="20"/>
-                <TextBlock Name="nb_projet_pp" FontSize="18" Margin="8,48,0,147" RenderTransformOrigin="0.5,0.5" >
-                    <TextBlock.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform ScaleY="-1"/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
-                <Label Content="La somme total collectée jusqu'ici" Margin="10,122,0,78" FontSize="20" />
-                <TextBlock Name="somme_collecte"  Margin="0,171,0,10"/>
-            </Grid>
-
-            <!--</Grid>-->
 
             <Grid x:Name="GridCreation" Height="641" Width="1366"  Visibility="hidden" Margin="0,-650,0,0">
                 <Button
@@ -358,26 +363,34 @@
                 <Label x:Name="monProfil" Content="Mon profil" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="74,28,0,0" MouseDown="MonProfil_click"/>
                 <Label x:Name="deconnexion" Content="Déconnexion" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="58,89,0,0" MouseDown="deconnexion_click"/>
             </Grid>
-            <Grid x:Name="Profil" Margin="0,12,395,0" Visibility="hidden" Background="#FFFFFCFC">
+            <Grid x:Name="Profil" Margin="0,12,395,0" Visibility="Hidden" Background="#FFFFFCFC">
                 <Label Content="Mon profil" FontSize="34" HorizontalAlignment="Center" Margin="0,20,0,638"/>
-                <TextBox x:Name="nom" TextWrapping="Wrap" Margin="215,115,215,558" FontSize="20" Text=""/>
-                <TextBox x:Name="prenom" TextWrapping="Wrap" Text="" Margin="215,185,215,488" FontSize="20"/>
-                <TextBox x:Name="email" TextWrapping="Wrap" Text="" FontSize="20" Margin="215,260,215,403"/>
-                <!--<TextBox x:Name="motdepasse" TextWrapping="Wrap" Text="" Margin="215,330,215,349" FontSize="20"/>-->
-                <TextBox x:Name="adresse" TextWrapping="Wrap" Text="" FontSize="20" Margin="215,438,215,230"/>
-                <!--<DatePicker x:Name="datenaissance" Text="" Margin="215,0,215,0" />-->
 
-                <TextBox x:Name="ville" TextWrapping="Wrap" Text="" FontSize="20" Margin="215,513,215,160"/>
-                <TextBox x:Name="pays" TextWrapping="Wrap" Text="" Margin="215,571,215,97" FontSize="20"/>
+                <TextBox x:Name="nom" materialDesign:HintAssist.Hint="Nom"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top" Margin="211,139,109,0" Height="46" Cursor="Arrow" />
+                <TextBox x:Name="prenom" materialDesign:HintAssist.Hint="Prenom" Text="" Margin="215,201,215,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                <TextBox x:Name="email" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Top" Text=""  Margin="215,260,215,403"/>
+                <!--<TextBox x:Name="motdepasse" TextWrapping="Wrap" Text="" Margin="215,330,215,349" FontSize="20"/>-->
+                <TextBox x:Name="adresse" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Adresse" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Top" Text="" Margin="215,318,215,0"/>
+                <!--<DatePicker x:Name="datenaissance" Text="" Margin="215,0,215,0" />-->
+                <DatePicker
+                    x:Name="datenaissance"  
+                    SelectedDate=""
+                      materialDesign:HintAssist.Hint="Date de naissance"
+                      materialDesign:TextFieldAssist.HasClearButton="True"
+                      Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="217,376,360,0" VerticalAlignment="Top" />
+                <TextBox x:Name="ville" materialDesign:HintAssist.Hint="Ville" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" Text="" Margin="125,421,435,252"/>
+                <TextBox x:Name="pays" materialDesign:HintAssist.Hint="Pays" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" Text="" Margin="341,416,89,252"/>
                 <Button x:Name="Modifier" Content="Modifier" Margin="430,650,80,36" Click="Modifier_Click"/>
                 <Button x:Name="Annuler" Content="Annuler" Background="#FFEDEDED" Foreground="#FF2D0061" Margin="118,650,392,36" Click="annuler_mofificationprofil_click"/>
             </Grid>
+
+            <TextBox x:Name="dateok" HorizontalAlignment="Left" Visibility="Hidden" Margin="379,399,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
 
         </Grid>
 
 
-        <Grid  x:Name="grid_vue_projet" Background="White" Height="753" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Width="846" Margin="-10,-741,9,9">
+        <Grid  x:Name="grid_vue_projet" Background="White" Height="753" Visibility="hidden" RenderTransformOrigin="0.5,0.5" Width="846" Margin="-10,-741,9,9">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>
@@ -394,8 +407,7 @@
                 <RowDefinition Height="134*" />
             </Grid.RowDefinitions>
 
-            <!-- linear progress bars (the default style -->
-
+            <!-- linear progress bars (the default style) -->
 
             <!--Emplacement image-->
             <StackPanel Grid.Row="3" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" Height="128">
@@ -447,8 +459,7 @@
                     </TransformGroup>
                 </StackPanel.RenderTransform>
                 <!-- fin partie argent collecté -->
-                <!-- fin-->
-                <!-- fin-->
+
                 <!-- partie argent collecté -->
                 <StackPanel x:Name="somme1" Width="168" Orientation="Vertical" Margin="20,0,75,0">
                     <!-- info dans border  -->
@@ -545,9 +556,19 @@
                         </Label.RenderTransform>
                     </Label>
                 </Grid>
-                <Button Content="valider" Click="retour_cagnotte" Width="148" Height="40" materialDesign:ButtonAssist.CornerRadius="10"
-                    ToolTip="MaterialDesignRaisedButton with Round Corners" RenderTransformOrigin="0.5,0.5" Margin="0,35,0,0"
-         >
+                <Button Content="valider" Click="valider_changement_cagnotte" Width="148" Height="40" materialDesign:ButtonAssist.CornerRadius="10"
+                    ToolTip="MaterialDesignRaisedButton with Round Corners" RenderTransformOrigin="0.5,0.5" Margin="0,-30,0,0">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+                <Button Content="Annuler" Click="annuler_changement_cagnotte" Width="148" Height="40" materialDesign:ButtonAssist.CornerRadius="10"
+                    ToolTip="MaterialDesignRaisedButton with Round Corners" RenderTransformOrigin="0.5,0.5" Margin="-150,55,0,0" Background="#FFFAF7FF" Foreground="#FF440080">
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="-1"/>
@@ -558,8 +579,6 @@
                     </Button.RenderTransform>
                 </Button>
             </StackPanel>
-
-
         </Grid>
 
         <!--<Grid x:Name="GridCreation" Height="705" Width="1366"  Visibility="Hidden" Margin="0,-650,0,0" d:IsHidden="True">
@@ -593,7 +612,6 @@
             <TextBox x:Name="uploadBP_nom" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="240,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="45"/>
             <TextBox x:Name="uploadCIN_nom" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="639,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="45" Grid.ColumnSpan="2"/>
 
-
             <Button Style="{StaticResource MaterialDesignRaisedSecondaryButton}" ToolTip="Resource name: MaterialDesignRaisedSecondaryButton" Content="Annuler" Click="Button_Click_annuler"  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="465,600,87,30" materialDesign:ButtonAssist.CornerRadius="25" Background="#FF00787A" BorderBrush="#FF00787A" />
             <Label Content="Veuillez sélectionner une photo &#xD;&#xA;pour la couverture" HorizontalAlignment="Left" Margin="154,214,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.787" Height="45" Width="260" FontSize="16" Grid.Column="1"/>
             <TextBox x:Name="uploadImage_nom" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF673AB7" Margin="403,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="45" Grid.Column="1"/>
@@ -604,12 +622,12 @@
             <Button x:Name="bouton_id" Grid.Column="1" Content="id" HorizontalAlignment="Left" Height="32" Margin="107,227,0,0" VerticalAlignment="Top" Width="35" Click="inserer_cin"/>
             <Button x:Name="photoC" Grid.Column="1" Content="photo" HorizontalAlignment="Left" Height="45" Margin="558,214,0,0" VerticalAlignment="Top" Width="20" Click="photoC_Click"/>
 
-
         </Grid>-->
 
-
         <!-- Emplacement fenêtre "Mes investissements" -->
-        <Grid x:Name="grid_mes_investissements" Height="729" Background="White" Visibility="Hidden" Margin="0,-780,0,0">
+
+        <Grid x:Name="grid_mes_investissements" Height="725" Background="White" Visibility="Hidden" Margin="0,-785,0,0">
+
             <Canvas Name="Mes_investissement">
                 <Grid Height="725">
                     <Grid.ColumnDefinitions>
@@ -621,7 +639,7 @@
                         <Label Content="Les projets auxquels vous avez investis" Height="48" Margin="58,49,70,0" FontSize="36" FontWeight="Bold" Width="656"/>
 
                         <!-- Création de la liste pour afficher les projets investis-->
-                        <ListView x:Name="projetInvesti"  Height="594" Width="1048" >
+                        <ListView x:Name="projetInvesti"  Height="594" Width="1048" SelectionChanged="afficher_investi">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:Name="affichage_projet_investi" DataType="local:liste">
                                     <Grid>
@@ -659,14 +677,22 @@
                                                  <TextBlock
                                                 Text="€" HorizontalAlignment="Stretch"/>
                                             </TextBlock>
-                                                <TextBlock>
+
+
+                                            <!--<TextBlock>
+
                                                 Somme collectée :
                                                 <TextBlock
                                                     Text="{Binding sommeCagnotte}" HorizontalAlignment="Stretch"/>
                                                 <TextBlock
                                                     Text="€" HorizontalAlignment="Stretch"/>
+
                                             </TextBlock>
                                                 <TextBlock>
+
+                                            </TextBlock>-->
+                                            <TextBlock>
+
                                                 Objectif cagnotte :
                                                 <TextBlock
                                                     Text="{Binding objectifCagnotte}" HorizontalAlignment="Stretch"/>
@@ -702,7 +728,7 @@
                     <StackPanel Grid.Column="1" Margin="1165,-3,0,0" HorizontalAlignment="Left" Width="342" Height="728" VerticalAlignment="Top">
                         <TextBlock Text="Vos projets suivis" Height="32" Margin="58,63,70,0" FontSize="24" FontWeight="Bold" TextWrapping="Wrap"/>
 
-                        <ListView x:Name="projetSuivi" Height="574" Width="280" Margin="0,32,0,0">
+                        <ListView x:Name="projetSuivi" Height="574" Width="280" Margin="0,32,0,0" SelectionChanged="afficher_flottante_suivi">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:Name="affichage_projet_suivi" DataType="local:listeSuivi">
                                     <Grid>
@@ -767,7 +793,51 @@
                 </Grid>
             </Canvas>
         </Grid>
+
+        
+        <!-- fenêtre flottante pour afficher les détails du projet investi dans "mes investissements" -->
+        <Grid x:Name="flotanteProjet_investi" Background="#F8F1FF" Margin="382,-795,382,0" Height="733" Visibility="Hidden">
+            <Button x:Name="BouttonInvestir_investi" Content="Investir" Margin="0,628,0,56" Click="Investir_click" HorizontalAlignment="Center" Width="482" Cursor="Hand"/>
+            <Image HorizontalAlignment="Left" Height="147" VerticalAlignment="Top" Width="745"/>
+            <Label x:Name="labelTitre_investi"  Content="" Margin="0,148,0,412" HorizontalContentAlignment="Center"/>
+            <Label x:Name="labelDescription_investi" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="132" Width="500" Margin="0,192,0,0"/>
+            <Label x:Name="labelSomme_investi" Content="" Margin="166,420,154,155" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="32" Width="144"/>
+            <!--<Label x:Name="labelSomme_collectee_investi" Content="" HorizontalAlignment="Center" Margin="0,324,0,0" HorizontalContentAlignment="Center" VerticalAlignment="Top" Height="50" Width="240"/>-->
+            <Label x:Name="labelObjectifCagnotte_investi" Content="" HorizontalAlignment="Center" Margin="0,324,0,0" HorizontalContentAlignment="Center" VerticalAlignment="Top" Height="50" Width="240"/>
+            <Label x:Name="labelStatut_investi" HorizontalAlignment="Center" Margin="0,379,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="32" Width="144"/>
+            <!--<Label x:Name="labelOuverture_investi" Content="" Margin="166,420,154,155" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="32" Width="144"/>-->
+            <Label x:Name="labelFermeture_investi" Content="" Margin="168,452,152,121" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="32" Width="144"/>
+            <materialDesign:PackIcon x:Name="fermer_investi" Kind="CloseCircle" Height="38" Width="38" Margin="697,0,0,0" MouseDown="fermer_fenetre_invesi"  />
+        </Grid>
+
+        <StackPanel x:Name="TopBar"    Orientation="Horizontal" Height="80" Width="1510" Margin="0,-1600,0,0">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF00787A"/>
+                    <GradientStop Color="#FF00787A" Offset="0.40"/>
+
+
+
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Button x:Name="Loop" Width="139" Height="117" BorderBrush="Transparent" Foreground="White" Click="Button_Click_Accueil" Cursor="Hand"  materialDesign:RippleAssist.IsDisabled="True" VerticalContentAlignment="Top" Margin="0,-25,0,0" d:IsLocked="True">
+                <Button.Background>
+                    <ImageBrush ImageSource="/loop__2_-removebg-preview.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="Accueil" Uid="0" Width="150" Height="32" Content="ACCUEIL" HorizontalAlignment="Left" Margin="10,0,0,3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click_Accueil" Cursor="Hand" />
+
+
+            <Button x:Name="Cagnotte" Uid="1" Width="150" Height="32" Content="MES CAGNOTTES" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_cagnotte"/>
+            <Button x:Name="Investissement" Uid="2" Width="195" Height="32" Content="MES INVESTISSEMENTS" Margin="30,0,0,3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_investissement"/>
+            <Button x:Name="Notification" Uid="4" Width="49" Height="42" Content="" BorderBrush="{x:Null}" Click="Button_Click_notification" Cursor="Hand" Margin="500,0,0,3" IsCancel="True" Foreground="#DDE6D8D8">
+                <Button.Background>
+                    <ImageBrush ImageSource="/android-reminder - Copie.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="boutton_User" Uid="5" Width="270" Height="41" Content="UTILISATEUR" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_User" Margin="20,0,0,3"/>
+
+        </StackPanel>
+
     </StackPanel>
-
-
 </Window>

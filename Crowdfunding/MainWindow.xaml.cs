@@ -141,6 +141,7 @@ namespace Crowdfunding
             Connexion.BorderBrush = new SolidColorBrush(Colors.Transparent);
             Inscription inscription = new Inscription();
             inscription.Show();
+            this.Close();
         }
 
         private void Button_Click_connexion(object sender, RoutedEventArgs e)
@@ -153,7 +154,6 @@ namespace Crowdfunding
             ////afficher la deuxième accueil : accueil connecté
 
             login.Visibility = Visibility.Visible;
-            
             this.Close();
             
 
@@ -373,7 +373,7 @@ namespace Crowdfunding
             tousbutton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
 
             //recherche
-            rechercheCategorie(11);
+            rechercheCategorie(10);
         }
 
         private void tousbutton_Click(object sender, RoutedEventArgs e)
@@ -413,7 +413,6 @@ namespace Crowdfunding
             flotanteProjet.Visibility = Visibility.Visible;
             accueil.IsEnabled = false;
 
-            //intègre les données du projet sélectionné
             //selectionner l'Item clické
             string curentItem = acceuil_projet.SelectedItem.ToString();
             int index = acceuil_projet.SelectedIndex;
@@ -440,8 +439,8 @@ namespace Crowdfunding
 
         private void Investir_click(object sender, RoutedEventArgs e)
         {
-            
-            login.Show();
+            login.Visibility = Visibility.Visible;
+            this.Close();
         }
 
         private void fermer_click(object sender, MouseButtonEventArgs e)
