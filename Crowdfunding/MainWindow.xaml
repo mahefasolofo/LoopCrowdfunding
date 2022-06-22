@@ -15,7 +15,9 @@
         mc:Ignorable="d" Title="Loop Crowdfunding" WindowStartupLocation="CenterScreen" WindowState="Maximized" Height="825" Width="1510">
     <StackPanel Background="white" VerticalAlignment="Top" Height="805" HorizontalAlignment="Stretch" >
 
-        <StackPanel x:Name="Topbar" Orientation="Horizontal" Height="80" Width="1510" >
+
+        <StackPanel x:Name="Topbar"    Orientation="Horizontal" Height="80" Width="1542" >
+
 
             <StackPanel.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -31,14 +33,11 @@
                 </Button.Background>
             </Button>
 
-            <Button x:Name="Acceuilecrit" Uid="1" Width="90" Height="32" Content="ACCUEIL" Margin="150,30,1,3" Background="{x:Null}" BorderBrush="{x:Null}"  Cursor="Hand" Click="Button_Click_guide" Foreground="White" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
-
-<!--             <Button x:Name="Acceuilecrit" Uid="1" Width="90" Height="32" Content="ACCEUIL" Margin="10,30,1,3" Background="{x:Null}" BorderBrush="{x:Null}"  Cursor="Hand" Click="Button_Click_Accueil" Foreground="White" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/> -->
-
-            <Button x:Name="Guide" Uid="1" Width="172" Height="32" Content="GUIDE D'UTILISATION" Margin="10,30,1,3" Background="{x:Null}" BorderBrush="{x:Null}"  Cursor="Hand" Click="Button_Click_guide" Foreground="White" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
-            <Button x:Name="Apropos" Uid="2" Width="168" Height="32" Content="A PROPOS DE NOUS" Margin="10,30,1,3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_Apropos"  materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
-            <Button x:Name="Inscription" Uid="4" Width="124" Height="32" Content="INSCRIPTION" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click_inscription" Cursor="Hand" Margin="500,30,0,3"  materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
-            <Button x:Name="Connexion" Uid="5" Width="133" Height="32" Content="CONNEXION" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_connexion" Margin="5,30,0,3" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left" />
+            <Button x:Name="Acceuilecrit" Uid="1" Width="90" Height="32" Content="ACCUEIL" Margin="10,30,1,3"  Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonAssist.CornerRadius="10"  Background="{x:Null}"   BorderBrush="White"  materialDesign:ButtonProgressAssist.IsIndeterminate="True"  Cursor="Hand" Click="Button_Click_Accueil" Foreground="White" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
+            <Button materialDesign:ButtonAssist.CornerRadius="10" x:Name="Guide" Uid="1" Width="172" Height="32" Content="GUIDE D'UTILISATION" Margin="10,30,1,3" Background="{x:Null}" BorderBrush="{x:Null}"  Cursor="Hand" Click="Button_Click_guide" Foreground="White" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+            <Button materialDesign:ButtonAssist.CornerRadius="10" x:Name="Apropos" Uid="2" Width="168" Height="32" Content="A PROPOS DE NOUS" Margin="10,30,1,3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_Apropos"  materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+            <Button materialDesign:ButtonAssist.CornerRadius="10" x:Name="Inscription" Uid="4" Width="124" Height="32" Content="INSCRIPTION" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click_inscription" Cursor="Hand" Margin="700,30,0,3"  materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+            <Button materialDesign:ButtonAssist.CornerRadius="10" x:Name="Connexion" Uid="5" Width="133" Height="32" Content="CONNEXION" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_connexion" Margin="5,30,0,3" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalContentAlignment="Left" />
         </StackPanel>
 
         <Grid x:Name="MainGrid" Height="740" Background="White" Margin="0,-11,0,0">
@@ -61,57 +60,57 @@
                             <Grid>
                                 <!-- Définition des colonnes de la liste -->
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
                                     <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition />
+                                    <RowDefinition Height="300"/>
+                                    <RowDefinition  />
                                 </Grid.RowDefinitions>
 
                                 <!--ligne image -->
                                 <StackPanel
-                              Margin="8 0 0 0"
-                              Grid.Row="1">
-                                    <Image Source="/ramon-kagie-4EZKcKxOlRE-unsplash.jpg" Width="100" Height="100" HorizontalAlignment="Left"/>
+                              
+                              Grid.Row="1" Margin="0,0,0,0" Width="300" >
+                                    <Image Source="/saina.jpg" Width="300" HorizontalAlignment="Center"/>
                                 </StackPanel>
 
                                 <!--ligne titre et description -->
                                 <StackPanel
-                              Grid.Row="2">
+                              Grid.Row="2" Margin="0,50,0,0" Width="300">
                                     <TextBlock
                                 Text="{Binding titre}"
                                 FontWeight="Bold" FontSize="18" TextWrapping="Wrap"/>
                                     <TextBlock
-                                Text="{Binding description}" TextWrapping="Wrap" Height="100" Width="200" TextAlignment="Left" HorizontalAlignment="Left"/>
+                                Text="{Binding description}"  TextWrapping="Wrap"  Width="300" TextAlignment="Left" HorizontalAlignment="Left"/>
                                 </StackPanel>
 
                                 <!--ligne stat -->
                                 <StackPanel                                            
-                                Grid.Row="3" Margin="0,20,20,0" Width="250">
+                                Grid.Row="3" Margin="0,0,0,0" Width="300">
                                     <TextBlock TextWrapping="Wrap"><Run Text="Objectif cagnotte : "/><InlineUIContainer>
                                                 <TextBlock
-                                                    Text="{Binding objectifCagnotte}" HorizontalAlignment="Stretch"/>
+                                                    Text="{Binding objectifCagnotte}" HorizontalAlignment="Center"/>
                                             </InlineUIContainer><Run Text=" "/><InlineUIContainer>
                                                 <TextBlock
-                                                    Text="€" HorizontalAlignment="Stretch"/>
+                                                    Text="€" HorizontalAlignment="Center"/>
                                             </InlineUIContainer></TextBlock>
 
                                     <TextBlock TextWrapping="Wrap"><Run Text="Statut : "/><InlineUIContainer>
                                                 <TextBlock
-                                                    Text="{Binding statut}" HorizontalAlignment="Stretch"/>
+                                                    Text="{Binding statut}" HorizontalAlignment="Center"/>
                                             </InlineUIContainer></TextBlock>
 
                                     <TextBlock TextWrapping="Wrap"><Run Text="Date fermeture : "/><InlineUIContainer>
                                                 <TextBlock
-                                                    Text="{Binding fermeture}" HorizontalAlignment="Stretch"/>
+                                                    Text="{Binding fermeture}" HorizontalAlignment="Center"/>
                                             </InlineUIContainer></TextBlock>
                                     <TextBlock TextWrapping="Wrap"><Run Text="Date début remboursement : "/><InlineUIContainer>
                                                 <TextBlock
-                                                    Text="{Binding paiement}" HorizontalAlignment="Stretch"/>
+                                                    Text="{Binding paiement}" HorizontalAlignment="Center"/>
                                             </InlineUIContainer></TextBlock>
                                 </StackPanel>
 
                                 <!-- Bouton investir-->
-                                <StackPanel Grid.Row="4" Margin="0,100,20,0">
+                                <StackPanel Grid.Row="4" Margin="0,50,0,0" Width="300">
                                     <Button Content="Investir" Click="Investir_click" />
                                 </StackPanel>
 
@@ -148,69 +147,74 @@
 
                         <Button x:Name="tousbutton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
-             materialDesign:ButtonAssist.CornerRadius="15"
+             materialDesign:ButtonAssist.CornerRadius="10"
              Content="Tous"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen"  Foreground="DarkSlateGray"  Opacity="0.75"  Width="100" Click="tousbutton_Click"/>
 
                         <Button x:Name="ecobutton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
-             materialDesign:ButtonAssist.CornerRadius="15"
+             materialDesign:ButtonAssist.CornerRadius="10"
              Content="ecologie"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen" Click="ecobutton_Click" Foreground="DarkSlateGray" Background="Transparent" Opacity="0.75" Width="100"/>
 
                         <Button x:Name="agributton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
-             materialDesign:ButtonAssist.CornerRadius="15"
+             materialDesign:ButtonAssist.CornerRadius="10"
              Content="Agriculture"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33"  Foreground="DarkSlateGray" Click="agributton_Click" Opacity="0.75" BorderBrush="MediumSeaGreen" Background="Transparent" Width="114"/>
 
                         <Button x:Name="Techbutton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
-             materialDesign:ButtonAssist.CornerRadius="15"
+             materialDesign:ButtonAssist.CornerRadius="10"
              Content="Tech"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen"  Foreground="DarkSlateGray" Click="Techbutton_Click" Opacity="0.75"  Width="100"/>
 
                         <Button x:Name="Immobutton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
-             materialDesign:ButtonAssist.CornerRadius="15"
+             materialDesign:ButtonAssist.CornerRadius="10"
              Content="Immobilier"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen"  Foreground="DarkSlateGray" Click="Immobutton_Click" Opacity="0.75"  Width="100"/>
 
                         <Button x:Name="SanteButton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
-             materialDesign:ButtonAssist.CornerRadius="15"
+             materialDesign:ButtonAssist.CornerRadius="10"
              Content="Santé"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen"  Foreground="DarkSlateGray"  Click="SanteButton_Click" Opacity="0.75" Width="100"/>
 
                         <Button x:Name="SolidaireButton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
-             materialDesign:ButtonAssist.CornerRadius="15"
+             materialDesign:ButtonAssist.CornerRadius="10"
              Content="Solidaire"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen" Foreground="DarkSlateGray" Click="SolidaireButton_Click" Opacity="0.75"   Width="100"/>
 
                         <Button x:Name="Artbutton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
-             materialDesign:ButtonAssist.CornerRadius="15"
+             materialDesign:ButtonAssist.CornerRadius="10"
              Content="Art"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" BorderBrush="MediumSeaGreen" Foreground="DarkSlateGray" Click="Autrebutton_Click" Opacity="0.75"  Width="100" Margin="1,55,55,33" />
 
                         <Button x:Name="Autrebutton"
              Style="{StaticResource MaterialDesignOutlinedLightButton}"               
-             materialDesign:ButtonAssist.CornerRadius="15"
+             materialDesign:ButtonAssist.CornerRadius="10"
              Content="Autre"
              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="1,55,55,33" BorderBrush="MediumSeaGreen" Foreground="DarkSlateGray" Click="Autrebutton_Click" Opacity="0.75"  Width="100"/>
 
                     </StackPanel>
 
                     <!--Grid qui contient les stats de la page d'accueil-->
-                    <Grid Name="Statistiques" HorizontalAlignment="Left" Height="740" Margin="1248,0,0,0" VerticalAlignment="Center" Width="262" >
-                        <Label Content="Nombre d'investissement" HorizontalAlignment="Center" Height="36" Margin="0,142,0,0" VerticalAlignment="Top" Width="242" FontSize="20"/>
-                        <TextBlock Name="nombre_invest" FontSize="18" Margin="8,178,0,521" />
-                        <Label Content="Nombre de projet" Margin="10,224,0,475" FontSize="20" />
-                        <TextBlock Name="nombre_projet"  Margin="0,265,0,426"/>
-                        <Label Content="Total des investissements" FontSize="20" Margin="0,319,0,384"/>
-                        <TextBlock Name="total_invest" Margin="0,356,0,344" />
-                    </Grid>
+                    <Border CornerRadius="20"  Margin="1223,26,40,514" BorderBrush="#ff00787a" BorderThickness="2">
+                        <StackPanel  Orientation="Vertical"  >
+                            <Grid Name="Statistiques_accueil" HorizontalAlignment="Left" Height="200" Margin="0,0,0,0" VerticalAlignment="Center" Width="262" >
+                                <Label Content="Nombre d'investissement" HorizontalAlignment="Center" Height="36" Margin="0,0,0,0" VerticalAlignment="Top" Width="242" FontSize="20"/>
+                                <TextBlock Name="nombre_invest" FontSize="18" Margin="10,25,0,0" HorizontalAlignment="Center" />
+                                <Label Content="Nombre de projet"  Margin="10,50,0,0" FontSize="20" />
+                                <TextBlock Name="nombre_projet"  FontSize="18" Margin="8,75,0,0" HorizontalAlignment="Center"/>
+                                <Label Content="Total des investissements" FontSize="20" Margin="10,100,0,0"/>
+                                <TextBlock Name="total_invest"  FontSize="18" Margin="8,125,0,0" HorizontalAlignment="Center" />
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
 
                 </Grid>
             </Grid>

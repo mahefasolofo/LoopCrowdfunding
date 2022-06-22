@@ -308,9 +308,10 @@ namespace Crowdfunding
         }
         private void Button_Click_Accueil(object sender, RoutedEventArgs e)
         {
-            Accueil.Foreground = new SolidColorBrush(Colors.OrangeRed);
-            Cagnotte.Foreground = new SolidColorBrush(Colors.White);
-            Investissement.Foreground = new SolidColorBrush(Colors.White);
+            Accueil.BorderBrush = new SolidColorBrush(Colors.White);
+            Cagnotte.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Investissement.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            boutton_User.BorderBrush = new SolidColorBrush(Colors.Transparent);
 
             // utilisateur.Foreground = new SolidColorBrush(Colors.White);
 
@@ -330,10 +331,10 @@ namespace Crowdfunding
 
         private void Button_Click_cagnotte(object sender, RoutedEventArgs e)
         {
-            Accueil.Foreground = new SolidColorBrush(Colors.White);
-            Cagnotte.Foreground = new SolidColorBrush(Colors.OrangeRed);
-            Investissement.Foreground = new SolidColorBrush(Colors.White);
-            boutton_User.Foreground = new SolidColorBrush(Colors.White);
+            Accueil.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Cagnotte.BorderBrush = new SolidColorBrush(Colors.White);
+            Investissement.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            boutton_User.BorderBrush = new SolidColorBrush(Colors.Transparent);
 
             listeProjet2.IsEnabled = true;
 
@@ -345,11 +346,11 @@ namespace Crowdfunding
         }
         private void Button_Click_investissement(object sender, RoutedEventArgs e)
         {
-            Accueil.Foreground = new SolidColorBrush(Colors.White);
-            Cagnotte.Foreground = new SolidColorBrush(Colors.White);
-            Investissement.Foreground = new SolidColorBrush(Colors.OrangeRed);
-            boutton_User.Foreground = new SolidColorBrush(Colors.White);
-            
+            Accueil.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Cagnotte.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Investissement.BorderBrush = new SolidColorBrush(Colors.White);
+            boutton_User.BorderBrush = new SolidColorBrush(Colors.Transparent);
+
 
             Cagnottes.Visibility = Visibility.Hidden;
             Accueil1.Visibility = Visibility.Hidden;
@@ -365,10 +366,10 @@ namespace Crowdfunding
 
         private void Button_Click_notification(object sender, RoutedEventArgs e)
         {
-            Accueil.Foreground = new SolidColorBrush(Colors.White);
-            Cagnotte.Foreground = new SolidColorBrush(Colors.White);
-            Investissement.Foreground = new SolidColorBrush(Colors.White);
-            boutton_User.Foreground = new SolidColorBrush(Colors.White);
+            Accueil.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Cagnotte.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Investissement.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            boutton_User.BorderBrush = new SolidColorBrush(Colors.Transparent); ;
         }
 
         private void Button_Click_User(object sender, RoutedEventArgs e)
@@ -379,10 +380,12 @@ namespace Crowdfunding
             else
                 deroulante_Projet.Visibility = Visibility.Hidden;
 
-            Accueil.Foreground = new SolidColorBrush(Colors.White);
-            Cagnotte.Foreground = new SolidColorBrush(Colors.White);
-            Investissement.Foreground = new SolidColorBrush(Colors.White);
-            boutton_User.Foreground = new SolidColorBrush(Colors.OrangeRed);
+
+            Accueil.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Cagnotte.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Investissement.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            boutton_User.BorderBrush = new SolidColorBrush(Colors.White);
+
 
         }
 

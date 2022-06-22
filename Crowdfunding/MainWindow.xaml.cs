@@ -99,29 +99,30 @@ namespace Crowdfunding
         }
         private void Button_Click_Accueil(object sender, RoutedEventArgs e)
         {
-            Acceuilecrit.Foreground = new SolidColorBrush(Colors.OrangeRed);
-            Guide.Foreground = new SolidColorBrush(Colors.White);
-            Apropos.Foreground = new SolidColorBrush(Colors.White);
-            Inscription.Foreground = new SolidColorBrush(Colors.White);
-            Connexion.Foreground = new SolidColorBrush(Colors.White);
+            Acceuilecrit.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Guide.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Apropos.BorderBrush = new SolidColorBrush(Colors.White);
+            Inscription.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Connexion.BorderBrush = new SolidColorBrush(Colors.Transparent);
         }
 
         private void Button_Click_guide(object sender, RoutedEventArgs e)
         {
-            Acceuilecrit.Foreground = new SolidColorBrush(Colors.White);
-            Guide.Foreground = new SolidColorBrush(Colors.OrangeRed);
-            Apropos.Foreground = new SolidColorBrush(Colors.White);
-            Inscription.Foreground = new SolidColorBrush(Colors.White);
-            Connexion.Foreground = new SolidColorBrush(Colors.White);
-            
+            Acceuilecrit.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Guide.BorderBrush = new SolidColorBrush(Colors.White);
+            Apropos.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Inscription.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Connexion.BorderBrush = new SolidColorBrush(Colors.Transparent);
+
         }
 
         private void Button_Click_Apropos(object sender, RoutedEventArgs e)
         {
-            Acceuilecrit.Foreground = new SolidColorBrush(Colors.White);
-            Guide.Foreground = new SolidColorBrush(Colors.White);
-            Apropos.Foreground = new SolidColorBrush(Colors.OrangeRed);
-            Inscription.Foreground = new SolidColorBrush(Colors.White);
+            Acceuilecrit.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Guide.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Apropos.BorderBrush = new SolidColorBrush(Colors.White);
+            Inscription.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Connexion.BorderBrush = new SolidColorBrush(Colors.Transparent);
 
             Espace_admin espaceadmin = new Espace_admin();
             espaceadmin.Show();
@@ -133,11 +134,11 @@ namespace Crowdfunding
 
         private void Button_Click_inscription(object sender, RoutedEventArgs e)
         {
-            Acceuilecrit.Foreground = new SolidColorBrush(Colors.White);
-            Guide.Foreground = new SolidColorBrush(Colors.White);
-            Apropos.Foreground = new SolidColorBrush(Colors.White);
-            Inscription.Foreground = new SolidColorBrush(Colors.OrangeRed);
-            Connexion.Foreground = new SolidColorBrush(Colors.White);
+            Acceuilecrit.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Guide.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Apropos.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Inscription.BorderBrush = new SolidColorBrush(Colors.White);
+            Connexion.BorderBrush = new SolidColorBrush(Colors.Transparent);
             Inscription inscription = new Inscription();
             inscription.Show();
             this.Close();
@@ -145,11 +146,11 @@ namespace Crowdfunding
 
         private void Button_Click_connexion(object sender, RoutedEventArgs e)
         {
-            Acceuilecrit.Foreground = new SolidColorBrush(Colors.White);
-            Guide.Foreground = new SolidColorBrush(Colors.White);
-            Apropos.Foreground = new SolidColorBrush(Colors.White);
-            Inscription.Foreground = new SolidColorBrush(Colors.White);
-            Connexion.Foreground = new SolidColorBrush(Colors.OrangeRed);
+            Acceuilecrit.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Guide.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Apropos.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Inscription.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            Connexion.BorderBrush = new SolidColorBrush(Colors.White);
             ////afficher la deuxième accueil : accueil connecté
 
             login.Visibility = Visibility.Visible;
