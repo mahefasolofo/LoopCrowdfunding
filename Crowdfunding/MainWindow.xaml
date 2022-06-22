@@ -15,7 +15,7 @@
         mc:Ignorable="d" Title="Loop Crowdfunding" WindowStartupLocation="CenterScreen" WindowState="Maximized" Height="825" Width="1510">
     <StackPanel Background="white" VerticalAlignment="Top" Height="805" HorizontalAlignment="Stretch" >
 
-        <StackPanel x:Name="Topbar"    Orientation="Horizontal" Height="80" Width="1510" >
+        <StackPanel x:Name="Topbar" Orientation="Horizontal" Height="80" Width="1510" >
 
             <StackPanel.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
