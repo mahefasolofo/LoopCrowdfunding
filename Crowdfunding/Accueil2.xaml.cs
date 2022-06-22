@@ -659,7 +659,11 @@ namespace Crowdfunding
         {
             
             sommeInvest = sommeInvesti.Text;
+            //int index = listeProjet.SelectedIndex;
+            //MessageBox.Show(index.ToString());
 
+            ////Affecter les valeurs de l'Item clické dans des variables à l'aide de Getter
+            //ID_projet = listeaccueil[index].getIdProjet();
             //Connexion vers BDD
             conn = new MySqlConnection("SERVER=127.0.0.1; DATABASE='crowdfunding'; UID=root; PASSWORD=");
             conn.Open();
@@ -831,7 +835,12 @@ namespace Crowdfunding
         private void MonProfil_click(object sender, MouseButtonEventArgs e)
         {
 
-            MainStack.IsEnabled = false;
+            if(Accueil1.IsEnabled == true)
+                Accueil1.IsEnabled = false;
+            else
+                Accueil1.IsEnabled = true;
+            
+            
             if (Profil.Visibility == Visibility.Hidden)
                 Profil.Visibility = Visibility.Visible;
             else
@@ -901,7 +910,7 @@ namespace Crowdfunding
         }
         private void annuler_mofificationprofil_click(object sender, RoutedEventArgs e)
         {
-                MainStack.IsEnabled = true;
+                Accueil1.IsEnabled = true;
                 Profil.Visibility = Visibility.Hidden;
         }
 
