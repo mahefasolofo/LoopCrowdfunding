@@ -12,7 +12,7 @@
         <Image Margin="10,137,756,113" Source="/password.png"/>
         <Label Content="AUTHENTIFICATION" HorizontalAlignment="Left" Margin="329,50,0,0" VerticalAlignment="Top" FontSize="72" FontWeight="Bold" FontFamily="Poppins"/>
         <TextBox x:Name="txbCode" HorizontalAlignment="Left" Margin="574,251,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="347" FontSize="24" materialDesign:TextFieldAssist.UnderlineBrush="#673ab7" />
-        <Button x:Name="btVerifier" Content="Valider" HorizontalAlignment="Left" Margin="642,366,0,0" VerticalAlignment="Top" FontSize="24" Click="btVerifier_Click" Height="44" materialDesign:ButtonAssist.CornerRadius="25"/>
+        <Button x:Name="btVerifier" Content="Valider" HorizontalAlignment="Left" Margin="642,366,0,0" VerticalAlignment="Top" FontSize="24" Click="btVerifier_Click" Height="44" materialDesign:ButtonAssist.CornerRadius="10"/>
         <Label Content="Entrer votre  code" HorizontalAlignment="Left" Margin="346,255,0,0" VerticalAlignment="Top" FontSize="22"/>
         <TextBox x:Name="texboxcode" HorizontalAlignment="Left" Margin="637,366,0,0" TextWrapping="Wrap" Visibility="Hidden" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="587,433,0,0" VerticalAlignment="Top" Width="316" FontSize="12" Foreground="#DDF40909" Height="118"/>

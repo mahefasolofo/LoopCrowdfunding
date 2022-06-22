@@ -33,17 +33,17 @@
                             <ImageBrush ImageSource="/loop__2_-removebg-preview.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="Accueil" Uid="0" Width="150" Height="32" Content="ACCUEIL" HorizontalAlignment="Left" Margin="10,0,0,3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click_Accueil" Cursor="Hand" />
+                    <Button x:Name="Accueil"  Uid="1" Width="90" Height="32" Content="ACCUEIL" Margin="10,30,1,3"  Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonAssist.CornerRadius="10"  Background="{x:Null}"   BorderBrush="White"  materialDesign:ButtonProgressAssist.IsIndeterminate="True"  Cursor="Hand" Click="Button_Click_Accueil" Foreground="White" materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
 
 
-                    <Button x:Name="Cagnotte" Uid="1" Width="150" Height="32" Content="MES CAGNOTTES" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_cagnotte"/>
-                    <Button x:Name="Investissement" Uid="2" Width="195" Height="32" Content="MES INVESTISSEMENTS" Margin="30,0,0,3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_investissement"/>
-                    <Button x:Name="Notification" Uid="4" Width="49" Height="42" Content="" BorderBrush="{x:Null}" Click="Button_Click_notification" Cursor="Hand" Margin="500,0,0,3" IsCancel="True" Foreground="#DDE6D8D8">
+                    <Button materialDesign:ButtonAssist.CornerRadius="10" x:Name="Cagnotte" Uid="1" Width="150" Height="32" Content="MES CAGNOTTES" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_cagnotte"/>
+                    <Button materialDesign:ButtonAssist.CornerRadius="10" x:Name="Investissement" Uid="2" Width="195" Height="32" Content="MES INVESTISSEMENTS" Margin="30,0,0,3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_investissement"/>
+                    <Button  x:Name="Notification" Uid="4" Width="49" Height="42" Content="" BorderBrush="{x:Null}" Click="Button_Click_notification" Cursor="Hand" Margin="500,0,0,3" IsCancel="True" Foreground="#DDE6D8D8">
                         <Button.Background>
                             <ImageBrush ImageSource="/android-reminder - Copie.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="boutton_User" Uid="5" Width="270" Height="41" Content="UTILISATEUR" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_User" Margin="20,0,0,3"/>
+                    <Button materialDesign:ButtonAssist.CornerRadius="10" x:Name="boutton_User" Uid="5" Width="270" Height="41" Content="UTILISATEUR" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="Button_Click_User" Margin="20,0,0,3"/>
 
                 </StackPanel>
                 <TextBox x:Name="ID_connected" TextWrapping="Wrap" Text="TextBox" Width="120" Visibility="Hidden"/>
@@ -53,10 +53,28 @@
                 <!--liste des projets ouverts-->
                 <Grid x:Name="Accueil2" Margin="0,10,0,0">
                     <Grid x:Name="Recherche" Visibility="Visible" Margin="0,135,0,490">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="273*"/>
+                            <ColumnDefinition Width="29*"/>
+                        </Grid.ColumnDefinitions>
                         <TextBox
-                            materialDesign:HintAssist.Hint="Recherche" Margin="144,38,546,10" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Background="{x:Null}" />
+                            materialDesign:HintAssist.Hint="Recherche" Margin="144,38,401,10" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Background="{x:Null}" />
                         <materialDesign:PackIcon Kind="Magnify" Height="50" Width="95" Margin="969,38,0,0" Foreground="#FF232B2B"/>
                     </Grid>
+                    
+                    <!--Grid qui contient les stats de la page d'accueil-->
+                    <Border CornerRadius="20"  Margin="1247,26,16,514" BorderBrush="#ff00787a" BorderThickness="2">
+                        <StackPanel  Orientation="Vertical"  >
+                            <Grid Name="Statistiques_accueil" HorizontalAlignment="Left" Height="200" Margin="0,0,0,0" VerticalAlignment="Center" Width="262" >
+                                <Label Content="Nombre d'investissement" HorizontalAlignment="Center" Height="36" Margin="0,0,0,0" VerticalAlignment="Top" Width="242" FontSize="20"/>
+                                <TextBlock Name="nombre_invest" FontSize="18" Margin="10,25,0,0" HorizontalAlignment="Center" />
+                                <Label Content="Nombre de projet"  Margin="10,50,0,0" FontSize="20" />
+                                <TextBlock Name="nombre_projet"  FontSize="18" Margin="8,75,0,0" HorizontalAlignment="Center"/>
+                                <Label Content="Total des investissements" FontSize="20" Margin="10,100,0,0"/>
+                                <TextBlock Name="total_invest"  FontSize="18" Margin="8,125,0,0" HorizontalAlignment="Center" />
+                            </Grid>
+                        </StackPanel>
+                    </Border>
 
 
 
@@ -71,22 +89,22 @@
                                 <Grid>
                                     <!-- Définition des colonnes de la liste -->
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"/>
                                         <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="300"/>
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
                                     <!--ligne image -->
-                                    <StackPanel Margin="8 0 0 0" Grid.Row="1">
-                                        <Image Source="/ramon-kagie-4EZKcKxOlRE-unsplash.jpg" Width="100" Height="100" HorizontalAlignment="Left"/>
+                                    <StackPanel Margin="0,0,0,0" Width="300" Grid.Row="1">
+                                        <Image Source="/saina.jpg" Width="300" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                     <!--ligne titre et description -->
-                                    <StackPanel Grid.Row="2">
+                                    <StackPanel Grid.Row="2" Margin="0,0,0,0" Width="300">
                                         <TextBlock Text="{Binding titre}" FontWeight="Bold" FontSize="18" TextWrapping="Wrap"/>
-                                        <TextBlock Text="{Binding description}" TextWrapping="Wrap" Height="100" Width="200" TextAlignment="Left" HorizontalAlignment="Left"/>
+                                        <TextBlock Text="{Binding description}" TextWrapping="Wrap"  TextAlignment="Left" HorizontalAlignment="Left"/>
                                     </StackPanel>
                                     <!--ligne stat -->
-                                    <StackPanel Grid.Row="3" Margin="0,20,20,0" Width="250">
+                                    <StackPanel Grid.Row="3" Margin="0,0,0,0" Width="300">
                                         <TextBlock><Run Text="Objectif cagnotte : "/><InlineUIContainer>
                                                 <TextBlock Text="{Binding objectifCagnotte}" HorizontalAlignment="Stretch"/>
                                             </InlineUIContainer><Run Text=" "/><InlineUIContainer>
@@ -104,7 +122,7 @@
                                             </InlineUIContainer></TextBlock>
                                     </StackPanel>
                                     <!-- Bouton investir-->
-                                    <StackPanel Grid.Row="4" Margin="0,100,20,0">
+                                    <StackPanel Grid.Row="4" Margin="0,50,0,0" Width="300">
                                         <Button Content="Investir" />
                                     </StackPanel>
                                 </Grid>
@@ -131,6 +149,7 @@
                             <RadioButton x:Name ="Mastercard" Checked = "HandleCheck" GroupName="payement" Content="2" Height="41" Width="110" Foreground="{x:Null}"/>
                             <RadioButton x:Name ="Paypal" Checked = "HandleCheck" GroupName="payement" Content="3" Margin="50,0,0,0" Height="46" Width="78" Foreground="{x:Null}"/>
                         </StackPanel>
+                        
 
 
                         <!--             </Grid>
@@ -193,15 +212,7 @@
 
                     <Button x:Name="creation_cagnotte" Content="Creation cagnotte" HorizontalAlignment="Left" Margin="834,162,0,0" VerticalAlignment="Top" Height="47" Width="174" Click="ButtonClick_creation_cagnotte" materialDesign:ButtonAssist.CornerRadius="25" Background="#FF00787A"/>
 
-                    <!--Grid qui contient les stats de la page d'accueil-->
-                    <Grid Name="Statistiques_accueil" HorizontalAlignment="Left" Height="740" Margin="1248,0,0,0" VerticalAlignment="Center" Width="262" >
-                        <Label Content="Nombre d'investissement" HorizontalAlignment="Center" Height="36" Margin="0,142,0,0" VerticalAlignment="Top" Width="242" FontSize="20"/>
-                        <TextBlock Name="nombre_invest" FontSize="18" Margin="8,178,0,521" />
-                        <Label Content="Nombre de projet" Margin="10,224,0,475" FontSize="20" />
-                        <TextBlock Name="nombre_projet"  Margin="0,265,0,426"/>
-                        <Label Content="Total des investissements" FontSize="20" Margin="0,319,0,384"/>
-                        <TextBlock Name="total_invest" Margin="0,356,0,344" />
-                    </Grid>
+              
                 </Grid>
 
 
@@ -617,47 +628,45 @@
                                         <!-- Définition des colonnes de la liste -->
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="30"  />
-                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="300" />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
 
                                         <!--colonne image -->
                                         <StackPanel
-                                            Margin="8 0 0 0"
+                                            Margin="0 0 0 0"
                                             Grid.Column="1">
-                                            <Image Source="{Binding image}" Width="100" Height="100" HorizontalAlignment="Left"/>
+                                            <Image Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/saina.jpg"/>
                                         </StackPanel>
 
                                         <!--colonne titre et description -->
-                                        <StackPanel
-                                            Margin="8 0 0 0"
-                                            Grid.Column="2">
+                                        <StackPanel Orientation="Vertical"
+                                           Margin="50 0 0 0 "
+                                            Grid.Column="2"  Width="450"   >
                                             <TextBlock
                                                 Text="{Binding titre}"
                                                 FontWeight="Bold" FontSize="22" />
                                             <TextBlock
-                                                Text="{Binding description}" TextWrapping="Wrap" />
-                                        </StackPanel>
-
-                                        <!--colonne stat -->
-                                        <StackPanel
-                                            Margin="500 0 0 0"
-                                            Grid.Column="3" >
-                                            <TextBlock>
+                                                Text="{Binding description}" TextWrapping="Wrap" Height="50"  Width="450" TextAlignment="Left" HorizontalAlignment="Left" />
+                                            <!--colonne stat -->
+                                            <StackPanel
+                                           Margin="0 0 0 0 "
+                                            Grid.Column="3" Height="50"  Width="450"  >
+                                                <TextBlock>
                                                 La somme investis :
                                                 <TextBlock
                                                     Text="{Binding sommeInvesti}" HorizontalAlignment="Stretch"/>
                                                  <TextBlock
                                                 Text="€" HorizontalAlignment="Stretch"/>
                                             </TextBlock>
-                                            <TextBlock>
+                                                <TextBlock>
                                                 Somme collectée :
                                                 <TextBlock
                                                     Text="{Binding sommeCagnotte}" HorizontalAlignment="Stretch"/>
                                                 <TextBlock
                                                     Text="€" HorizontalAlignment="Stretch"/>
                                             </TextBlock>
-                                            <TextBlock>
+                                                <TextBlock>
                                                 Objectif cagnotte :
                                                 <TextBlock
                                                     Text="{Binding objectifCagnotte}" HorizontalAlignment="Stretch"/>
@@ -665,18 +674,21 @@
                                                 Text="€" HorizontalAlignment="Stretch"/>
                                             </TextBlock>
 
-                                            <TextBlock>
+                                                <TextBlock>
                                                 Statut :
                                                     <TextBlock
                                                         Text="{Binding statut}" HorizontalAlignment="Stretch"/>
                                             </TextBlock>
 
-                                            <TextBlock>
+                                                <TextBlock>
                                                 Date fermeture :
                                                     <TextBlock
                                                         Text="{Binding fermeture}" HorizontalAlignment="Stretch"/>
                                             </TextBlock>
+                                            </StackPanel>
                                         </StackPanel>
+
+        
                                     </Grid>
 
                                 </DataTemplate>
@@ -696,7 +708,7 @@
                                     <Grid>
                                         <!-- Définition des colonnes de la liste -->
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="30"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
@@ -705,24 +717,22 @@
                                         <StackPanel
                                             Margin="8 0 0 0"
                                             Grid.Row="1">
-                                            <Image Source="/ramon-kagie-4EZKcKxOlRE-unsplash.jpg" Width="100" Height="100" HorizontalAlignment="Left"/>
+                                            <Image Width="100" Height="100" HorizontalAlignment="Left" Source="/saina.jpg"/>
                                         </StackPanel>
 
                                         <!--ligne titre et description -->
-                                        <StackPanel
+                                        <StackPanel Orientation="Vertical"
                                             
                                             Grid.Row="2">
                                             <TextBlock
                                                 Text="{Binding titre}"
                                                 FontWeight="Bold" FontSize="18" TextWrapping="Wrap"/>
                                             <TextBlock
-                                                Text="{Binding description}" TextWrapping="Wrap" Height="100" Width="200" TextAlignment="Left" HorizontalAlignment="Left"/>
-                                        </StackPanel>
-
-                                        <!--ligne stat -->
-                                        <StackPanel                                            
-                                            Grid.Row="3" Margin="0,80,20,0" Width="250">
-                                            <TextBlock><Run Text="Objectif cagnotte : "/><InlineUIContainer>
+                                                Text="{Binding description}" TextWrapping="Wrap" Height="105" Width="200" TextAlignment="Left" HorizontalAlignment="Left"/>
+                                            <!--ligne stat -->
+                                            <StackPanel                                            
+                                            Grid.Row="3" Margin="0,0,0,0" Width="250">
+                                                <TextBlock><Run Text="Objectif cagnotte : "/><InlineUIContainer>
                                                 <TextBlock
                                                     Text="{Binding objectifCagnotte}" HorizontalAlignment="Stretch"/>
                                             </InlineUIContainer><Run Text=" "/><InlineUIContainer>
@@ -730,20 +740,23 @@
                                                     Text="€" HorizontalAlignment="Stretch"/>
                                             </InlineUIContainer></TextBlock>
 
-                                            <TextBlock><Run Text="Statut : "/><InlineUIContainer>
+                                                <TextBlock><Run Text="Statut : "/><InlineUIContainer>
                                                 <TextBlock
                                                     Text="{Binding statut}" HorizontalAlignment="Stretch"/>
                                             </InlineUIContainer></TextBlock>
 
-                                            <TextBlock><Run Text="Date fermeture : "/><InlineUIContainer>
+                                                <TextBlock><Run Text="Date fermeture : "/><InlineUIContainer>
                                                 <TextBlock
                                                     Text="{Binding fermeture}" HorizontalAlignment="Stretch"/>
                                             </InlineUIContainer></TextBlock>
-                                            <TextBlock><Run Text="Date début remboursement : "/><InlineUIContainer>
+                                                <TextBlock><Run Text="Date début remboursement : "/><InlineUIContainer>
                                                 <TextBlock
                                                     Text="{Binding paiement}" HorizontalAlignment="Stretch"/>
                                             </InlineUIContainer></TextBlock>
+                                            </StackPanel>
                                         </StackPanel>
+
+                                        
                                     </Grid>
 
                                 </DataTemplate>
