@@ -132,6 +132,7 @@ namespace Crowdfunding
 
             //Connexion.Foreground = new SolidColorBrush(Colors.White);
 
+
             a_propos_de_nous.Visibility = Visibility.Visible;
             MainGrid.Visibility = Visibility.Hidden;
 
