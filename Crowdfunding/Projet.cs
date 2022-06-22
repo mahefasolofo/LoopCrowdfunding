@@ -31,6 +31,10 @@ namespace Crowdfunding
         }
 
         //Getter Setter
+        public float getSommeInvesti()
+        {
+            return this.sommeInvesti;
+        }
         public String getTitre()
         {
             return this.titre;

@@ -372,7 +372,7 @@ namespace Crowdfunding
             tousbutton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
 
             //recherche
-            rechercheCategorie(11);
+            rechercheCategorie(10);
         }
 
         private void tousbutton_Click(object sender, RoutedEventArgs e)
